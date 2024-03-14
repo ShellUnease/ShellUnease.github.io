@@ -83,6 +83,7 @@ We notice how after a short moment our DNS server starts resolving our domain to
 
 It might take about 1 minute before the domain resolution is updated to 127.0.0.1. The first callback after start=start one contains base64 encoded emails from mailhog API. We decode them and get the confirmation link for the internal user.
 
+![Exfiltrated emails](/exfiltrated-emails.png)
 ![Base64 emails](/base64-emails.png)
 
 ## XSS to steal admin cookie

@@ -383,7 +383,8 @@
 <p>We notice how after a short moment our DNS server starts resolving our domain to 127.0.0.1 instead of our public API.</p>
 <p><img src="/dns-rebind.png" alt="DNS rebind"></p>
 <p>It might take about 1 minute before the domain resolution is updated to 127.0.0.1. The first callback after start=start one contains base64 encoded emails from mailhog API. We decode them and get the confirmation link for the internal user.</p>
-<p><img src="/base64-emails.png" alt="Base64 emails"></p>
+<p><img src="/exfiltrated-emails.png" alt="Exfiltrated emails">
+<img src="/base64-emails.png" alt="Base64 emails"></p>
 <h2 id="xss-to-steal-admin-cookie">XSS to steal admin cookie</h2>
 <p>As an internal user we now have the ability to add products. In /application/templates/product.html we notice that the product.note (Product manual) from an input controlled by us is not sanitized and allows us to escape JS backticks.</p>
 <p><img src="/product-note.png" alt="Product note JS string escape"></p>
