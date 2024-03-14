@@ -1,7 +1,7 @@
 +++
 title = 'HackTheBox Cyber Apocalypse 2024 Apexsurvive Writeup'
 date = 2024-03-14T17:38:37+01:00
-draft = true
+draft = false
 +++
 
 ## First Steps
