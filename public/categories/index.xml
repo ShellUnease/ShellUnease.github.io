@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Categories on ShellUnease</title>
+    <link>http://localhost:1313/categories/</link>
+    <description>Recent content in Categories on ShellUnease</description>
+    <generator>Hugo -- 0.134.3</generator>
+    <language>en</language>
+    <copyright>ShellUnease (CC BY 4.0)</copyright>
+    <lastBuildDate>Sat, 07 Sep 2024 12:17:59 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CSAW CTF Qualification Round 2024</title>
+      <link>http://localhost:1313/categories/csaw-ctf-qualification-round-2024/</link>
+      <pubDate>Sat, 07 Sep 2024 12:17:59 +0200</pubDate>
+      <guid>http://localhost:1313/categories/csaw-ctf-qualification-round-2024/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OSINT</title>
+      <link>http://localhost:1313/categories/osint/</link>
+      <pubDate>Sat, 07 Sep 2024 12:17:59 +0200</pubDate>
+      <guid>http://localhost:1313/categories/osint/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Web</title>
+      <link>http://localhost:1313/categories/web/</link>
+      <pubDate>Sat, 07 Sep 2024 12:17:33 +0200</pubDate>
+      <guid>http://localhost:1313/categories/web/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CyberSpace CTF 2024</title>
+      <link>http://localhost:1313/categories/cyberspace-ctf-2024/</link>
+      <pubDate>Tue, 03 Sep 2024 17:21:15 +0200</pubDate>
+      <guid>http://localhost:1313/categories/cyberspace-ctf-2024/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Beginner</title>
+      <link>http://localhost:1313/categories/beginner/</link>
+      <pubDate>Tue, 03 Sep 2024 17:20:59 +0200</pubDate>
+      <guid>http://localhost:1313/categories/beginner/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CrewCTF 2024</title>
+      <link>http://localhost:1313/categories/crewctf-2024/</link>
+      <pubDate>Mon, 29 Jul 2024 13:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/categories/crewctf-2024/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DeadSec CTF 2024</title>
+      <link>http://localhost:1313/categories/deadsec-ctf-2024/</link>
+      <pubDate>Mon, 29 Jul 2024 13:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/categories/deadsec-ctf-2024/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Medium</title>
+      <link>http://localhost:1313/categories/medium/</link>
+      <pubDate>Mon, 29 Jul 2024 13:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/categories/medium/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>UIUCTF2024</title>
+      <link>http://localhost:1313/categories/uiuctf2024/</link>
+      <pubDate>Mon, 01 Jul 2024 12:24:09 +0200</pubDate>
+      <guid>http://localhost:1313/categories/uiuctf2024/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>HackTheBox</title>
+      <link>http://localhost:1313/categories/hackthebox/</link>
+      <pubDate>Thu, 14 Mar 2024 17:38:37 +0100</pubDate>
+      <guid>http://localhost:1313/categories/hackthebox/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Insane</title>
+      <link>http://localhost:1313/categories/insane/</link>
+      <pubDate>Thu, 14 Mar 2024 17:38:37 +0100</pubDate>
+      <guid>http://localhost:1313/categories/insane/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

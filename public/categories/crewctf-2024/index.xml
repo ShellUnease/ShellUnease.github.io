@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>CrewCTF 2024 on ShellUnease</title>
+    <link>http://localhost:1313/categories/crewctf-2024/</link>
+    <description>Recent content in CrewCTF 2024 on ShellUnease</description>
+    <generator>Hugo -- 0.134.3</generator>
+    <language>en</language>
+    <copyright>ShellUnease (CC BY 4.0)</copyright>
+    <lastBuildDate>Mon, 29 Jul 2024 13:00:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/crewctf-2024/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CrewCTF 2024 Malkonkordo</title>
+      <link>http://localhost:1313/posts/crewctf-2024-malkonkordo/</link>
+      <pubDate>Mon, 29 Jul 2024 13:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/crewctf-2024-malkonkordo/</guid>
+      <description>&lt;h2 id=&#34;source-code-analysis&#34;&gt;Source Code Analysis&lt;/h2&gt;
+&lt;p&gt;Upon inspecting the code, we find that there&amp;rsquo;s &lt;code&gt;/ai/run&lt;/code&gt; path that sounds like it could let us execute something.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;admin-route.png&#34; alt=&#34;Admin route&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s &amp;ldquo;guarded&amp;rdquo; by middleware that inspects whether host in the uri or the request header &amp;lsquo;host&amp;rsquo; starts with &lt;code&gt;127.0.01&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;middleware-localhost.png&#34; alt=&#34;Middleware localhost&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Afterwards, the execution is passed to &lt;code&gt;handle_cmd&lt;/code&gt; which can execute one of 6 commands. For us, the intereting ones are displaying env vars&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

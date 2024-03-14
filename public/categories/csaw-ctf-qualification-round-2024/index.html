@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>CSAW CTF Qualification Round 2024 | ShellUnease</title>
+<meta name="keywords" content="">
+<meta name="description" content="ShellUnease Write-ups">
+<meta name="author" content="map[name:ShellUnease]">
+<link rel="canonical" href="http://localhost:1313/categories/csaw-ctf-qualification-round-2024/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/csaw-ctf-qualification-round-2024/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/categories/csaw-ctf-qualification-round-2024/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="ShellUnease (Alt + H)">ShellUnease</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    CSAW CTF Qualification Round 2024
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CSAW CTF Qualification Round 2024 Literally 1984 &amp; Mystery
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Intro This post covers both Literally 1984 and Mystery as they’re related to each other. The description of Literally 1984 is:
+An artist by the name of ‌ made a cover of a song I liked, but I don’t remember the original composer of that song. Could you help me find the original composer? Flag Format: csawctf{Firstname_Lastname} (replace all spaces with _ )
+and the description of Mystery is:
+Remember the composer from Literally 1984? Well, they made a song when they were part of a band in 1992, and it turns out that ‌ also made a cover of this song, collabing with another artist. What is the name of that artist? Flag Format: csawctf{ArtistName} (replace all spaces with _ )
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-09-07 12:17:59 +0200 CEST'>September 7, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;map[name:ShellUnease]</footer>
+  <a class="entry-link" aria-label="post link to CSAW CTF Qualification Round 2024 Literally 1984 & Mystery" href="http://localhost:1313/posts/csawctf-2024-literally-1984-mystery/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CSAW CTF Qualification Round 2024 BucketWars
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Intro For this challenge we’re only given the link https://bucketwars.ctf.csaw.io and the description:
+let’s keep our storage simple – and remember we don’t make mistakes in these parts.
+Enumerating the Website Upon visiting the website, we notice the current version Version: 5.0.0 and the versions page.
+When we visit a page that doesn’t exist, it tells us that the 404.jpg is missing from an S3 bucket https://s3.us-east-2.amazonaws.com/bucketwars.ctf.csaw.io. We try accessing index.html and versions.html by using this S3 bucket URL and confirm the website files are served from there.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-09-07 12:17:33 +0200 CEST'>September 7, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;map[name:ShellUnease]</footer>
+  <a class="entry-link" aria-label="post link to CSAW CTF Qualification Round 2024 BucketWars" href="http://localhost:1313/posts/csawctf-2024-bucket-wars/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CSAW CTF Qualification Round 2024 Lost Pyramid
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Initial Code Analysis First thing that catches our eye is the old version 2.3.0 of PyJWT used in the application.
+In order to access the flag, we need to view kings_lair.html which requires sending a JWT with specific CURRENT_DATE and ROLE.
+The scarab room seems vulnerable to SSTI via name POST param.
+app.route(&#39;/scarab_room&#39;, methods=[&#39;GET&#39;, &#39;POST&#39;]) def scarab_room(): try: if request.method == &#39;POST&#39;: name = request.form.get(&#39;name&#39;) if name: kings_safelist = [&#39;{&#39;,&#39;}&#39;, &#39;𓁹&#39;, &#39;𓆣&#39;,&#39;𓀀&#39;, &#39;𓀁&#39;, &#39;𓀂&#39;, &#39;𓀃&#39;, &#39;𓀄&#39;, &#39;𓀅&#39;, &#39;𓀆&#39;, &#39;𓀇&#39;, &#39;𓀈&#39;, &#39;𓀉&#39;, &#39;𓀊&#39;, &#39;𓀐&#39;, &#39;𓀑&#39;, &#39;𓀒&#39;, &#39;𓀓&#39;, &#39;𓀔&#39;, &#39;𓀕&#39;, &#39;𓀖&#39;, &#39;𓀗&#39;, &#39;𓀘&#39;, &#39;𓀙&#39;, &#39;𓀚&#39;, &#39;𓀛&#39;, &#39;𓀜&#39;, &#39;𓀝&#39;, &#39;𓀞&#39;, &#39;𓀟&#39;, &#39;𓀠&#39;, &#39;𓀡&#39;, &#39;𓀢&#39;, &#39;𓀣&#39;, &#39;𓀤&#39;, &#39;𓀥&#39;, &#39;𓀦&#39;, &#39;𓀧&#39;, &#39;𓀨&#39;, &#39;𓀩&#39;, &#39;𓀪&#39;, &#39;𓀫&#39;, &#39;𓀬&#39;, &#39;𓀭&#39;, &#39;𓀮&#39;, &#39;𓀯&#39;, &#39;𓀰&#39;, &#39;𓀱&#39;, &#39;𓀲&#39;, &#39;𓀳&#39;, &#39;𓀴&#39;, &#39;𓀵&#39;, &#39;𓀶&#39;, &#39;𓀷&#39;, &#39;𓀸&#39;, &#39;𓀹&#39;, &#39;𓀺&#39;, &#39;𓀻&#39;] name = &#39;&#39;.join([char for char in name if char.isalnum() or char in kings_safelist]) return render_template_string(&#39;&#39;&#39; &lt;!DOCTYPE html&gt; &lt;html lang=&#34;en&#34;&gt; &lt;head&gt; OMITTED &lt;/head&gt; &lt;body&gt; &lt;a href=&#34;{{ url_for(&#39;hallway&#39;) }}&#34; class=&#34;return-link&#34;&gt;RETURN&lt;/a&gt; {% if name %} &lt;h1&gt;𓁹𓁹𓁹 Welcome to the Scarab Room, &#39;&#39;&#39;&#43; name &#43; &#39;&#39;&#39; 𓁹𓁹𓁹&lt;/h1&gt; {% endif %} &lt;/body&gt; &lt;/html&gt; &#39;&#39;&#39;, name=name, **globals()) except Exception as e: pass return render_template(&#39;scarab_room.html&#39;) Leaking Information via Scarab Room Since both { and } are in kings_safelist, we can send a Jinja2 expression in name to scarab_room. This allows us to leak any alphanumerical global variables by sending {{VARIABLE}}, since **globals() are included. Looking at the code, we can leak KINGSDAY and PUBLICKEY this way, but not PRIVATE_KEY, since it contains an underscore which isn’t permitted.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-09-07 12:17:23 +0200 CEST'>September 7, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;map[name:ShellUnease]</footer>
+  <a class="entry-link" aria-label="post link to CSAW CTF Qualification Round 2024 Lost Pyramid" href="http://localhost:1313/posts/csawctf-2024-lost-pyramid/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>ShellUnease (CC BY 4.0)</span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

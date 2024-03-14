@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Beginner on ShellUnease</title>
+    <link>http://localhost:1313/categories/beginner/</link>
+    <description>Recent content in Beginner on ShellUnease</description>
+    <generator>Hugo -- 0.134.3</generator>
+    <language>en</language>
+    <copyright>ShellUnease (CC BY 4.0)</copyright>
+    <lastBuildDate>Tue, 03 Sep 2024 17:20:59 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/beginner/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CyberSpace CTF 2024 Zip Zone</title>
+      <link>http://localhost:1313/posts/cyberspacectf-2024-zip-zone/</link>
+      <pubDate>Tue, 03 Sep 2024 17:20:59 +0200</pubDate>
+      <guid>http://localhost:1313/posts/cyberspacectf-2024-zip-zone/</guid>
+      <description>&lt;h2 id=&#34;initial-inspection&#34;&gt;Initial Inspection&lt;/h2&gt;
+&lt;p&gt;After loading the page we&amp;rsquo;re greeted with an upload form for zip archives. We&amp;rsquo;re informed that after uploading we can access the files by appending a filename to a generated UUID.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;We inspect the code and learn that our uploaded archive will be unzipped using &lt;code&gt;unzip&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image-1.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;zip-with-a-symlink&#34;&gt;Zip With a Symlink&lt;/h2&gt;
+&lt;p&gt;We can use the &lt;code&gt;zip&lt;/code&gt; command to create an archive that&amp;rsquo;ll preserve symlinks by using the &lt;code&gt;-y&lt;/code&gt; option.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

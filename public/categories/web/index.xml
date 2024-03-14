@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Web on ShellUnease</title>
+    <link>http://localhost:1313/categories/web/</link>
+    <description>Recent content in Web on ShellUnease</description>
+    <generator>Hugo -- 0.134.3</generator>
+    <language>en</language>
+    <copyright>ShellUnease (CC BY 4.0)</copyright>
+    <lastBuildDate>Sat, 07 Sep 2024 12:17:33 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CSAW CTF Qualification Round 2024 BucketWars</title>
+      <link>http://localhost:1313/posts/csawctf-2024-bucket-wars/</link>
+      <pubDate>Sat, 07 Sep 2024 12:17:33 +0200</pubDate>
+      <guid>http://localhost:1313/posts/csawctf-2024-bucket-wars/</guid>
+      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;For this challenge we&amp;rsquo;re only given the link &lt;em&gt;&lt;a href=&#34;https://bucketwars.ctf.csaw.io&#34;&gt;https://bucketwars.ctf.csaw.io&lt;/a&gt;&lt;/em&gt; and the description:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;let&amp;rsquo;s keep our storage simple &amp;ndash; and remember we don&amp;rsquo;t make mistakes in these parts.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;enumerating-the-website&#34;&gt;Enumerating the Website&lt;/h2&gt;
+&lt;p&gt;Upon visiting the website, we notice the current version &lt;em&gt;Version: 5.0.0&lt;/em&gt; and the versions page.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image-1.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;When we visit a page that doesn&amp;rsquo;t exist, it tells us that the &lt;em&gt;404.jpg&lt;/em&gt; is missing from an S3 bucket &lt;em&gt;&lt;a href=&#34;https://s3.us-east-2.amazonaws.com/bucketwars.ctf.csaw.io&#34;&gt;https://s3.us-east-2.amazonaws.com/bucketwars.ctf.csaw.io&lt;/a&gt;&lt;/em&gt;. We try accessing &lt;em&gt;index.html&lt;/em&gt; and &lt;em&gt;versions.html&lt;/em&gt; by using this S3 bucket URL and confirm the website files are served from there.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CSAW CTF Qualification Round 2024 Lost Pyramid</title>
+      <link>http://localhost:1313/posts/csawctf-2024-lost-pyramid/</link>
+      <pubDate>Sat, 07 Sep 2024 12:17:23 +0200</pubDate>
+      <guid>http://localhost:1313/posts/csawctf-2024-lost-pyramid/</guid>
+      <description>&lt;h2 id=&#34;initial-code-analysis&#34;&gt;Initial Code Analysis&lt;/h2&gt;
+&lt;p&gt;First thing that catches our eye is the old version &lt;em&gt;2.3.0&lt;/em&gt; of &lt;em&gt;PyJWT&lt;/em&gt; used in the application.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;In order to access the flag, we need to view &lt;em&gt;kings_lair.html&lt;/em&gt; which requires sending a JWT with specific &lt;em&gt;CURRENT_DATE&lt;/em&gt; and &lt;em&gt;ROLE&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image-1.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;The scarab room seems vulnerable to SSTI via &lt;em&gt;name&lt;/em&gt; POST param.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;app&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;route(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/scarab_room&amp;#39;&lt;/span&gt;, methods&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;GET&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;POST&amp;#39;&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;scarab_room&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; request&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;method &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;POST&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; request&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;form&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; name:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                kings_safelist &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;}&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓁹&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓆣&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀀&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀁&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀂&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀃&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀄&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀅&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀆&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀇&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀈&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀉&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀊&amp;#39;&lt;/span&gt;, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀐&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀑&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀒&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀓&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀔&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀕&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀖&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀗&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀘&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀙&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀚&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀛&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀜&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀝&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀞&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀟&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀠&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀡&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀢&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀣&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀤&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀥&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀦&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀧&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀨&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀩&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀪&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀫&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀬&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀭&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀮&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀯&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀰&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀱&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀲&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀳&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀴&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀵&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀶&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀷&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀸&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀹&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀺&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;𓀻&amp;#39;&lt;/span&gt;]  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join([char &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; char &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; name &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; char&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;isalnum() &lt;span style=&#34;color:#f92672&#34;&gt;or&lt;/span&gt; char &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; kings_safelist])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; render_template_string(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                    &amp;lt;!DOCTYPE html&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                    &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                    &amp;lt;head&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                        OMITTED
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                    &amp;lt;/head&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                    &amp;lt;body&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                        &amp;lt;a href=&amp;#34;{{ url_for(&amp;#39;hallway&amp;#39;) }}&amp;#34; class=&amp;#34;return-link&amp;#34;&amp;gt;RETURN&amp;lt;/a&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                        
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                        {&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;% i&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;f name %}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                            &amp;lt;h1&amp;gt;𓁹𓁹𓁹 Welcome to the Scarab Room, &amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; name &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39; 𓁹𓁹𓁹&amp;lt;/h1&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                        {&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;% e&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;ndif %}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                        
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                    &amp;lt;/body&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                    &amp;lt;/html&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                &amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;, name&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;name, &lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt;globals())
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;except&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Exception&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; e:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;pass&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; render_template(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;scarab_room.html&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;leaking-information-via-scarab-room&#34;&gt;Leaking Information via Scarab Room&lt;/h2&gt;
+&lt;p&gt;Since both &lt;em&gt;{&lt;/em&gt; and &lt;em&gt;}&lt;/em&gt; are in &lt;em&gt;kings_safelist&lt;/em&gt;, we can send a Jinja2 expression in &lt;em&gt;name&lt;/em&gt; to &lt;em&gt;scarab_room&lt;/em&gt;. This allows us to leak any alphanumerical global variables by sending &lt;em&gt;{{VARIABLE}}&lt;/em&gt;, since &lt;em&gt;**globals()&lt;/em&gt; are included. Looking at the code, we can leak &lt;em&gt;KINGSDAY&lt;/em&gt; and &lt;em&gt;PUBLICKEY&lt;/em&gt; this way, but not &lt;em&gt;PRIVATE_KEY&lt;/em&gt;, since it contains an underscore which isn&amp;rsquo;t permitted.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CyberSpace CTF 2024 Notekeeper</title>
+      <link>http://localhost:1313/posts/cyberspacectf-2024-notekeeper/</link>
+      <pubDate>Tue, 03 Sep 2024 17:21:15 +0200</pubDate>
+      <guid>http://localhost:1313/posts/cyberspacectf-2024-notekeeper/</guid>
+      <description>&lt;h2 id=&#34;source-code-analysis&#34;&gt;Source Code Analysis&lt;/h2&gt;
+&lt;p&gt;The goal is to access the &lt;code&gt;GET /flag&lt;/code&gt; endpoint which calls an executable that prints out the flag. It&amp;rsquo;s guarded by 2 checks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;if session[:user] == &amp;quot;admin&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;if req.ip == &amp;quot;127.0.0.1&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s also an interesting &lt;code&gt;POST /download&lt;/code&gt; endpoint. It accepts any session but is also guarded by the &lt;code&gt;if req.ip == &amp;quot;127.0.0.1&amp;quot;&lt;/code&gt; check. It serves a file based on &lt;code&gt;filename&lt;/code&gt; from our request, which leads to LFI.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CyberSpace CTF 2024 Trendz &amp; Trendzz &amp; Trendzzz</title>
+      <link>http://localhost:1313/posts/cyberspacectf-2024-trendz/</link>
+      <pubDate>Tue, 03 Sep 2024 17:21:10 +0200</pubDate>
+      <guid>http://localhost:1313/posts/cyberspacectf-2024-trendz/</guid>
+      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;This was a series of 3 web challenges (Trendz, Trendzz and Trendzzz) and 1 rev challenge (Trendzzzz) all related to one application. In this post I&amp;rsquo;ll briefly show how I solved all the web challenges related to it.&lt;/p&gt;
+&lt;h2 id=&#34;race-condition-for-post_flag&#34;&gt;Race Condition For POST_FLAG&lt;/h2&gt;
+&lt;p&gt;In order to get the POST_FLAG we have to make a request to &lt;code&gt;/flag&lt;/code&gt;  after we created 12 posts.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;However, the &lt;code&gt;CreatePost(...)&lt;/code&gt; prevents us from submitting new posts once we&amp;rsquo;ve created 10 of them.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CyberSpace CTF 2024 Feature Unlocked</title>
+      <link>http://localhost:1313/posts/cyberspacectf-2024-feature-unlocked/</link>
+      <pubDate>Tue, 03 Sep 2024 17:20:52 +0200</pubDate>
+      <guid>http://localhost:1313/posts/cyberspacectf-2024-feature-unlocked/</guid>
+      <description>&lt;h2 id=&#34;source-code-analysis&#34;&gt;Source Code Analysis&lt;/h2&gt;
+&lt;p&gt;The aim of the challenge is to call the &lt;code&gt;POST /feature&lt;/code&gt; which contains a command injection vulnerability.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image-1.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;As we can see, we need a valid signed &lt;code&gt;access_token&lt;/code&gt; that contains the string &lt;code&gt;access_granted&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s &lt;code&gt;GET /release&lt;/code&gt; endpoint that&amp;rsquo;ll do exactly that if we pass the &lt;code&gt;validate_server(...)&lt;/code&gt; check. Interestingly, if we set a query param &lt;code&gt;debug=true&lt;/code&gt;, we can control the validation server address.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image-2.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CyberSpace CTF 2024 Quiz</title>
+      <link>http://localhost:1313/posts/cyberspacectf-2024-quiz/</link>
+      <pubDate>Tue, 03 Sep 2024 17:20:41 +0200</pubDate>
+      <guid>http://localhost:1313/posts/cyberspacectf-2024-quiz/</guid>
+      <description>&lt;h2 id=&#34;source-code-analysis&#34;&gt;Source Code Analysis&lt;/h2&gt;
+&lt;p&gt;At first glance, I thought the intended vulnerability was a race condition. However, upon closer examination I noticed a suspicious &lt;code&gt;unset($_SESSION[&#39;username&#39;]);&lt;/code&gt; in &lt;code&gt;logout.php&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;The correct answer for each question is random, but it&amp;rsquo;s generated in advance both at the beginning of the quiz and upon submitting an answer.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image-1.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image-2.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;if (intval($answer) === $next_correct) {...}&lt;/code&gt; is the essential part of the challenge. Regardless if our answer is correct or wrong, it&amp;rsquo;ll call &lt;code&gt;htmlspecialchars($_SESSION[&#39;username&#39;])&lt;/code&gt;, which will throw an exception if &lt;code&gt;username&lt;/code&gt; is unset in the session. However, the exception stack trace will show us which line of code the exception was thrown at. Importantly, this all happens before game-related session data is changed, such as &lt;code&gt;q_num&lt;/code&gt; and &lt;code&gt;correct&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CrewCTF 2024 Malkonkordo</title>
+      <link>http://localhost:1313/posts/crewctf-2024-malkonkordo/</link>
+      <pubDate>Mon, 29 Jul 2024 13:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/crewctf-2024-malkonkordo/</guid>
+      <description>&lt;h2 id=&#34;source-code-analysis&#34;&gt;Source Code Analysis&lt;/h2&gt;
+&lt;p&gt;Upon inspecting the code, we find that there&amp;rsquo;s &lt;code&gt;/ai/run&lt;/code&gt; path that sounds like it could let us execute something.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;admin-route.png&#34; alt=&#34;Admin route&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s &amp;ldquo;guarded&amp;rdquo; by middleware that inspects whether host in the uri or the request header &amp;lsquo;host&amp;rsquo; starts with &lt;code&gt;127.0.01&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;middleware-localhost.png&#34; alt=&#34;Middleware localhost&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Afterwards, the execution is passed to &lt;code&gt;handle_cmd&lt;/code&gt; which can execute one of 6 commands. For us, the intereting ones are displaying env vars&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>DeadSec CTF 2024 Buntime</title>
+      <link>http://localhost:1313/posts/deadsecctf-2024-buntime/</link>
+      <pubDate>Mon, 29 Jul 2024 13:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/posts/deadsecctf-2024-buntime/</guid>
+      <description>&lt;h2 id=&#34;initial-inspection&#34;&gt;Initial Inspection&lt;/h2&gt;
+&lt;p&gt;There&amp;rsquo;s no souce code provided for the challenge. The only thing we&amp;rsquo;re given to work with is a website that executes our input code presumably using Bun.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;buntime-website.png&#34; alt=&#34;Buntime website&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;After playing around with it for a bit we know that it&amp;rsquo;s Bun, since the &lt;code&gt;Bun&lt;/code&gt; variable is available and allows us to call different methods.&lt;/p&gt;
+&lt;h2 id=&#34;more-recon&#34;&gt;More Recon&lt;/h2&gt;
+&lt;p&gt;There are quite a few limitations to our code:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Bun.spawnSync&lt;/code&gt; function appears to be overwritten with a WAF message,&lt;/li&gt;
+&lt;li&gt;WAF blocks our input from the POST body if it&amp;rsquo;s too long (I didn&amp;rsquo;t count it, but it&amp;rsquo;s about ~30 chars give or take),&lt;/li&gt;
+&lt;li&gt;We can&amp;rsquo;t call &lt;code&gt;await&lt;/code&gt; directly,&lt;/li&gt;
+&lt;li&gt;Even though we can call &lt;code&gt;Bun.spawn&lt;/code&gt;, we seemingly can&amp;rsquo;t write anywhere (tried &lt;code&gt;/tmp&lt;/code&gt; and &lt;code&gt;/dev/shm&lt;/code&gt;),&lt;/li&gt;
+&lt;li&gt;There&amp;rsquo;s no outside network connectivity.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;However, we&amp;rsquo;re able to confirm that the flag is in &lt;code&gt;/flag.txt&lt;/code&gt; by running &lt;code&gt;Bun.file(&#39;/flag.txt&#39;).size&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>UIUCTF 2024 Log Action</title>
+      <link>http://localhost:1313/posts/uiuctf-2024-log-action/</link>
+      <pubDate>Mon, 01 Jul 2024 12:24:09 +0200</pubDate>
+      <guid>http://localhost:1313/posts/uiuctf-2024-log-action/</guid>
+      <description>&lt;h2 id=&#34;initial-code-analysis&#34;&gt;Initial Code Analysis&lt;/h2&gt;
+&lt;p&gt;Upon inspecting the code, we discovered that the frontend application is running Next.js 14.1.0. This version is vulnerable to SSRF &lt;a href=&#34;https://nvd.nist.gov/vuln/detail/CVE-2024-34351&#34;&gt;https://nvd.nist.gov/vuln/detail/CVE-2024-34351&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;nextjs-version.png&#34; alt=&#34;Next.js version&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;We also notice the &lt;em&gt;flag.txt&lt;/em&gt; file is copied to &lt;em&gt;/usr/share/nginx/html/flag.txt&lt;/em&gt; in the backend app, meaning it&amp;rsquo;s exposed via &lt;em&gt;backend/flag.txt&lt;/em&gt; inside the docker network.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;nginx-flag.png&#34; alt=&#34;Nginx flag&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;ll perform an SSRF to make the frontend application send a request to the backend application &lt;em&gt;/flag.txt&lt;/em&gt; and send it back to us.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HackTheBox Cyber Apocalypse 2024 Apexsurvive Writeup</title>
+      <link>http://localhost:1313/posts/htb-ca-2024-apexsurvive/</link>
+      <pubDate>Thu, 14 Mar 2024 17:38:37 +0100</pubDate>
+      <guid>http://localhost:1313/posts/htb-ca-2024-apexsurvive/</guid>
+      <description>&lt;h2 id=&#34;first-steps&#34;&gt;First Steps&lt;/h2&gt;
+&lt;p&gt;We analyze the code and notice the email page will only show emails addressed to &lt;em&gt;&lt;a href=&#34;mailto:test@email.htb&#34;&gt;test@email.htb&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;test-email.png&#34; alt=&#34;EmailCode&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;We create a user with the email &lt;em&gt;&lt;a href=&#34;mailto:test@email.htb&#34;&gt;test@email.htb&lt;/a&gt;&lt;/em&gt; and confirm the registration by visiting the link from an email.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;verify-email-1.png&#34; alt=&#34;Verify email 1&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;verify-email-2.png&#34; alt=&#34;Verify email 2&#34;  /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;dns-rebinding-to-activate-an-internal-user&#34;&gt;DNS Rebinding to Activate an Internal User&lt;/h2&gt;
+&lt;p&gt;Upon further code inspection, we found out that users who sign up with an email hosted at &lt;em&gt;apexsurvive.htb&lt;/em&gt; will be marked as internal users.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

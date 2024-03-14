@@ -1,0 +1,63 @@
+baseURL: https://shellunease.github.io
+languageCode: en-us
+title: ShellUnease
+theme: PaperMod
+copyright: ShellUnease (CC BY 4.0)
+module:
+  hugoVersion:
+    min: 0.112.0
+  imports:
+    - path: github.com/hugomods/images
+taxonomies:
+  autor: author
+  tag: tags
+  category: categories
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    taxonomies:
+      category: categories
+      tag: tags
+      series: series
+    menu:
+      main:
+        - name: Archive
+          url: archives
+          weight: 5
+        - name: Search
+          url: search/
+          weight: 10
+        - name: Tags
+          url: tags/
+          weight: 10
+params:
+  ShowShareButtons: true
+  ShowReadingTime: true
+  ShowToc: true
+  ShowCodeCopyButtons: true
+  homeInfoParams:
+    Title: Hi there wave
+    Content: Can be Info, links, about...
+  socialIcons: # optional
+    - name: "<platform>"
+      url: "<link>"
+    - name: "<platform 2>"
+      url: "<link2>"
+  description: ShellUnease Write-ups
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    # limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
+    keys: ["title", "permalink", "summary", "content"]
+  author:
+    name: ShellUnease
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search

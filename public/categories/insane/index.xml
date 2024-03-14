@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Insane on ShellUnease</title>
+    <link>http://localhost:1313/categories/insane/</link>
+    <description>Recent content in Insane on ShellUnease</description>
+    <generator>Hugo -- 0.134.3</generator>
+    <language>en</language>
+    <copyright>ShellUnease (CC BY 4.0)</copyright>
+    <lastBuildDate>Thu, 14 Mar 2024 17:38:37 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/insane/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HackTheBox Cyber Apocalypse 2024 Apexsurvive Writeup</title>
+      <link>http://localhost:1313/posts/htb-ca-2024-apexsurvive/</link>
+      <pubDate>Thu, 14 Mar 2024 17:38:37 +0100</pubDate>
+      <guid>http://localhost:1313/posts/htb-ca-2024-apexsurvive/</guid>
+      <description>&lt;h2 id=&#34;first-steps&#34;&gt;First Steps&lt;/h2&gt;
+&lt;p&gt;We analyze the code and notice the email page will only show emails addressed to &lt;em&gt;&lt;a href=&#34;mailto:test@email.htb&#34;&gt;test@email.htb&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;test-email.png&#34; alt=&#34;EmailCode&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;We create a user with the email &lt;em&gt;&lt;a href=&#34;mailto:test@email.htb&#34;&gt;test@email.htb&lt;/a&gt;&lt;/em&gt; and confirm the registration by visiting the link from an email.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;verify-email-1.png&#34; alt=&#34;Verify email 1&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;verify-email-2.png&#34; alt=&#34;Verify email 2&#34;  /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;dns-rebinding-to-activate-an-internal-user&#34;&gt;DNS Rebinding to Activate an Internal User&lt;/h2&gt;
+&lt;p&gt;Upon further code inspection, we found out that users who sign up with an email hosted at &lt;em&gt;apexsurvive.htb&lt;/em&gt; will be marked as internal users.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

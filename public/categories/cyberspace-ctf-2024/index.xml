@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>CyberSpace CTF 2024 on ShellUnease</title>
+    <link>http://localhost:1313/categories/cyberspace-ctf-2024/</link>
+    <description>Recent content in CyberSpace CTF 2024 on ShellUnease</description>
+    <generator>Hugo -- 0.134.3</generator>
+    <language>en</language>
+    <copyright>ShellUnease (CC BY 4.0)</copyright>
+    <lastBuildDate>Tue, 03 Sep 2024 17:21:15 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/cyberspace-ctf-2024/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CyberSpace CTF 2024 Notekeeper</title>
+      <link>http://localhost:1313/posts/cyberspacectf-2024-notekeeper/</link>
+      <pubDate>Tue, 03 Sep 2024 17:21:15 +0200</pubDate>
+      <guid>http://localhost:1313/posts/cyberspacectf-2024-notekeeper/</guid>
+      <description>&lt;h2 id=&#34;source-code-analysis&#34;&gt;Source Code Analysis&lt;/h2&gt;
+&lt;p&gt;The goal is to access the &lt;code&gt;GET /flag&lt;/code&gt; endpoint which calls an executable that prints out the flag. It&amp;rsquo;s guarded by 2 checks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;if session[:user] == &amp;quot;admin&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;if req.ip == &amp;quot;127.0.0.1&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s also an interesting &lt;code&gt;POST /download&lt;/code&gt; endpoint. It accepts any session but is also guarded by the &lt;code&gt;if req.ip == &amp;quot;127.0.0.1&amp;quot;&lt;/code&gt; check. It serves a file based on &lt;code&gt;filename&lt;/code&gt; from our request, which leads to LFI.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CyberSpace CTF 2024 Trendz &amp; Trendzz &amp; Trendzzz</title>
+      <link>http://localhost:1313/posts/cyberspacectf-2024-trendz/</link>
+      <pubDate>Tue, 03 Sep 2024 17:21:10 +0200</pubDate>
+      <guid>http://localhost:1313/posts/cyberspacectf-2024-trendz/</guid>
+      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;This was a series of 3 web challenges (Trendz, Trendzz and Trendzzz) and 1 rev challenge (Trendzzzz) all related to one application. In this post I&amp;rsquo;ll briefly show how I solved all the web challenges related to it.&lt;/p&gt;
+&lt;h2 id=&#34;race-condition-for-post_flag&#34;&gt;Race Condition For POST_FLAG&lt;/h2&gt;
+&lt;p&gt;In order to get the POST_FLAG we have to make a request to &lt;code&gt;/flag&lt;/code&gt;  after we created 12 posts.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;However, the &lt;code&gt;CreatePost(...)&lt;/code&gt; prevents us from submitting new posts once we&amp;rsquo;ve created 10 of them.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CyberSpace CTF 2024 Zip Zone</title>
+      <link>http://localhost:1313/posts/cyberspacectf-2024-zip-zone/</link>
+      <pubDate>Tue, 03 Sep 2024 17:20:59 +0200</pubDate>
+      <guid>http://localhost:1313/posts/cyberspacectf-2024-zip-zone/</guid>
+      <description>&lt;h2 id=&#34;initial-inspection&#34;&gt;Initial Inspection&lt;/h2&gt;
+&lt;p&gt;After loading the page we&amp;rsquo;re greeted with an upload form for zip archives. We&amp;rsquo;re informed that after uploading we can access the files by appending a filename to a generated UUID.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;We inspect the code and learn that our uploaded archive will be unzipped using &lt;code&gt;unzip&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image-1.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;zip-with-a-symlink&#34;&gt;Zip With a Symlink&lt;/h2&gt;
+&lt;p&gt;We can use the &lt;code&gt;zip&lt;/code&gt; command to create an archive that&amp;rsquo;ll preserve symlinks by using the &lt;code&gt;-y&lt;/code&gt; option.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CyberSpace CTF 2024 Feature Unlocked</title>
+      <link>http://localhost:1313/posts/cyberspacectf-2024-feature-unlocked/</link>
+      <pubDate>Tue, 03 Sep 2024 17:20:52 +0200</pubDate>
+      <guid>http://localhost:1313/posts/cyberspacectf-2024-feature-unlocked/</guid>
+      <description>&lt;h2 id=&#34;source-code-analysis&#34;&gt;Source Code Analysis&lt;/h2&gt;
+&lt;p&gt;The aim of the challenge is to call the &lt;code&gt;POST /feature&lt;/code&gt; which contains a command injection vulnerability.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image-1.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;As we can see, we need a valid signed &lt;code&gt;access_token&lt;/code&gt; that contains the string &lt;code&gt;access_granted&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s &lt;code&gt;GET /release&lt;/code&gt; endpoint that&amp;rsquo;ll do exactly that if we pass the &lt;code&gt;validate_server(...)&lt;/code&gt; check. Interestingly, if we set a query param &lt;code&gt;debug=true&lt;/code&gt;, we can control the validation server address.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image-2.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CyberSpace CTF 2024 Quiz</title>
+      <link>http://localhost:1313/posts/cyberspacectf-2024-quiz/</link>
+      <pubDate>Tue, 03 Sep 2024 17:20:41 +0200</pubDate>
+      <guid>http://localhost:1313/posts/cyberspacectf-2024-quiz/</guid>
+      <description>&lt;h2 id=&#34;source-code-analysis&#34;&gt;Source Code Analysis&lt;/h2&gt;
+&lt;p&gt;At first glance, I thought the intended vulnerability was a race condition. However, upon closer examination I noticed a suspicious &lt;code&gt;unset($_SESSION[&#39;username&#39;]);&lt;/code&gt; in &lt;code&gt;logout.php&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;The correct answer for each question is random, but it&amp;rsquo;s generated in advance both at the beginning of the quiz and upon submitting an answer.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image-1.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image-2.png&#34; alt=&#34;Alt text&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;if (intval($answer) === $next_correct) {...}&lt;/code&gt; is the essential part of the challenge. Regardless if our answer is correct or wrong, it&amp;rsquo;ll call &lt;code&gt;htmlspecialchars($_SESSION[&#39;username&#39;])&lt;/code&gt;, which will throw an exception if &lt;code&gt;username&lt;/code&gt; is unset in the session. However, the exception stack trace will show us which line of code the exception was thrown at. Importantly, this all happens before game-related session data is changed, such as &lt;code&gt;q_num&lt;/code&gt; and &lt;code&gt;correct&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
