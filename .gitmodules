@@ -9,4 +9,4 @@
 	url = https://github.com/LordMathis/hugo-theme-nightfall.git
 [submodule "themes/dark-theme-editor"]
 	path = themes/dark-theme-editor
-	url = https://github.com/JingWangTW/dark-theme-editor.git
+	url = https://github.com/ShellUnease/dark-theme-editor.git
