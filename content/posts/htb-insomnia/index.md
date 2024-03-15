@@ -21,3 +21,6 @@ We craft a login request with just *username* and *id* parameters, omitting *pas
 We copy the session and head over to */index.php/profile* for the flag.
 
 ![Admin profile](admin.png)
+
+## References
+- https://www.codeigniter.com/user_guide/database/query_builder.html#builder-getwhere
