@@ -38,7 +38,7 @@ We log in and request a verification email. It won't appear in emails on the web
 
 We'll use the /external endpoint for an open redirect to our controlled website and then do DNS rebinding to fetch emails from Mailhog running on port 9000 and get the confirmation email for the internal user. To do this, we'll set up an EC2 instance with a public IP address and then add a DNS NS record for it (keep in mind the dot at the end):
 
-![DNS config](dns-config.png)Upon further code inspection, we found out that users who sign up with an email hosted at apexsur
+![DNS config](dns-config.png)
 
 We have to allow incoming traffic from ports UDP 53 (for DNS) and TCP 9000 (for the HTTP server) at minimum. We configure the security group of our EC2 instance as following.
 
