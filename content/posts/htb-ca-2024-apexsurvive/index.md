@@ -83,7 +83,7 @@ We log in as *test@email.htb* and report:
 
     ../external?url=http://dynamic.mywebsite.xyz:9000/
 
-We notice how after a short moment our DNS server starts resolving our domain to 127.0.0.1 instead of our public API.
+We notice how after a short moment our DNS server starts resolving our domain to 127.0.0.1 instead of our public IP.
 
 ![DNS rebind](dns-rebind.png)
 
