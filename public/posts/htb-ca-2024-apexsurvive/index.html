@@ -345,8 +345,8 @@
 <p><img src="apex-register.png" alt="Apex register"></p>
 <p>We log in and request a verification email. It won&rsquo;t appear in emails on the website.</p>
 <p><img src="apex-verify.png" alt="Apex verify"></p>
-<p>We&rsquo;ll use the /external endpoint for an open redirect to our controlled website and then do DNS rebinding to fetch emails from Mailhog running on port 9000 and get the confirmation email for the internal user. To do this, we&rsquo;ll set up an EC2 instance with a public IP address and then add a DNS NS record for it (keep in mind the dot at the end):</p>
-<p><img src="dns-config.png" alt="DNS config">Upon further code inspection, we found out that users who sign up with an email hosted at apexsur</p>
+<p>We&rsquo;ll use the <em>/external</em> endpoint for an open redirect to our controlled website and then do DNS rebinding to fetch emails from Mailhog running on port 9000 and get the confirmation email for the internal user. To do this, we&rsquo;ll set up an EC2 instance with a public IP address and then add a DNS NS record for it (keep in mind the dot at the end):</p>
+<p><img src="dns-config.png" alt="DNS config"></p>
 <p>We have to allow incoming traffic from ports UDP 53 (for DNS) and TCP 9000 (for the HTTP server) at minimum. We configure the security group of our EC2 instance as following.</p>
 <p><img src="security-group.png" alt="Security group configuration"></p>
 <p>On the instance, we&rsquo;ll run <a href="https://github.com/mogwailabs/DNSrebinder">https://github.com/mogwailabs/DNSrebinder</a> to change the resolution of my domain from EC2 public IP address to 127.0.0.1 after a moment:</p>
@@ -479,7 +479,7 @@
                 <li>
                     
                         Word Count:
-                        772
+                        754
                     
                 </li>
             

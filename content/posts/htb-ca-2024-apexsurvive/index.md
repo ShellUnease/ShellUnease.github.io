@@ -36,7 +36,7 @@ We log in and request a verification email. It won't appear in emails on the web
 
 ![Apex verify](apex-verify.png)
 
-We'll use the /external endpoint for an open redirect to our controlled website and then do DNS rebinding to fetch emails from Mailhog running on port 9000 and get the confirmation email for the internal user. To do this, we'll set up an EC2 instance with a public IP address and then add a DNS NS record for it (keep in mind the dot at the end):
+We'll use the */external* endpoint for an open redirect to our controlled website and then do DNS rebinding to fetch emails from Mailhog running on port 9000 and get the confirmation email for the internal user. To do this, we'll set up an EC2 instance with a public IP address and then add a DNS NS record for it (keep in mind the dot at the end):
 
 ![DNS config](dns-config.png)
 
