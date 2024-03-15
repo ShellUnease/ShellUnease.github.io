@@ -2,6 +2,7 @@
 title = 'HackTheBox Insomnia'
 date = 2024-03-15T23:10:53+01:00
 draft = true
+categories = ['HackTheBox', 'Web', 'Easy']
 +++
 
 ## Bug in the login method 
@@ -10,7 +11,7 @@ We analyze the *login* method and find out that it is using the body of the POST
 
 ![Code](code.png)
 
-We check *entrypoint.sh* and learn that the *users* table consists of 3 columns: *id*, *username* and *password.
+We check *entrypoint.sh* and learn that the *users* table consists of 3 columns: *id*, *username* and *password*.
 
 ![Table](table.png)
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Easy on ShellUnease</title>
+    <link>http://localhost:1313/categories/easy/</link>
+    <description>Recent content in Easy on ShellUnease</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Mar 2024 23:10:53 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/easy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HackTheBox Insomnia</title>
+      <link>http://localhost:1313/posts/htb-insomnia/</link>
+      <pubDate>Fri, 15 Mar 2024 23:10:53 +0100</pubDate>
+      <guid>http://localhost:1313/posts/htb-insomnia/</guid>
+      <description>Category Name Objective Difficulty [⭐⭐⭐⭐⭐] Crypto Dynastic Caesar Cipher with increasing shift ⭐ Bug in the login method We analyze the login method and find out that it is using the body of the POST request for the WHERE clause. It&amp;rsquo;s checking that there are 2 keys in the body, however it doesn&amp;rsquo;t explicitly check that the password is provided.&#xA;We check entrypoint.sh and learn that the users table consists of 3 columns: id, username and password.</description>
+    </item>
+  </channel>
+</rss>

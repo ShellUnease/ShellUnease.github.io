@@ -13,21 +13,11 @@
 
     
         
-            <meta
-                name="description"
-                content="ShellUnease Writeups" />
+            <meta name="description" content="ShellUnease Writeups" />
         
 
         
-            <meta
-                name="keywords"
-                content="itsec,hackthebox" />
-        
-
-        
-            <meta
-                name="author"
-                content="ShellUnease" />
+            <meta name="author" content="ShellUnease" />
         
 
     
@@ -35,7 +25,7 @@
 
     <title>
         
-            HackTheBox Insomnia |
+            Web |
             ShellUnease Writeups
         
     </title>
@@ -134,7 +124,7 @@
 
     <div class="header_middle">
         
-            HackTheBox Insomnia -
+            Web -
             ShellUnease Writeups
         
     </div>
@@ -160,7 +150,7 @@
             
                 <li
                     
-                        class="dir opened-dir"
+                        class="dir closed-dir"
                     >
                     <span class="dir-text"> Posts </span>
 
@@ -220,80 +210,22 @@
 
         <div class="title">
             <h1 class="title-header">
-                HackTheBox Insomnia
+                
+    <i class="bi bi-bookmark"></i>
+
+
+
+                All About
+                <em>
+                    Web
+                </em>
             </h1>
-
-            <div class="author-date-readtime">
-                
-
-                    
-                        <div class="author" title="Author">
-                            <i class="bi bi-person"></i>
-                            <a
-                                href="/author/shellunease/"
-                                class="cat-btn">
-                                ShellUnease
-                            </a>
-                        </div>
-                    
-
-                
-
-                
-                    <div class="date" title="Date">
-                        <i class="bi bi-calendar3"></i>
-                        <time
-                            datetime="2024.03.15"
-                            >2024.03.15
-                        </time>
-                    </div>
-                
-
-                
-                    <div
-                        class="readtime"
-                        title="Time to Read">
-                        <i class="bi bi-clock"></i>
-                        1 min to read
-                    </div>
-                
-            </div>
         </div>
 
         <div class="article-meta">
-            
-                <div class="categories">
-                    <i
-                        class="bi bi-bookmarks"
-                        title="Categories"></i>
-                    
-                        <a
-                            href="/categories/hackthebox/"
-                            class="cat-btn">
-                            HackTheBox
-                        </a>
-                    
-                        <a
-                            href="/categories/web/"
-                            class="cat-btn">
-                            Web
-                        </a>
-                    
-                        <a
-                            href="/categories/easy/"
-                            class="cat-btn">
-                            Easy
-                        </a>
-                    
-                </div>
-            
-
-            
-
-            
-                <div class="breadcumb">
-                    <i class="bi bi-folder"></i>
-                    
+            <div class="breadcumb">
+                <i class="bi bi-folder"></i>
+                
     
     
 
@@ -317,11 +249,16 @@
 
 
 
-<a href="http://localhost:1313/posts/" class="bread-btn">
+<a href="http://localhost:1313/categories/" class="bread-btn">
+    
+        
+    <i class="bi bi-bookmark"></i>
+
+
     
 
     
-        Posts
+        Categories
     
 </a>
 
@@ -332,47 +269,35 @@
 
 
 
-<a href="http://localhost:1313/posts/htb-insomnia/" class="bread-btn">
+<a href="http://localhost:1313/categories/web/" class="bread-btn">
     
 
     
-        HackTheBox Insomnia
+        Web
     
 </a>
 
-                </div>
-            
-
-            
+            </div>
         </div>
 
-        
-            <nav id="TableOfContents">
-  <ul>
-    <li><a href="#bug-in-the-login-method">Bug in the login method</a></li>
-    <li><a href="#references">References</a></li>
-  </ul>
-</nav>
-        
+        <hr />
 
-
-        <div class="content">
-            
-                <h2 id="bug-in-the-login-method">Bug in the login method</h2>
-<p>We analyze the <em>login</em> method and find out that it is using the body of the POST request for the WHERE clause. It&rsquo;s checking that there are 2 keys in the body, however it doesn&rsquo;t explicitly check that the password is provided.</p>
-<p><img src="code.png" alt="Code"></p>
-<p>We check <em>entrypoint.sh</em> and learn that the <em>users</em> table consists of 3 columns: <em>id</em>, <em>username</em> and <em>password</em>.</p>
-<p><img src="table.png" alt="Table"></p>
-<p>We craft a login request with just <em>username</em> and <em>id</em> parameters, omitting <em>password</em>.</p>
-<p><img src="request.png" alt="Request"></p>
-<p>We copy the session and head over to <em>/index.php/profile</em> for the flag.</p>
-<p><img src="admin.png" alt="Admin profile"></p>
-<h2 id="references">References</h2>
-<ul>
-<li><a href="https://www.codeigniter.com/user_guide/database/query_builder.html#builder-getwhere">https://www.codeigniter.com/user_guide/database/query_builder.html#builder-getwhere</a></li>
-</ul>
-
-            
+        <div class="list-files">
+            <ul class="section-tree">
+                
+                    <li class="file">
+                        <a href="http://localhost:1313/posts/htb-insomnia/">
+                            HackTheBox Insomnia
+                        </a>
+                    </li>
+                
+                    <li class="file">
+                        <a href="http://localhost:1313/posts/htb-ca-2024-apexsurvive/">
+                            HackTheBox Cyber Apocalypse 2024 Apexsurvive Writeup
+                        </a>
+                    </li>
+                
+            </ul>
         </div>
     </article>
 
@@ -418,8 +343,8 @@
             
                 <li>
                     
-                        Word Count:
-                        91
+                        Pages:
+                        2
                     
                 </li>
             
@@ -453,10 +378,12 @@
             
                 <li>
                     
-                        Last modified: &nbsp;
-                        <time>
-                            Mar 15 2024 23:10:53
-                        </time>
+                        
+                            Last build: &nbsp;
+                            <time>
+                                Mar 07 2024 13:14:42
+                            </time>
+                        
                     
                 </li>
             
