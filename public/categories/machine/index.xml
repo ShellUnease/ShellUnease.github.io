@@ -1,33 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on ShellUnease</title>
-    <link>http://localhost:1313/posts/</link>
-    <description>Recent content in Posts on ShellUnease</description>
+    <title>Machine on ShellUnease</title>
+    <link>http://localhost:1313/categories/machine/</link>
+    <description>Recent content in Machine on ShellUnease</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 16 Mar 2024 12:59:08 +0100</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/machine/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Offsec Pwned1</title>
       <link>http://localhost:1313/posts/offsec-pwned/</link>
       <pubDate>Sat, 16 Mar 2024 12:59:08 +0100</pubDate>
       <guid>http://localhost:1313/posts/offsec-pwned/</guid>
       <description>Enumeration &amp;amp; User We scan open TCP ports with nmap.&#xA;sudo nmap -vv --reason -Pn -p- -T5 -sVC --version-all -A -oN nmap-result-tcp.txt 192.168.166.95 PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack ttl 61 vsftpd 3.0.3 22/tcp open ssh syn-ack ttl 61 OpenSSH 7.9p1 Debian 10&amp;#43;deb10u2 (protocol 2.0) | ssh-hostkey: | 2048 fe:cd:90:19:74:91:ae:f5:64:a8:a5:e8:6f:6e:ef:7e (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDaQPyAx8qSGlWyyuL5xu/6lWdbWs6VArMlRC71wt11kYKMGUTuVmPvLAdSAL66haaz0DCvquZMOmeYNHvM7/OjfmkwlIt3Wv53q/23AODRwPGkpj00QCNH/Vqt6Aw94Afo3etyW9SU3vzLC2F3mS18cqXApmV90NIH3d6ayhsDP&amp;#43;aPuQFoFqEzDxzy2RkosueaEERECT0auT&amp;#43;pTIwRMCHBEVX98Srd8&amp;#43;ax1yhWITRTGOYXcdocx0m9tooFUEH/a1P3RK3gBzCL63ZejMN9YofBl8y&amp;#43;CwCt&amp;#43;0nBLg&amp;#43;PtNjjskD9CaBwxUmH0/UM24z9BQecPn3IFmm3&amp;#43;P5U0z1DQEhf | 256 81:32:93:bd:ed:9b:e7:98:af:25:06:79:5f:de:91:5d (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDHWpwgF92XD4REIANL7X9lMcQSwcbhlNqwBvNi8l4SzQn5MjSzlBQzgcC7Kro57lCr0kImH&amp;#43;XdijG&amp;#43;r6lyps70= | 256 dd:72:74:5d:4d:2d:a3:62:3e:81:af:09:51:e0:14:4a (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHPgRt1LF33Ttn5DuGuJJpmgbMd2ofAkqEt6gTOQK&amp;#43;WW 80/tcp open http syn-ack ttl 61 Apache httpd 2.</description>
-    </item>
-    <item>
-      <title>HackTheBox Insomnia</title>
-      <link>http://localhost:1313/posts/htb-insomnia/</link>
-      <pubDate>Fri, 15 Mar 2024 23:10:53 +0100</pubDate>
-      <guid>http://localhost:1313/posts/htb-insomnia/</guid>
-      <description>Bug in the login method We analyze the login method and find out that it is using the body of the POST request for the WHERE clause. It&amp;rsquo;s checking that there are 2 keys in the body, however it doesn&amp;rsquo;t explicitly check that the password is provided.&#xA;We check entrypoint.sh and learn that the users table consists of 3 columns: id, username and password.&#xA;We craft a login request with just username and id parameters, omitting password.</description>
-    </item>
-    <item>
-      <title>HackTheBox Cyber Apocalypse 2024 Apexsurvive Writeup</title>
-      <link>http://localhost:1313/posts/htb-ca-2024-apexsurvive/</link>
-      <pubDate>Thu, 14 Mar 2024 17:38:37 +0100</pubDate>
-      <guid>http://localhost:1313/posts/htb-ca-2024-apexsurvive/</guid>
-      <description>First Steps We analyze the code and notice the email page will only show emails addressed to test@email.htb.&#xA;We create a user with the email test@email.htb and confirm the registration by visiting the link from an email.&#xA;DNS Rebinding to Activate an Internal User Upon further code inspection, we found out that users who sign up with an email hosted at apexsurvive.htb will be marked as internal users.&#xA;There&amp;rsquo;s an /external API endpoint that can be used for an open redirect.</description>
     </item>
   </channel>
 </rss>

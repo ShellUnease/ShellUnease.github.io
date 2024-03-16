@@ -6,14 +6,21 @@
     <description>Recent content on ShellUnease</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Mar 2024 23:10:53 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 16 Mar 2024 12:59:08 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Offsec Pwned1</title>
+      <link>http://localhost:1313/posts/offsec-pwned/</link>
+      <pubDate>Sat, 16 Mar 2024 12:59:08 +0100</pubDate>
+      <guid>http://localhost:1313/posts/offsec-pwned/</guid>
+      <description>Enumeration &amp;amp; User We scan open TCP ports with nmap.&#xA;sudo nmap -vv --reason -Pn -p- -T5 -sVC --version-all -A -oN nmap-result-tcp.txt 192.168.166.95 PORT STATE SERVICE REASON VERSION 21/tcp open ftp syn-ack ttl 61 vsftpd 3.0.3 22/tcp open ssh syn-ack ttl 61 OpenSSH 7.9p1 Debian 10&amp;#43;deb10u2 (protocol 2.0) | ssh-hostkey: | 2048 fe:cd:90:19:74:91:ae:f5:64:a8:a5:e8:6f:6e:ef:7e (RSA) | ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDaQPyAx8qSGlWyyuL5xu/6lWdbWs6VArMlRC71wt11kYKMGUTuVmPvLAdSAL66haaz0DCvquZMOmeYNHvM7/OjfmkwlIt3Wv53q/23AODRwPGkpj00QCNH/Vqt6Aw94Afo3etyW9SU3vzLC2F3mS18cqXApmV90NIH3d6ayhsDP&amp;#43;aPuQFoFqEzDxzy2RkosueaEERECT0auT&amp;#43;pTIwRMCHBEVX98Srd8&amp;#43;ax1yhWITRTGOYXcdocx0m9tooFUEH/a1P3RK3gBzCL63ZejMN9YofBl8y&amp;#43;CwCt&amp;#43;0nBLg&amp;#43;PtNjjskD9CaBwxUmH0/UM24z9BQecPn3IFmm3&amp;#43;P5U0z1DQEhf | 256 81:32:93:bd:ed:9b:e7:98:af:25:06:79:5f:de:91:5d (ECDSA) | ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDHWpwgF92XD4REIANL7X9lMcQSwcbhlNqwBvNi8l4SzQn5MjSzlBQzgcC7Kro57lCr0kImH&amp;#43;XdijG&amp;#43;r6lyps70= | 256 dd:72:74:5d:4d:2d:a3:62:3e:81:af:09:51:e0:14:4a (ED25519) |_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHPgRt1LF33Ttn5DuGuJJpmgbMd2ofAkqEt6gTOQK&amp;#43;WW 80/tcp open http syn-ack ttl 61 Apache httpd 2.</description>
+    </item>
     <item>
       <title>HackTheBox Insomnia</title>
       <link>http://localhost:1313/posts/htb-insomnia/</link>
       <pubDate>Fri, 15 Mar 2024 23:10:53 +0100</pubDate>
       <guid>http://localhost:1313/posts/htb-insomnia/</guid>
-      <description>Category Name Objective Difficulty [⭐⭐⭐⭐⭐] Crypto Dynastic Caesar Cipher with increasing shift ⭐ Bug in the login method We analyze the login method and find out that it is using the body of the POST request for the WHERE clause. It&amp;rsquo;s checking that there are 2 keys in the body, however it doesn&amp;rsquo;t explicitly check that the password is provided.&#xA;We check entrypoint.sh and learn that the users table consists of 3 columns: id, username and password.</description>
+      <description>Bug in the login method We analyze the login method and find out that it is using the body of the POST request for the WHERE clause. It&amp;rsquo;s checking that there are 2 keys in the body, however it doesn&amp;rsquo;t explicitly check that the password is provided.&#xA;We check entrypoint.sh and learn that the users table consists of 3 columns: id, username and password.&#xA;We craft a login request with just username and id parameters, omitting password.</description>
     </item>
     <item>
       <title>HackTheBox Cyber Apocalypse 2024 Apexsurvive Writeup</title>
