@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Medium on ShellUnease</title>
+    <link>http://localhost:1313/categories/medium/</link>
+    <description>Recent content in Medium on ShellUnease</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 16 Mar 2024 15:03:55 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/medium/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HackTheBox WifineticTwo</title>
+      <link>http://localhost:1313/posts/htb-wifinetic-two/</link>
+      <pubDate>Sat, 16 Mar 2024 15:03:55 +0100</pubDate>
+      <guid>http://localhost:1313/posts/htb-wifinetic-two/</guid>
+      <description>Enumeration We begin with a TCP nmap scan.&#xA;sudo nmap -vv --reason -Pn -p- -T5 -sVC --version-all -A -oN nmap-result-tcp.txt 10.129.128.171 # Nmap 7.94SVN scan initiated Sun Mar 17 16:12:04 2024 as: nmap -vv --reason -Pn -p- -T5 -sVC --version-all -A -oN nmap-result-tcp.txt 10.129.128.171 Nmap scan report for 10.129.128.171 Host is up, received user-set (0.11s latency). Scanned at 2024-03-17 16:12:04 CET for 161s Not shown: 65533 closed tcp ports (reset) PORT STATE SERVICE REASON VERSION 22/tcp open ssh syn-ack ttl 63 OpenSSH 8.</description>
+    </item>
+  </channel>
+</rss>

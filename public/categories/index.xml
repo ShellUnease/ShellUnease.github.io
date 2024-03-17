@@ -6,20 +6,41 @@
     <description>Recent content in Categories on ShellUnease</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 Mar 2024 12:59:08 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 16 Mar 2024 15:03:55 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Intermediate</title>
-      <link>http://localhost:1313/categories/intermediate/</link>
-      <pubDate>Sat, 16 Mar 2024 12:59:08 +0100</pubDate>
-      <guid>http://localhost:1313/categories/intermediate/</guid>
+      <title>HackTheBox</title>
+      <link>http://localhost:1313/categories/hackthebox/</link>
+      <pubDate>Sat, 16 Mar 2024 15:03:55 +0100</pubDate>
+      <guid>http://localhost:1313/categories/hackthebox/</guid>
       <description></description>
     </item>
     <item>
       <title>Machine</title>
       <link>http://localhost:1313/categories/machine/</link>
-      <pubDate>Sat, 16 Mar 2024 12:59:08 +0100</pubDate>
+      <pubDate>Sat, 16 Mar 2024 15:03:55 +0100</pubDate>
       <guid>http://localhost:1313/categories/machine/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Medium</title>
+      <link>http://localhost:1313/categories/medium/</link>
+      <pubDate>Sat, 16 Mar 2024 15:03:55 +0100</pubDate>
+      <guid>http://localhost:1313/categories/medium/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Season 4</title>
+      <link>http://localhost:1313/categories/season-4/</link>
+      <pubDate>Sat, 16 Mar 2024 15:03:55 +0100</pubDate>
+      <guid>http://localhost:1313/categories/season-4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Intermediate</title>
+      <link>http://localhost:1313/categories/intermediate/</link>
+      <pubDate>Sat, 16 Mar 2024 12:59:08 +0100</pubDate>
+      <guid>http://localhost:1313/categories/intermediate/</guid>
       <description></description>
     </item>
     <item>
@@ -34,13 +55,6 @@
       <link>http://localhost:1313/categories/easy/</link>
       <pubDate>Fri, 15 Mar 2024 23:10:53 +0100</pubDate>
       <guid>http://localhost:1313/categories/easy/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>HackTheBox</title>
-      <link>http://localhost:1313/categories/hackthebox/</link>
-      <pubDate>Fri, 15 Mar 2024 23:10:53 +0100</pubDate>
-      <guid>http://localhost:1313/categories/hackthebox/</guid>
       <description></description>
     </item>
     <item>
