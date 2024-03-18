@@ -1,7 +1,7 @@
 +++
 title = 'Offsec Pwned1'
 date = 2024-03-16T12:59:08+01:00
-draft = true
+draft = false
 categories = ['Offsec', 'Machine', 'Intermediate']
 +++
 
