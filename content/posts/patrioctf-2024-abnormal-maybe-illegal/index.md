@@ -185,7 +185,7 @@ def is_fin_syn(tcp_layer):
         return True
     return False
 
-def extract_and_reverse_flags(tcp_layer):
+def extract_flags(tcp_layer):
     flags = tcp_layer.flags
     rst = 1 if flags & 0x04 else 0
     psh = 1 if flags & 0x08 else 0
@@ -197,7 +197,7 @@ for packet in packets:
     if TCP in packet:
         tcp_layer = packet[TCP]
         if is_fin_syn(tcp_layer):
-            combined_binary_string += extract_and_reverse_flags(tcp_layer)
+            combined_binary_string += extract_flags(tcp_layer)
 
 def binary_to_ascii(binary_string):
     ascii_text = ''
