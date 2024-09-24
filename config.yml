@@ -26,7 +26,7 @@ languages:
           url: archives
           weight: 5
         - name: Search
-          url: search/
+          url: search
           weight: 10
 params:
   ShowShareButtons: true
@@ -34,13 +34,13 @@ params:
   ShowToc: true
   ShowCodeCopyButtons: true
   homeInfoParams:
-    Title: Hi there wave
-    Content: Can be Info, links, about...
+    Title: Hi 👋
+    Content: Welcome to my collection of write-ups
   socialIcons: # optional
-    - name: "<platform>"
-      url: "<link>"
-    - name: "<platform 2>"
-      url: "<link2>"
+    # - name: "<platform>"
+    #   url: "<link>"
+    # - name: "<platform 2>"
+    #   url: "<link2>"
   description: ShellUnease Write-ups
   fuseOpts:
     isCaseSensitive: false
