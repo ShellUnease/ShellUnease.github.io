@@ -3,7 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2024-09-07T12:17:59+02:00</lastmod>
+    <lastmod>2024-09-24T23:46:16+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/forensics/</loc>
+    <lastmod>2024-09-24T23:46:16+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/patriotctf-2024/</loc>
+    <lastmod>2024-09-24T23:46:16+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/patrioctf-2024-abnormal-maybe-illegal/</loc>
+    <lastmod>2024-09-24T23:46:16+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2024-09-24T23:46:16+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2024-09-24T23:46:16+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/csaw-ctf-qualification-round-2024/</loc>
     <lastmod>2024-09-07T12:17:59+02:00</lastmod>
@@ -12,12 +27,6 @@
     <lastmod>2024-09-07T12:17:59+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/osint/</loc>
-    <lastmod>2024-09-07T12:17:59+02:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2024-09-07T12:17:59+02:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
     <lastmod>2024-09-07T12:17:59+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/csawctf-2024-bucket-wars/</loc>

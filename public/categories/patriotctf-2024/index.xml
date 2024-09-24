@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>PatriotCTF 2024 on ShellUnease</title>
+    <link>http://localhost:1313/categories/patriotctf-2024/</link>
+    <description>Recent content in PatriotCTF 2024 on ShellUnease</description>
+    <generator>Hugo -- 0.134.3</generator>
+    <language>en</language>
+    <copyright>ShellUnease (CC BY 4.0)</copyright>
+    <lastBuildDate>Tue, 24 Sep 2024 23:46:16 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/patriotctf-2024/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PatriotCTF 2024 Abnormal Maybe Illegal</title>
+      <link>http://localhost:1313/posts/patrioctf-2024-abnormal-maybe-illegal/</link>
+      <pubDate>Tue, 24 Sep 2024 23:46:16 +0200</pubDate>
+      <guid>http://localhost:1313/posts/patrioctf-2024-abnormal-maybe-illegal/</guid>
+      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;This post covers &lt;em&gt;Abnormal Maybe Illegal&lt;/em&gt; from &lt;em&gt;PatriotCTF 2024&lt;/em&gt;. The description of the challenge is:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We have recently discovered tons of traffic leaving our network. We have reason to believe they are using an abnormal method. Can you figure out what data they are exfiltrating?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Furthermore, two additional hints were released throughout the competition:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TCP packets are constructed in a way, where certain combinations are possible/(legal) and others should raise alerts/(illegal)&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

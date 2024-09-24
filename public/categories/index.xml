@@ -7,8 +7,22 @@
     <generator>Hugo -- 0.134.3</generator>
     <language>en</language>
     <copyright>ShellUnease (CC BY 4.0)</copyright>
-    <lastBuildDate>Sat, 07 Sep 2024 12:17:59 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 24 Sep 2024 23:46:16 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Forensics</title>
+      <link>http://localhost:1313/categories/forensics/</link>
+      <pubDate>Tue, 24 Sep 2024 23:46:16 +0200</pubDate>
+      <guid>http://localhost:1313/categories/forensics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PatriotCTF 2024</title>
+      <link>http://localhost:1313/categories/patriotctf-2024/</link>
+      <pubDate>Tue, 24 Sep 2024 23:46:16 +0200</pubDate>
+      <guid>http://localhost:1313/categories/patriotctf-2024/</guid>
+      <description></description>
+    </item>
     <item>
       <title>CSAW CTF Qualification Round 2024</title>
       <link>http://localhost:1313/categories/csaw-ctf-qualification-round-2024/</link>

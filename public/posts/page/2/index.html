@@ -121,6 +121,22 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">DeadSec CTF 2024 Buntime
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Initial Inspection There’s no souce code provided for the challenge. The only thing we’re given to work with is a website that executes our input code presumably using Bun.
+After playing around with it for a bit we know that it’s Bun, since the Bun variable is available and allows us to call different methods.
+More Recon There are quite a few limitations to our code:
+Bun.spawnSync function appears to be overwritten with a WAF message, WAF blocks our input from the POST body if it’s too long (I didn’t count it, but it’s about ~30 chars give or take), We can’t call await directly, Even though we can call Bun.spawn, we seemingly can’t write anywhere (tried /tmp and /dev/shm), There’s no outside network connectivity. However, we’re able to confirm that the flag is in /flag.txt by running Bun.file(&#39;/flag.txt&#39;).size.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-07-29 13:00:00 +0200 CEST'>July 29, 2024</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;ShellUnease</footer>
+  <a class="entry-link" aria-label="post link to DeadSec CTF 2024 Buntime" href="http://localhost:1313/posts/deadsecctf-2024-buntime/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">UIUCTF 2024 Log Action
     </h2>
   </header>

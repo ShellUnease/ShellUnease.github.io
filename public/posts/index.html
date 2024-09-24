@@ -121,6 +121,22 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">PatriotCTF 2024 Abnormal Maybe Illegal
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Intro This post covers Abnormal Maybe Illegal from PatriotCTF 2024. The description of the challenge is:
+We have recently discovered tons of traffic leaving our network. We have reason to believe they are using an abnormal method. Can you figure out what data they are exfiltrating?
+Furthermore, two additional hints were released throughout the competition:
+TCP packets are constructed in a way, where certain combinations are possible/(legal) and others should raise alerts/(illegal)
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-09-24 23:46:16 +0200 CEST'>September 24, 2024</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;ShellUnease</footer>
+  <a class="entry-link" aria-label="post link to PatriotCTF 2024 Abnormal Maybe Illegal" href="http://localhost:1313/posts/patrioctf-2024-abnormal-maybe-illegal/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">CSAW CTF Qualification Round 2024 Literally 1984 &amp; Mystery
     </h2>
   </header>
@@ -260,22 +276,6 @@ Afterwards, the execution is passed to handle_cmd which can execute one of 6 com
   </div>
   <footer class="entry-footer"><span title='2024-07-29 13:00:00 +0200 CEST'>July 29, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CrewCTF 2024 Malkonkordo" href="http://localhost:1313/posts/crewctf-2024-malkonkordo/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">DeadSec CTF 2024 Buntime
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Initial Inspection There’s no souce code provided for the challenge. The only thing we’re given to work with is a website that executes our input code presumably using Bun.
-After playing around with it for a bit we know that it’s Bun, since the Bun variable is available and allows us to call different methods.
-More Recon There are quite a few limitations to our code:
-Bun.spawnSync function appears to be overwritten with a WAF message, WAF blocks our input from the POST body if it’s too long (I didn’t count it, but it’s about ~30 chars give or take), We can’t call await directly, Even though we can call Bun.spawn, we seemingly can’t write anywhere (tried /tmp and /dev/shm), There’s no outside network connectivity. However, we’re able to confirm that the flag is in /flag.txt by running Bun.file(&#39;/flag.txt&#39;).size.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-07-29 13:00:00 +0200 CEST'>July 29, 2024</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;ShellUnease</footer>
-  <a class="entry-link" aria-label="post link to DeadSec CTF 2024 Buntime" href="http://localhost:1313/posts/deadsecctf-2024-buntime/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
