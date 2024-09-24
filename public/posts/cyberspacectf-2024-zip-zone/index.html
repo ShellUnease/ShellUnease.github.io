@@ -16,7 +16,7 @@ We inspect the code and learn that our uploaded archive will be unzipped using u
 
 Zip With a Symlink
 We can use the zip command to create an archive that&rsquo;ll preserve symlinks by using the -y option.">
-<meta name="author" content="map[name:ShellUnease]">
+<meta name="author" content="ShellUnease">
 <link rel="canonical" href="http://localhost:1313/posts/cyberspacectf-2024-zip-zone/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
@@ -116,11 +116,6 @@ We can use the zip command to create an archive that&rsquo;ll preserve symlinks 
                     <span>Search</span>
                 </a>
             </li>
-            <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
-                    <span>Tags</span>
-                </a>
-            </li>
         </ul>
     </nav>
 </header>
@@ -132,7 +127,7 @@ We can use the zip command to create an archive that&rsquo;ll preserve symlinks 
     <h1 class="post-title entry-hint-parent">
       CyberSpace CTF 2024 Zip Zone
     </h1>
-    <div class="post-meta"><span title='2024-09-03 17:20:59 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;map[name:ShellUnease]
+    <div class="post-meta"><span title='2024-09-03 17:20:59 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;ShellUnease
 
 </div>
   </header> <div class="toc">
@@ -266,7 +261,8 @@ We can use the zip command to create an archive that&rsquo;ll preserve symlinks 
  const images = Array.from(document.querySelectorAll("article img"));
  images.forEach(img => {
    mediumZoom(img, {
-     background: 'rgba(0, 0, 0, 0)', 
+    
+     background: 'rgba(128, 128, 128, 0.5)', 
      margin: 0,  
      scrollOffset: 40,  
      container: null,  

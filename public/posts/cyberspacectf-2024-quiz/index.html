@@ -17,7 +17,7 @@ The correct answer for each question is random, but it&rsquo;s generated in adva
 
 
 The if (intval($answer) === $next_correct) {...} is the essential part of the challenge. Regardless if our answer is correct or wrong, it&rsquo;ll call htmlspecialchars($_SESSION[&#39;username&#39;]), which will throw an exception if username is unset in the session. However, the exception stack trace will show us which line of code the exception was thrown at. Importantly, this all happens before game-related session data is changed, such as q_num and correct.">
-<meta name="author" content="map[name:ShellUnease]">
+<meta name="author" content="ShellUnease">
 <link rel="canonical" href="http://localhost:1313/posts/cyberspacectf-2024-quiz/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
@@ -117,11 +117,6 @@ The if (intval($answer) === $next_correct) {...} is the essential part of the ch
                     <span>Search</span>
                 </a>
             </li>
-            <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
-                    <span>Tags</span>
-                </a>
-            </li>
         </ul>
     </nav>
 </header>
@@ -133,7 +128,7 @@ The if (intval($answer) === $next_correct) {...} is the essential part of the ch
     <h1 class="post-title entry-hint-parent">
       CyberSpace CTF 2024 Quiz
     </h1>
-    <div class="post-meta"><span title='2024-09-03 17:20:41 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;map[name:ShellUnease]
+    <div class="post-meta"><span title='2024-09-03 17:20:41 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease
 
 </div>
   </header> <div class="toc">
@@ -274,7 +269,8 @@ logout -&gt; check which answer is correct (53 in error) -&gt; login -&gt; submi
  const images = Array.from(document.querySelectorAll("article img"));
  images.forEach(img => {
    mediumZoom(img, {
-     background: 'rgba(0, 0, 0, 0)', 
+    
+     background: 'rgba(128, 128, 128, 0.5)', 
      margin: 0,  
      scrollOffset: 40,  
      container: null,  

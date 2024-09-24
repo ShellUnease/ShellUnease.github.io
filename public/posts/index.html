@@ -8,7 +8,7 @@
 <title>Posts | ShellUnease</title>
 <meta name="keywords" content="">
 <meta name="description" content="Posts - ShellUnease">
-<meta name="author" content="map[name:ShellUnease]">
+<meta name="author" content="ShellUnease">
 <link rel="canonical" href="http://localhost:1313/posts/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
@@ -109,11 +109,6 @@
                     <span>Search</span>
                 </a>
             </li>
-            <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
-                    <span>Tags</span>
-                </a>
-            </li>
         </ul>
     </nav>
 </header>
@@ -136,7 +131,7 @@ and the description of Mystery is:
 Remember the composer from Literally 1984? Well, they made a song when they were part of a band in 1992, and it turns out that ‌ also made a cover of this song, collabing with another artist. What is the name of that artist? Flag Format: csawctf{ArtistName} (replace all spaces with _ )
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-09-07 12:17:59 +0200 CEST'>September 7, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;map[name:ShellUnease]</footer>
+  <footer class="entry-footer"><span title='2024-09-07 12:17:59 +0200 CEST'>September 7, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CSAW CTF Qualification Round 2024 Literally 1984 & Mystery" href="http://localhost:1313/posts/csawctf-2024-literally-1984-mystery/"></a>
 </article>
 
@@ -152,7 +147,7 @@ Enumerating the Website Upon visiting the website, we notice the current version
 When we visit a page that doesn’t exist, it tells us that the 404.jpg is missing from an S3 bucket https://s3.us-east-2.amazonaws.com/bucketwars.ctf.csaw.io. We try accessing index.html and versions.html by using this S3 bucket URL and confirm the website files are served from there.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-09-07 12:17:33 +0200 CEST'>September 7, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;map[name:ShellUnease]</footer>
+  <footer class="entry-footer"><span title='2024-09-07 12:17:33 +0200 CEST'>September 7, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CSAW CTF Qualification Round 2024 BucketWars" href="http://localhost:1313/posts/csawctf-2024-bucket-wars/"></a>
 </article>
 
@@ -168,7 +163,7 @@ The scarab room seems vulnerable to SSTI via name POST param.
 app.route(&#39;/scarab_room&#39;, methods=[&#39;GET&#39;, &#39;POST&#39;]) def scarab_room(): try: if request.method == &#39;POST&#39;: name = request.form.get(&#39;name&#39;) if name: kings_safelist = [&#39;{&#39;,&#39;}&#39;, &#39;𓁹&#39;, &#39;𓆣&#39;,&#39;𓀀&#39;, &#39;𓀁&#39;, &#39;𓀂&#39;, &#39;𓀃&#39;, &#39;𓀄&#39;, &#39;𓀅&#39;, &#39;𓀆&#39;, &#39;𓀇&#39;, &#39;𓀈&#39;, &#39;𓀉&#39;, &#39;𓀊&#39;, &#39;𓀐&#39;, &#39;𓀑&#39;, &#39;𓀒&#39;, &#39;𓀓&#39;, &#39;𓀔&#39;, &#39;𓀕&#39;, &#39;𓀖&#39;, &#39;𓀗&#39;, &#39;𓀘&#39;, &#39;𓀙&#39;, &#39;𓀚&#39;, &#39;𓀛&#39;, &#39;𓀜&#39;, &#39;𓀝&#39;, &#39;𓀞&#39;, &#39;𓀟&#39;, &#39;𓀠&#39;, &#39;𓀡&#39;, &#39;𓀢&#39;, &#39;𓀣&#39;, &#39;𓀤&#39;, &#39;𓀥&#39;, &#39;𓀦&#39;, &#39;𓀧&#39;, &#39;𓀨&#39;, &#39;𓀩&#39;, &#39;𓀪&#39;, &#39;𓀫&#39;, &#39;𓀬&#39;, &#39;𓀭&#39;, &#39;𓀮&#39;, &#39;𓀯&#39;, &#39;𓀰&#39;, &#39;𓀱&#39;, &#39;𓀲&#39;, &#39;𓀳&#39;, &#39;𓀴&#39;, &#39;𓀵&#39;, &#39;𓀶&#39;, &#39;𓀷&#39;, &#39;𓀸&#39;, &#39;𓀹&#39;, &#39;𓀺&#39;, &#39;𓀻&#39;] name = &#39;&#39;.join([char for char in name if char.isalnum() or char in kings_safelist]) return render_template_string(&#39;&#39;&#39; &lt;!DOCTYPE html&gt; &lt;html lang=&#34;en&#34;&gt; &lt;head&gt; OMITTED &lt;/head&gt; &lt;body&gt; &lt;a href=&#34;{{ url_for(&#39;hallway&#39;) }}&#34; class=&#34;return-link&#34;&gt;RETURN&lt;/a&gt; {% if name %} &lt;h1&gt;𓁹𓁹𓁹 Welcome to the Scarab Room, &#39;&#39;&#39;&#43; name &#43; &#39;&#39;&#39; 𓁹𓁹𓁹&lt;/h1&gt; {% endif %} &lt;/body&gt; &lt;/html&gt; &#39;&#39;&#39;, name=name, **globals()) except Exception as e: pass return render_template(&#39;scarab_room.html&#39;) Leaking Information via Scarab Room Since both { and } are in kings_safelist, we can send a Jinja2 expression in name to scarab_room. This allows us to leak any alphanumerical global variables by sending {{VARIABLE}}, since **globals() are included. Looking at the code, we can leak KINGSDAY and PUBLICKEY this way, but not PRIVATE_KEY, since it contains an underscore which isn’t permitted.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-09-07 12:17:23 +0200 CEST'>September 7, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;map[name:ShellUnease]</footer>
+  <footer class="entry-footer"><span title='2024-09-07 12:17:23 +0200 CEST'>September 7, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CSAW CTF Qualification Round 2024 Lost Pyramid" href="http://localhost:1313/posts/csawctf-2024-lost-pyramid/"></a>
 </article>
 
@@ -182,7 +177,7 @@ app.route(&#39;/scarab_room&#39;, methods=[&#39;GET&#39;, &#39;POST&#39;]) def s
 if session[:user] == &#34;admin&#34; if req.ip == &#34;127.0.0.1&#34; There’s also an interesting POST /download endpoint. It accepts any session but is also guarded by the if req.ip == &#34;127.0.0.1&#34; check. It serves a file based on filename from our request, which leads to LFI.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-09-03 17:21:15 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;map[name:ShellUnease]</footer>
+  <footer class="entry-footer"><span title='2024-09-03 17:21:15 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CyberSpace CTF 2024 Notekeeper" href="http://localhost:1313/posts/cyberspacectf-2024-notekeeper/"></a>
 </article>
 
@@ -203,7 +198,7 @@ Race Condition For POST_FLAG In order to get the POST_FLAG we have to make a req
 However, the CreatePost(...) prevents us from submitting new posts once we’ve created 10 of them.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-09-03 17:21:10 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;map[name:ShellUnease]</footer>
+  <footer class="entry-footer"><span title='2024-09-03 17:21:10 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CyberSpace CTF 2024 Trendz & Trendzz & Trendzzz" href="http://localhost:1313/posts/cyberspacectf-2024-trendz/"></a>
 </article>
 
@@ -218,7 +213,7 @@ We inspect the code and learn that our uploaded archive will be unzipped using u
 Zip With a Symlink We can use the zip command to create an archive that’ll preserve symlinks by using the -y option.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-09-03 17:20:59 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;map[name:ShellUnease]</footer>
+  <footer class="entry-footer"><span title='2024-09-03 17:20:59 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CyberSpace CTF 2024 Zip Zone" href="http://localhost:1313/posts/cyberspacectf-2024-zip-zone/"></a>
 </article>
 
@@ -233,7 +228,7 @@ As we can see, we need a valid signed access_token that contains the string acce
 There’s GET /release endpoint that’ll do exactly that if we pass the validate_server(...) check. Interestingly, if we set a query param debug=true, we can control the validation server address.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-09-03 17:20:52 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;map[name:ShellUnease]</footer>
+  <footer class="entry-footer"><span title='2024-09-03 17:20:52 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CyberSpace CTF 2024 Feature Unlocked" href="http://localhost:1313/posts/cyberspacectf-2024-feature-unlocked/"></a>
 </article>
 
@@ -248,7 +243,7 @@ The correct answer for each question is random, but it’s generated in advance 
 The if (intval($answer) === $next_correct) {...} is the essential part of the challenge. Regardless if our answer is correct or wrong, it’ll call htmlspecialchars($_SESSION[&#39;username&#39;]), which will throw an exception if username is unset in the session. However, the exception stack trace will show us which line of code the exception was thrown at. Importantly, this all happens before game-related session data is changed, such as q_num and correct.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-09-03 17:20:41 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;map[name:ShellUnease]</footer>
+  <footer class="entry-footer"><span title='2024-09-03 17:20:41 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CyberSpace CTF 2024 Quiz" href="http://localhost:1313/posts/cyberspacectf-2024-quiz/"></a>
 </article>
 
@@ -263,7 +258,7 @@ It’s “guarded” by middleware that inspects whether host in the uri or the 
 Afterwards, the execution is passed to handle_cmd which can execute one of 6 commands. For us, the intereting ones are displaying env vars
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-07-29 13:00:00 +0200 CEST'>July 29, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;map[name:ShellUnease]</footer>
+  <footer class="entry-footer"><span title='2024-07-29 13:00:00 +0200 CEST'>July 29, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CrewCTF 2024 Malkonkordo" href="http://localhost:1313/posts/crewctf-2024-malkonkordo/"></a>
 </article>
 
@@ -279,7 +274,7 @@ More Recon There are quite a few limitations to our code:
 Bun.spawnSync function appears to be overwritten with a WAF message, WAF blocks our input from the POST body if it’s too long (I didn’t count it, but it’s about ~30 chars give or take), We can’t call await directly, Even though we can call Bun.spawn, we seemingly can’t write anywhere (tried /tmp and /dev/shm), There’s no outside network connectivity. However, we’re able to confirm that the flag is in /flag.txt by running Bun.file(&#39;/flag.txt&#39;).size.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-07-29 13:00:00 +0200 CEST'>July 29, 2024</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;map[name:ShellUnease]</footer>
+  <footer class="entry-footer"><span title='2024-07-29 13:00:00 +0200 CEST'>July 29, 2024</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to DeadSec CTF 2024 Buntime" href="http://localhost:1313/posts/deadsecctf-2024-buntime/"></a>
 </article>
 <footer class="page-footer">
@@ -310,7 +305,8 @@ Bun.spawnSync function appears to be overwritten with a WAF message, WAF blocks 
  const images = Array.from(document.querySelectorAll("article img"));
  images.forEach(img => {
    mediumZoom(img, {
-     background: 'rgba(0, 0, 0, 0)', 
+    
+     background: 'rgba(128, 128, 128, 0.5)', 
      margin: 0,  
      scrollOffset: 40,  
      container: null,  

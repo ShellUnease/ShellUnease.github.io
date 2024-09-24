@@ -28,9 +28,6 @@ languages:
         - name: Search
           url: search/
           weight: 10
-        - name: Tags
-          url: tags/
-          weight: 10
 params:
   ShowShareButtons: true
   ShowReadingTime: true
@@ -54,8 +51,7 @@ params:
     minMatchCharLength: 0
     # limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
     keys: ["title", "permalink", "summary", "content"]
-  author:
-    name: ShellUnease
+  author: ShellUnease
 outputs:
   home:
     - HTML

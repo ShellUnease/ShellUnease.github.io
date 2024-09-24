@@ -14,7 +14,7 @@ In order to get the POST_FLAG we have to make a request to /flag  after we creat
 
 
 However, the CreatePost(...) prevents us from submitting new posts once we&rsquo;ve created 10 of them.">
-<meta name="author" content="map[name:ShellUnease]">
+<meta name="author" content="ShellUnease">
 <link rel="canonical" href="http://localhost:1313/posts/cyberspacectf-2024-trendz/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
@@ -114,11 +114,6 @@ However, the CreatePost(...) prevents us from submitting new posts once we&rsquo
                     <span>Search</span>
                 </a>
             </li>
-            <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
-                    <span>Tags</span>
-                </a>
-            </li>
         </ul>
     </nav>
 </header>
@@ -136,7 +131,7 @@ However, the CreatePost(...) prevents us from submitting new posts once we&rsquo
         </svg>
       </span>
     </h1>
-    <div class="post-meta"><span title='2024-09-03 17:21:10 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;map[name:ShellUnease]
+    <div class="post-meta"><span title='2024-09-03 17:21:10 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease
 
 </div>
   </header> <div class="toc">
@@ -291,7 +286,8 @@ However, the CreatePost(...) prevents us from submitting new posts once we&rsquo
  const images = Array.from(document.querySelectorAll("article img"));
  images.forEach(img => {
    mediumZoom(img, {
-     background: 'rgba(0, 0, 0, 0)', 
+    
+     background: 'rgba(128, 128, 128, 0.5)', 
      margin: 0,  
      scrollOffset: 40,  
      container: null,  

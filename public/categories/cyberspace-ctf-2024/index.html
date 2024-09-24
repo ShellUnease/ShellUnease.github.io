@@ -8,7 +8,7 @@
 <title>CyberSpace CTF 2024 | ShellUnease</title>
 <meta name="keywords" content="">
 <meta name="description" content="ShellUnease Write-ups">
-<meta name="author" content="map[name:ShellUnease]">
+<meta name="author" content="ShellUnease">
 <link rel="canonical" href="http://localhost:1313/categories/cyberspace-ctf-2024/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
@@ -109,11 +109,6 @@
                     <span>Search</span>
                 </a>
             </li>
-            <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
-                    <span>Tags</span>
-                </a>
-            </li>
         </ul>
     </nav>
 </header>
@@ -134,7 +129,7 @@
 if session[:user] == &#34;admin&#34; if req.ip == &#34;127.0.0.1&#34; There’s also an interesting POST /download endpoint. It accepts any session but is also guarded by the if req.ip == &#34;127.0.0.1&#34; check. It serves a file based on filename from our request, which leads to LFI.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-09-03 17:21:15 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;map[name:ShellUnease]</footer>
+  <footer class="entry-footer"><span title='2024-09-03 17:21:15 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CyberSpace CTF 2024 Notekeeper" href="http://localhost:1313/posts/cyberspacectf-2024-notekeeper/"></a>
 </article>
 
@@ -155,7 +150,7 @@ Race Condition For POST_FLAG In order to get the POST_FLAG we have to make a req
 However, the CreatePost(...) prevents us from submitting new posts once we’ve created 10 of them.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-09-03 17:21:10 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;map[name:ShellUnease]</footer>
+  <footer class="entry-footer"><span title='2024-09-03 17:21:10 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CyberSpace CTF 2024 Trendz & Trendzz & Trendzzz" href="http://localhost:1313/posts/cyberspacectf-2024-trendz/"></a>
 </article>
 
@@ -170,7 +165,7 @@ We inspect the code and learn that our uploaded archive will be unzipped using u
 Zip With a Symlink We can use the zip command to create an archive that’ll preserve symlinks by using the -y option.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-09-03 17:20:59 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;map[name:ShellUnease]</footer>
+  <footer class="entry-footer"><span title='2024-09-03 17:20:59 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CyberSpace CTF 2024 Zip Zone" href="http://localhost:1313/posts/cyberspacectf-2024-zip-zone/"></a>
 </article>
 
@@ -185,7 +180,7 @@ As we can see, we need a valid signed access_token that contains the string acce
 There’s GET /release endpoint that’ll do exactly that if we pass the validate_server(...) check. Interestingly, if we set a query param debug=true, we can control the validation server address.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-09-03 17:20:52 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;map[name:ShellUnease]</footer>
+  <footer class="entry-footer"><span title='2024-09-03 17:20:52 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CyberSpace CTF 2024 Feature Unlocked" href="http://localhost:1313/posts/cyberspacectf-2024-feature-unlocked/"></a>
 </article>
 
@@ -200,7 +195,7 @@ The correct answer for each question is random, but it’s generated in advance 
 The if (intval($answer) === $next_correct) {...} is the essential part of the challenge. Regardless if our answer is correct or wrong, it’ll call htmlspecialchars($_SESSION[&#39;username&#39;]), which will throw an exception if username is unset in the session. However, the exception stack trace will show us which line of code the exception was thrown at. Importantly, this all happens before game-related session data is changed, such as q_num and correct.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-09-03 17:20:41 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;map[name:ShellUnease]</footer>
+  <footer class="entry-footer"><span title='2024-09-03 17:20:41 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CyberSpace CTF 2024 Quiz" href="http://localhost:1313/posts/cyberspacectf-2024-quiz/"></a>
 </article>
     </main>
@@ -225,7 +220,8 @@ The if (intval($answer) === $next_correct) {...} is the essential part of the ch
  const images = Array.from(document.querySelectorAll("article img"));
  images.forEach(img => {
    mediumZoom(img, {
-     background: 'rgba(0, 0, 0, 0)', 
+    
+     background: 'rgba(128, 128, 128, 0.5)', 
      margin: 0,  
      scrollOffset: 40,  
      container: null,  
