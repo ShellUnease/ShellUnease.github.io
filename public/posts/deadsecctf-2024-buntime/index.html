@@ -347,6 +347,20 @@ However, we&rsquo;re able to confirm that the flag is in /flag.txt by running Bu
         <path d="M12 6H0l6-6z" />
     </svg>
 </a>
+<script src="/js/medium-zoom-1.1.0.min.js"></script>
+
+<script>
+ const images = Array.from(document.querySelectorAll("article img"));
+ images.forEach(img => {
+   mediumZoom(img, {
+     background: 'rgba(0, 0, 0, 0)', 
+     margin: 0,  
+     scrollOffset: 40,  
+     container: null,  
+     template: null  
+   });
+ });
+</script>
 
 <script>
     let menu = document.getElementById('menu')

@@ -351,6 +351,21 @@ When we visit a page that doesn&rsquo;t exist, it tells us that the 404.jpg is m
         <path d="M12 6H0l6-6z" />
     </svg>
 </a>
+<script src="/js/medium-zoom-1.1.0.min.js"></script>
+
+<script>
+ const images = Array.from(document.querySelectorAll("article img"));
+ images.forEach(img => {
+   mediumZoom(img, {
+    
+     background: 'rgba(128, 128, 128, 0.5)', 
+     margin: 0,  
+     scrollOffset: 40,  
+     container: null,  
+     template: null  
+   });
+ });
+</script>
 
 <script>
     let menu = document.getElementById('menu')
