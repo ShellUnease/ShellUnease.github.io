@@ -1,0 +1,19 @@
+{{- /* Footer custom content area start */ -}}
+{{- /*     Insert any custom code web-analytics, resources, etc. here */ -}}
+{{- /* Footer custom content area end */ -}}
+<!-- <script src="/assets/javascripts/medium-zoom-1.0.8.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+<script src="{{ "js/medium-zoom-1.1.0.min.js" | relURL }}"></script>
+
+<script>
+ const images = Array.from(document.querySelectorAll("article img"));
+ images.forEach(img => {
+   mediumZoom(img, {
+    //  background: 'rgba(0, 0, 0, 0)', // Set the overlay to be fully transparent
+     background: 'rgba(128, 128, 128, 0.5)', // Static gray color with 50% opacity
+     margin: 0, /* The space outside the zoomed image */
+     scrollOffset: 40, /* The number of pixels to scroll to close the zoom */
+     container: null, /* The viewport to render the zoom in */
+     template: null /* The template element to display on zoom */
+   });
+ });
+</script>
