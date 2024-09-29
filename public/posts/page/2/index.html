@@ -121,6 +121,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">CrewCTF 2024 Malkonkordo
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Source Code Analysis Upon inspecting the code, we find that there’s /ai/run path that sounds like it could let us execute something.
+It’s “guarded” by middleware that inspects whether host in the uri or the request header ‘host’ starts with 127.0.01.
+Afterwards, the execution is passed to handle_cmd which can execute one of 6 commands. For us, the intereting ones are displaying env vars
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-07-29 13:00:00 +0200 CEST'>July 29, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
+  <a class="entry-link" aria-label="post link to CrewCTF 2024 Malkonkordo" href="http://localhost:1313/posts/crewctf-2024-malkonkordo/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">DeadSec CTF 2024 Buntime
     </h2>
   </header>

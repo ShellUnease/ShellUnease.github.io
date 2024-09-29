@@ -121,6 +121,23 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">BuckeyeCTF 2024 Free C Compiler Online
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Intro This post covers Free C Compiler Online from BuckeyeCTF 2024. The description of the challenge is as follows:
+It is free of charge, but is it free of bugs?
+No, it’s not.
+Analyzing The Source Code The following is the source code of the application:
+from flask import ( Flask, json, jsonify, request, render_template, ) from pathlib import Path from uuid import uuid4, UUID import os from werkzeug.exceptions import NotFound, BadRequest, Forbidden import subprocess app = Flask(__name__) storage_path = Path(__file__).parent / &#34;storage&#34; os.system(&#34;podman pull docker.io/library/gcc:latest&#34;) @app.get(&#34;/&#34;) def get_index(): return render_template(&#34;index.html&#34;) @app.get(&#34;/&lt;id&gt;&#34;) def get_result(id): id = str(UUID(id)) try: code = Path(storage_path, id, &#34;main.c&#34;).read_text() output = Path(storage_path, id, &#34;output.txt&#34;).read_text() except FileNotFoundError: raise NotFound() if output == &#34;&#34;: output = &#34;[no output yet, try refreshing]&#34; return render_template(&#34;result.html&#34;, code=code, output=output) @app.post(&#34;/run&#34;) def post_run(): if request.json is None: raise UnsupportedMediaType() code = request.json[&#34;code&#34;] if not isinstance(code, str): raise BadRequest() id = run_code(code) return jsonify({&#34;id&#34;: id}) def run_code(code): if len(code) &gt; 10000: raise Forbidden() id = uuid4() folder = Path(storage_path, str(id)) folder.mkdir(parents=True) Path(folder, &#34;main.c&#34;).write_text(code) os.system( f&#34;podman run --timeout 5 --detach -v {str(folder.absolute())}:/mnt --workdir /mnt gcc &#34; &#43; &#34;sh -c &#39;gcc main.c &gt; output.txt 2&gt;&amp;1 &amp;&amp; ./a.out | head -c 1000 &gt;&gt; output.txt&#39;&#34; ) subprocess.Popen(f&#34;sleep 60; rm -r {folder.absolute()}&#34;, shell=True) return id print(&#34;started&#34;) As we can see, there are 2 main endpoints: @app.post(&#34;/run&#34;) amd @app.get(&#34;/&lt;id&gt;&#34;). The first one is used to compile our source code and run it, all in a podman pod and the second one is used to display the source code that was compiled and executed alongside the output.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-09-30 00:19:51 +0200 CEST'>September 30, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
+  <a class="entry-link" aria-label="post link to BuckeyeCTF 2024 Free C Compiler Online" href="http://localhost:1313/posts/buckeyectf-2024-free-c-compiler-online/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">PatriotCTF 2024 Abnormal Maybe Illegal
     </h2>
   </header>
@@ -261,21 +278,6 @@ The if (intval($answer) === $next_correct) {...} is the essential part of the ch
   </div>
   <footer class="entry-footer"><span title='2024-09-03 17:20:41 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CyberSpace CTF 2024 Quiz" href="http://localhost:1313/posts/cyberspacectf-2024-quiz/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">CrewCTF 2024 Malkonkordo
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Source Code Analysis Upon inspecting the code, we find that there’s /ai/run path that sounds like it could let us execute something.
-It’s “guarded” by middleware that inspects whether host in the uri or the request header ‘host’ starts with 127.0.01.
-Afterwards, the execution is passed to handle_cmd which can execute one of 6 commands. For us, the intereting ones are displaying env vars
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-07-29 13:00:00 +0200 CEST'>July 29, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
-  <a class="entry-link" aria-label="post link to CrewCTF 2024 Malkonkordo" href="http://localhost:1313/posts/crewctf-2024-malkonkordo/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
