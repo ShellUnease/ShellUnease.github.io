@@ -4,7 +4,7 @@
     <title>BuckeyeCTF 2024 on ShellUnease</title>
     <link>http://localhost:1313/categories/buckeyectf-2024/</link>
     <description>Recent content in BuckeyeCTF 2024 on ShellUnease</description>
-    <generator>Hugo -- 0.135.0</generator>
+    <generator>Hugo -- 0.147.8</generator>
     <language>en</language>
     <copyright>ShellUnease (CC BY 4.0)</copyright>
     <lastBuildDate>Mon, 30 Sep 2024 00:19:51 +0200</lastBuildDate>
@@ -15,19 +15,18 @@
       <pubDate>Mon, 30 Sep 2024 00:19:51 +0200</pubDate>
       <guid>http://localhost:1313/posts/buckeyectf-2024-free-c-compiler-online/</guid>
       <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
-&lt;p&gt;This post covers &lt;em&gt;Free C Compiler Online&lt;/em&gt; from &lt;em&gt;BuckeyeCTF 2024&lt;/em&gt;. The description of the challenge is:&lt;/p&gt;
+&lt;p&gt;This post covers &lt;em&gt;Free C Compiler Online&lt;/em&gt; from &lt;em&gt;BuckeyeCTF 2024&lt;/em&gt;. The description of the challenge is as follows:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;It is free of charge, but is it free of bugs?&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;It is free of charge, but is it free of bugs?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;No, it&amp;rsquo;s not.&lt;/p&gt;
 &lt;h2 id=&#34;analyzing-the-source-code&#34;&gt;Analyzing The Source Code&lt;/h2&gt;
 &lt;p&gt;The following is the source code of the application:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; flask &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; (
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Flask,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    json,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    jsonify,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    request,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    render_template,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; Flask,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; json,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; jsonify,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; request,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; render_template,
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; pathlib &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Path
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; uuid &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; uuid4, UUID
@@ -50,12 +49,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_result&lt;/span&gt;(id):
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; str(UUID(id))
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        code &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Path(storage_path, id, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;main.c&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read_text()
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        output &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Path(storage_path, id, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;output.txt&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read_text()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; code &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Path(storage_path, id, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;main.c&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read_text()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; output &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Path(storage_path, id, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;output.txt&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read_text()
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;except&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;FileNotFoundError&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;raise&lt;/span&gt; NotFound()
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; output &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        output &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;[no output yet, try refreshing]&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; output &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;[no output yet, try refreshing]&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; render_template(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;result.html&amp;#34;&lt;/span&gt;, code&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;code, output&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;output)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
@@ -63,7 +62,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;post_run&lt;/span&gt;():
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; request&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;json &lt;span style=&#34;color:#f92672&#34;&gt;is&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;None&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;raise&lt;/span&gt; UnsupportedMediaType()
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    code &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; request&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;json[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;code&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; code &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; request&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;json[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;code&amp;#34;&lt;/span&gt;]
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;not&lt;/span&gt; isinstance(code, str):
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;raise&lt;/span&gt; BadRequest()
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; run_code(code)
@@ -74,16 +73,16 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; len(code) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10000&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;raise&lt;/span&gt; Forbidden()
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; uuid4()
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    folder &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Path(storage_path, str(id))
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    folder&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;mkdir(parents&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; folder &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Path(storage_path, str(id))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; folder&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;mkdir(parents&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Path(folder, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;main.c&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;write_text(code)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    os&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;system(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; os&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;system(
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;podman run --timeout 5 --detach -v &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;str(folder&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;absolute())&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;:/mnt --workdir /mnt gcc &amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sh -c &amp;#39;gcc main.c &amp;gt; output.txt 2&amp;gt;&amp;amp;1 &amp;amp;&amp;amp; ./a.out | head -c 1000 &amp;gt;&amp;gt; output.txt&amp;#39;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; )
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    subprocess&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Popen(&lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sleep 60; rm -r &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;folder&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;absolute()&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;, shell&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; subprocess&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Popen(&lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sleep 60; rm -r &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;folder&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;absolute()&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;, shell&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; id
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;

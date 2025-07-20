@@ -10,7 +10,7 @@
 <meta name="description" content="ShellUnease Write-ups">
 <meta name="author" content="ShellUnease">
 <link rel="canonical" href="http://localhost:1313/categories/web/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a8501b4e1544bf104a4e2647be64df3637f95b6ac25a4298047d87fe0eacffa1.css" integrity="sha256-qFAbThVEvxBKTiZHvmTfNjf5W2rCWkKYBH2H/g6s/6E=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -118,6 +118,21 @@
     Web
   </h1>
 </header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">R3CTF 2025 R3note
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Overview In the dawning age of the ARPANET’s gleam A simple idea, a persistent dream From a humble note, in ‘69 it came Steve Crocker wrote it, and whispered its name A “Request for Comments,” a title so grand To build the foundation across the land From a simple memo, a legacy grew To connect the world, for me and for you.
+Solves: 10
+This write-up describes a series of vulnerabilities in the r3note application that, when chained together, lead to XSS. The vulnerabilities include a file upload bypass, a path traversal, nginx misconfiguration and an XSS vulnerability.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-07-20 20:11:39 +0200 CEST'>July 20, 2025</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;ShellUnease</footer>
+  <a class="entry-link" aria-label="post link to R3CTF 2025 R3note" href="http://localhost:1313/posts/r3ctf-2025-r3note/"></a>
+</article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
@@ -261,21 +276,12 @@ We’ll perform an SSRF to make the frontend application send a request to the b
   <footer class="entry-footer"><span title='2024-07-01 12:24:09 +0200 CEST'>July 1, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to UIUCTF 2024 Log Action" href="http://localhost:1313/posts/uiuctf-2024-log-action/"></a>
 </article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">HackTheBox Cyber Apocalypse 2024 Apexsurvive Writeup
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>First Steps We analyze the code and notice the email page will only show emails addressed to test@email.htb.
-We create a user with the email test@email.htb and confirm the registration by visiting the link from an email.
-DNS Rebinding to Activate an Internal User Upon further code inspection, we found out that users who sign up with an email hosted at apexsurvive.htb will be marked as internal users.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-03-14 17:38:37 +0100 CET'>March 14, 2024</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;ShellUnease</footer>
-  <a class="entry-link" aria-label="post link to HackTheBox Cyber Apocalypse 2024 Apexsurvive Writeup" href="http://localhost:1313/posts/htb-ca-2024-apexsurvive/"></a>
-</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="http://localhost:1313/categories/web/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
     </main>
     
 <footer class="footer">
@@ -295,7 +301,7 @@ DNS Rebinding to Activate an Internal User Upon further code inspection, we foun
 <script src="/js/medium-zoom-1.1.0.min.js"></script>
 
 <script>
- const images = Array.from(document.querySelectorAll("article2 img2"));
+ const images = Array.from(document.querySelectorAll("article img"));
  images.forEach(img => {
    mediumZoom(img, {
     

@@ -4,7 +4,7 @@
     <title>CSAW CTF Qualification Round 2024 on ShellUnease</title>
     <link>http://localhost:1313/categories/csaw-ctf-qualification-round-2024/</link>
     <description>Recent content in CSAW CTF Qualification Round 2024 on ShellUnease</description>
-    <generator>Hugo -- 0.135.0</generator>
+    <generator>Hugo -- 0.147.8</generator>
     <language>en</language>
     <copyright>ShellUnease (CC BY 4.0)</copyright>
     <lastBuildDate>Sat, 07 Sep 2024 12:17:59 +0200</lastBuildDate>
@@ -18,8 +18,7 @@
 &lt;p&gt;This post covers both &lt;em&gt;Literally 1984&lt;/em&gt; and &lt;em&gt;Mystery&lt;/em&gt; as they&amp;rsquo;re related to each other. The description of &lt;em&gt;Literally 1984&lt;/em&gt; is:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;An artist by the name of ‌ made a cover of a song I liked, but I don&amp;rsquo;t remember the original composer of that song. Could you help me find the original composer?
-Flag Format: csawctf{Firstname_Lastname} (replace all spaces with _ )&lt;/p&gt;
-&lt;/blockquote&gt;
+Flag Format: csawctf{Firstname_Lastname} (replace all spaces with _ )&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;and the description of &lt;em&gt;Mystery&lt;/em&gt; is:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Remember the composer from Literally 1984? Well, they made a song when they were part of a band in 1992, and it turns out that ‌ also made a cover of this song, collabing with another artist. What is the name of that artist?
@@ -33,8 +32,7 @@ Flag Format: csawctf{ArtistName} (replace all spaces with _ )&lt;/p&gt;</descrip
       <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
 &lt;p&gt;For this challenge we&amp;rsquo;re only given the link &lt;em&gt;&lt;a href=&#34;https://bucketwars.ctf.csaw.io&#34;&gt;https://bucketwars.ctf.csaw.io&lt;/a&gt;&lt;/em&gt; and the description:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;let&amp;rsquo;s keep our storage simple &amp;ndash; and remember we don&amp;rsquo;t make mistakes in these parts.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;let&amp;rsquo;s keep our storage simple &amp;ndash; and remember we don&amp;rsquo;t make mistakes in these parts.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;enumerating-the-website&#34;&gt;Enumerating the Website&lt;/h2&gt;
 &lt;p&gt;Upon visiting the website, we notice the current version &lt;em&gt;Version: 5.0.0&lt;/em&gt; and the versions page.&lt;/p&gt;
 &lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image.png&#34; alt=&#34;Alt text&#34;  /&gt;

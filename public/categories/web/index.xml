@@ -4,11 +4,29 @@
     <title>Web on ShellUnease</title>
     <link>http://localhost:1313/categories/web/</link>
     <description>Recent content in Web on ShellUnease</description>
-    <generator>Hugo -- 0.135.0</generator>
+    <generator>Hugo -- 0.147.8</generator>
     <language>en</language>
     <copyright>ShellUnease (CC BY 4.0)</copyright>
-    <lastBuildDate>Sat, 07 Sep 2024 12:17:33 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 20 Jul 2025 20:11:39 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>R3CTF 2025 R3note</title>
+      <link>http://localhost:1313/posts/r3ctf-2025-r3note/</link>
+      <pubDate>Sun, 20 Jul 2025 20:11:39 +0200</pubDate>
+      <guid>http://localhost:1313/posts/r3ctf-2025-r3note/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In the dawning age of the ARPANET&amp;rsquo;s gleam
+A simple idea, a persistent dream
+From a humble note, in &amp;lsquo;69 it came
+Steve Crocker wrote it, and whispered its name
+A &amp;ldquo;Request for Comments,&amp;rdquo; a title so grand
+To build the foundation across the land
+From a simple memo, a legacy grew
+To connect the world, for me and for you.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Solves: 10&lt;/p&gt;
+&lt;p&gt;This write-up describes a series of vulnerabilities in the r3note application that, when chained together, lead to XSS. The vulnerabilities include a file upload bypass, a path traversal, nginx misconfiguration and an XSS vulnerability.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>CSAW CTF Qualification Round 2024 BucketWars</title>
       <link>http://localhost:1313/posts/csawctf-2024-bucket-wars/</link>
@@ -17,8 +35,7 @@
       <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
 &lt;p&gt;For this challenge we&amp;rsquo;re only given the link &lt;em&gt;&lt;a href=&#34;https://bucketwars.ctf.csaw.io&#34;&gt;https://bucketwars.ctf.csaw.io&lt;/a&gt;&lt;/em&gt; and the description:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;let&amp;rsquo;s keep our storage simple &amp;ndash; and remember we don&amp;rsquo;t make mistakes in these parts.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;let&amp;rsquo;s keep our storage simple &amp;ndash; and remember we don&amp;rsquo;t make mistakes in these parts.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;enumerating-the-website&#34;&gt;Enumerating the Website&lt;/h2&gt;
 &lt;p&gt;Upon visiting the website, we notice the current version &lt;em&gt;Version: 5.0.0&lt;/em&gt; and the versions page.&lt;/p&gt;
 &lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image.png&#34; alt=&#34;Alt text&#34;  /&gt;

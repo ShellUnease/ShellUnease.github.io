@@ -2,22 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2025-07-20T20:11:39+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2025-07-20T20:11:39+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/r3ctf-2025/</loc>
+    <lastmod>2025-07-20T20:11:39+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/r3ctf-2025-r3note/</loc>
+    <lastmod>2025-07-20T20:11:39+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2025-07-20T20:11:39+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/web/</loc>
+    <lastmod>2025-07-20T20:11:39+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/kalmarctf-2025/</loc>
+    <lastmod>2025-03-09T18:00:00+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/kalmarctf-2025-rwx-gold/</loc>
+    <lastmod>2025-03-09T18:00:00+01:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/misc/</loc>
+    <lastmod>2025-03-09T18:00:00+01:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/categories/buckeyectf-2024/</loc>
     <lastmod>2024-09-30T00:19:51+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/buckeyectf-2024-free-c-compiler-online/</loc>
-    <lastmod>2024-09-30T00:19:51+02:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2024-09-30T00:19:51+02:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/misc/</loc>
-    <lastmod>2024-09-30T00:19:51+02:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2024-09-30T00:19:51+02:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
     <lastmod>2024-09-30T00:19:51+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/forensics/</loc>
@@ -39,9 +54,6 @@
     <lastmod>2024-09-07T12:17:59+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/csawctf-2024-bucket-wars/</loc>
-    <lastmod>2024-09-07T12:17:33+02:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/web/</loc>
     <lastmod>2024-09-07T12:17:33+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/csawctf-2024-lost-pyramid/</loc>

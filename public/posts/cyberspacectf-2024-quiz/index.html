@@ -19,7 +19,7 @@ The correct answer for each question is random, but it&rsquo;s generated in adva
 The if (intval($answer) === $next_correct) {...} is the essential part of the challenge. Regardless if our answer is correct or wrong, it&rsquo;ll call htmlspecialchars($_SESSION[&#39;username&#39;]), which will throw an exception if username is unset in the session. However, the exception stack trace will show us which line of code the exception was thrown at. Importantly, this all happens before game-related session data is changed, such as q_num and correct.">
 <meta name="author" content="ShellUnease">
 <link rel="canonical" href="http://localhost:1313/posts/cyberspacectf-2024-quiz/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a8501b4e1544bf104a4e2647be64df3637f95b6ac25a4298047d87fe0eacffa1.css" integrity="sha256-qFAbThVEvxBKTiZHvmTfNjf5W2rCWkKYBH2H/g6s/6E=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -266,7 +266,7 @@ logout -&gt; check which answer is correct (53 in error) -&gt; login -&gt; submi
 <script src="/js/medium-zoom-1.1.0.min.js"></script>
 
 <script>
- const images = Array.from(document.querySelectorAll("article2 img2"));
+ const images = Array.from(document.querySelectorAll("article img"));
  images.forEach(img => {
    mediumZoom(img, {
     

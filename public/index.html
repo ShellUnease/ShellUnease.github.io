@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.135.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.147.8"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
@@ -11,7 +11,7 @@
 <meta name="description" content="ShellUnease Write-ups">
 <meta name="author" content="ShellUnease">
 <link rel="canonical" href="http://localhost:1313/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.a8501b4e1544bf104a4e2647be64df3637f95b6ac25a4298047d87fe0eacffa1.css" integrity="sha256-qFAbThVEvxBKTiZHvmTfNjf5W2rCWkKYBH2H/g6s/6E=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -127,6 +127,43 @@
 </div>
 
     </footer>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">R3CTF 2025 R3note
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Overview In the dawning age of the ARPANET’s gleam A simple idea, a persistent dream From a humble note, in ‘69 it came Steve Crocker wrote it, and whispered its name A “Request for Comments,” a title so grand To build the foundation across the land From a simple memo, a legacy grew To connect the world, for me and for you.
+Solves: 10
+This write-up describes a series of vulnerabilities in the r3note application that, when chained together, lead to XSS. The vulnerabilities include a file upload bypass, a path traversal, nginx misconfiguration and an XSS vulnerability.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-07-20 20:11:39 +0200 CEST'>July 20, 2025</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;ShellUnease</footer>
+  <a class="entry-link" aria-label="post link to R3CTF 2025 R3note" href="http://localhost:1313/posts/r3ctf-2025-r3note/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">KalmarCTF 2025 RWX Gold
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Intro This post covers RWX Gold from KalmarCTF 2024.
+We give you file read, file write and code execution. But can you get the flag? Let’s reduce that.
+Analysis The following is the source code of the application:
+from flask import ( Flask, json, jsonify, request, render_template, ) from pathlib import Path from uuid import uuid4, UUID import os from werkzeug.exceptions import NotFound, BadRequest, Forbidden import subprocess app = Flask(__name__) storage_path = Path(__file__).parent / &#34;storage&#34; os.system(&#34;podman pull docker.io/library/gcc:latest&#34;) @app.get(&#34;/&#34;) def get_index(): return render_template(&#34;index.html&#34;) @app.get(&#34;/&lt;id&gt;&#34;) def get_result(id): id = str(UUID(id)) try: code = Path(storage_path, id, &#34;main.c&#34;).read_text() output = Path(storage_path, id, &#34;output.txt&#34;).read_text() except FileNotFoundError: raise NotFound() if output == &#34;&#34;: output = &#34;[no output yet, try refreshing]&#34; return render_template(&#34;result.html&#34;, code=code, output=output) @app.post(&#34;/run&#34;) def post_run(): if request.json is None: raise UnsupportedMediaType() code = request.json[&#34;code&#34;] if not isinstance(code, str): raise BadRequest() id = run_code(code) return jsonify({&#34;id&#34;: id}) def run_code(code): if len(code) &gt; 10000: raise Forbidden() id = uuid4() folder = Path(storage_path, str(id)) folder.mkdir(parents=True) Path(folder, &#34;main.c&#34;).write_text(code) os.system( f&#34;podman run --timeout 5 --detach -v {str(folder.absolute())}:/mnt --workdir /mnt gcc &#34; &#43; &#34;sh -c &#39;gcc main.c &gt; output.txt 2&gt;&amp;1 &amp;&amp; ./a.out | head -c 1000 &gt;&gt; output.txt&#39;&#34; ) subprocess.Popen(f&#34;sleep 60; rm -r {folder.absolute()}&#34;, shell=True) return id print(&#34;started&#34;) As we can see, there are 2 main endpoints: @app.post(&#34;/run&#34;) amd @app.get(&#34;/&lt;id&gt;&#34;). The first one is used to compile our source code and run it, all in a podman pod and the second one is used to display the source code that was compiled and executed alongside the output.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-03-09 18:00:00 +0100 CET'>March 9, 2025</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
+  <a class="entry-link" aria-label="post link to KalmarCTF 2025 RWX Gold" href="http://localhost:1313/posts/kalmarctf-2025-rwx-gold/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -258,36 +295,6 @@ Zip With a Symlink We can use the zip command to create an archive that’ll pre
   </div>
   <footer class="entry-footer"><span title='2024-09-03 17:20:59 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CyberSpace CTF 2024 Zip Zone" href="http://localhost:1313/posts/cyberspacectf-2024-zip-zone/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">CyberSpace CTF 2024 Feature Unlocked
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Source Code Analysis The aim of the challenge is to call the POST /feature which contains a command injection vulnerability.
-As we can see, we need a valid signed access_token that contains the string access_granted.
-There’s GET /release endpoint that’ll do exactly that if we pass the validate_server(...) check. Interestingly, if we set a query param debug=true, we can control the validation server address.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-09-03 17:20:52 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
-  <a class="entry-link" aria-label="post link to CyberSpace CTF 2024 Feature Unlocked" href="http://localhost:1313/posts/cyberspacectf-2024-feature-unlocked/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">CyberSpace CTF 2024 Quiz
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Source Code Analysis At first glance, I thought the intended vulnerability was a race condition. However, upon closer examination I noticed a suspicious unset($_SESSION[&#39;username&#39;]); in logout.php.
-The correct answer for each question is random, but it’s generated in advance both at the beginning of the quiz and upon submitting an answer.
-The if (intval($answer) === $next_correct) {...} is the essential part of the challenge. Regardless if our answer is correct or wrong, it’ll call htmlspecialchars($_SESSION[&#39;username&#39;]), which will throw an exception if username is unset in the session. However, the exception stack trace will show us which line of code the exception was thrown at. Importantly, this all happens before game-related session data is changed, such as q_num and correct.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-09-03 17:20:41 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
-  <a class="entry-link" aria-label="post link to CyberSpace CTF 2024 Quiz" href="http://localhost:1313/posts/cyberspacectf-2024-quiz/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

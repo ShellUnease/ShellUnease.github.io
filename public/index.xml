@@ -4,11 +4,109 @@
     <title>ShellUnease</title>
     <link>http://localhost:1313/</link>
     <description>Recent content on ShellUnease</description>
-    <generator>Hugo -- 0.135.0</generator>
+    <generator>Hugo -- 0.147.8</generator>
     <language>en</language>
     <copyright>ShellUnease (CC BY 4.0)</copyright>
-    <lastBuildDate>Mon, 30 Sep 2024 00:19:51 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 20 Jul 2025 20:11:39 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>R3CTF 2025 R3note</title>
+      <link>http://localhost:1313/posts/r3ctf-2025-r3note/</link>
+      <pubDate>Sun, 20 Jul 2025 20:11:39 +0200</pubDate>
+      <guid>http://localhost:1313/posts/r3ctf-2025-r3note/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In the dawning age of the ARPANET&amp;rsquo;s gleam
+A simple idea, a persistent dream
+From a humble note, in &amp;lsquo;69 it came
+Steve Crocker wrote it, and whispered its name
+A &amp;ldquo;Request for Comments,&amp;rdquo; a title so grand
+To build the foundation across the land
+From a simple memo, a legacy grew
+To connect the world, for me and for you.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Solves: 10&lt;/p&gt;
+&lt;p&gt;This write-up describes a series of vulnerabilities in the r3note application that, when chained together, lead to XSS. The vulnerabilities include a file upload bypass, a path traversal, nginx misconfiguration and an XSS vulnerability.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>KalmarCTF 2025 RWX Gold</title>
+      <link>http://localhost:1313/posts/kalmarctf-2025-rwx-gold/</link>
+      <pubDate>Sun, 09 Mar 2025 18:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/posts/kalmarctf-2025-rwx-gold/</guid>
+      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;This post covers &lt;em&gt;RWX Gold&lt;/em&gt; from &lt;em&gt;KalmarCTF 2024&lt;/em&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We give you file read, file write and code execution. But can you get the flag? Let&amp;rsquo;s reduce that.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;analysis&#34;&gt;Analysis&lt;/h2&gt;
+&lt;p&gt;The following is the source code of the application:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; flask &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; Flask,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; json,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; jsonify,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; request,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; render_template,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; pathlib &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Path
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; uuid &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; uuid4, UUID
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; os
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; werkzeug.exceptions &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; NotFound, BadRequest, Forbidden
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; subprocess
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;app &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Flask(__name__)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;storage_path &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Path(__file__)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;parent &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;storage&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;os&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;system(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;podman pull docker.io/library/gcc:latest&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@app.get&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_index&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; render_template(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;index.html&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@app.get&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/&amp;lt;id&amp;gt;&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_result&lt;/span&gt;(id):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; str(UUID(id))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; code &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Path(storage_path, id, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;main.c&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read_text()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; output &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Path(storage_path, id, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;output.txt&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read_text()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;except&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;FileNotFoundError&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;raise&lt;/span&gt; NotFound()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; output &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; output &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;[no output yet, try refreshing]&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; render_template(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;result.html&amp;#34;&lt;/span&gt;, code&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;code, output&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;output)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@app.post&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/run&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;post_run&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; request&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;json &lt;span style=&#34;color:#f92672&#34;&gt;is&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;None&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;raise&lt;/span&gt; UnsupportedMediaType()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; code &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; request&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;json[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;code&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;not&lt;/span&gt; isinstance(code, str):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;raise&lt;/span&gt; BadRequest()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; run_code(code)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; jsonify({&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: id})
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;run_code&lt;/span&gt;(code):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; len(code) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10000&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;raise&lt;/span&gt; Forbidden()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    id &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; uuid4()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; folder &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Path(storage_path, str(id))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; folder&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;mkdir(parents&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Path(folder, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;main.c&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;write_text(code)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; os&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;system(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;podman run --timeout 5 --detach -v &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;str(folder&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;absolute())&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;:/mnt --workdir /mnt gcc &amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sh -c &amp;#39;gcc main.c &amp;gt; output.txt 2&amp;gt;&amp;amp;1 &amp;amp;&amp;amp; ./a.out | head -c 1000 &amp;gt;&amp;gt; output.txt&amp;#39;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; subprocess&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Popen(&lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sleep 60; rm -r &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;folder&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;absolute()&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;, shell&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; id
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;started&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As we can see, there are 2 main endpoints: &lt;code&gt;@app.post(&amp;quot;/run&amp;quot;)&lt;/code&gt; amd &lt;code&gt;@app.get(&amp;quot;/&amp;lt;id&amp;gt;&amp;quot;)&lt;/code&gt;. The first one is used to compile our source code and run it, all in a podman pod and the second one is used to display the source code that was compiled and executed alongside the output.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>BuckeyeCTF 2024 Free C Compiler Online</title>
       <link>http://localhost:1313/posts/buckeyectf-2024-free-c-compiler-online/</link>
@@ -17,8 +115,7 @@
       <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
 &lt;p&gt;This post covers &lt;em&gt;Free C Compiler Online&lt;/em&gt; from &lt;em&gt;BuckeyeCTF 2024&lt;/em&gt;. The description of the challenge is as follows:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;It is free of charge, but is it free of bugs?&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;It is free of charge, but is it free of bugs?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;No, it&amp;rsquo;s not.&lt;/p&gt;
 &lt;h2 id=&#34;analyzing-the-source-code&#34;&gt;Analyzing The Source Code&lt;/h2&gt;
 &lt;p&gt;The following is the source code of the application:&lt;/p&gt;
@@ -99,8 +196,7 @@
       <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
 &lt;p&gt;This post covers &lt;em&gt;Abnormal Maybe Illegal&lt;/em&gt; from &lt;em&gt;PatriotCTF 2024&lt;/em&gt;. The description of the challenge is:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;We have recently discovered tons of traffic leaving our network. We have reason to believe they are using an abnormal method. Can you figure out what data they are exfiltrating?&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;We have recently discovered tons of traffic leaving our network. We have reason to believe they are using an abnormal method. Can you figure out what data they are exfiltrating?&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Furthermore, two additional hints were released throughout the competition:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;TCP packets are constructed in a way, where certain combinations are possible/(legal) and others should raise alerts/(illegal)&lt;/p&gt;</description>
@@ -114,8 +210,7 @@
 &lt;p&gt;This post covers both &lt;em&gt;Literally 1984&lt;/em&gt; and &lt;em&gt;Mystery&lt;/em&gt; as they&amp;rsquo;re related to each other. The description of &lt;em&gt;Literally 1984&lt;/em&gt; is:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;An artist by the name of ‌ made a cover of a song I liked, but I don&amp;rsquo;t remember the original composer of that song. Could you help me find the original composer?
-Flag Format: csawctf{Firstname_Lastname} (replace all spaces with _ )&lt;/p&gt;
-&lt;/blockquote&gt;
+Flag Format: csawctf{Firstname_Lastname} (replace all spaces with _ )&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;and the description of &lt;em&gt;Mystery&lt;/em&gt; is:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Remember the composer from Literally 1984? Well, they made a song when they were part of a band in 1992, and it turns out that ‌ also made a cover of this song, collabing with another artist. What is the name of that artist?
@@ -129,8 +224,7 @@ Flag Format: csawctf{ArtistName} (replace all spaces with _ )&lt;/p&gt;</descrip
       <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
 &lt;p&gt;For this challenge we&amp;rsquo;re only given the link &lt;em&gt;&lt;a href=&#34;https://bucketwars.ctf.csaw.io&#34;&gt;https://bucketwars.ctf.csaw.io&lt;/a&gt;&lt;/em&gt; and the description:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;let&amp;rsquo;s keep our storage simple &amp;ndash; and remember we don&amp;rsquo;t make mistakes in these parts.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;let&amp;rsquo;s keep our storage simple &amp;ndash; and remember we don&amp;rsquo;t make mistakes in these parts.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;enumerating-the-website&#34;&gt;Enumerating the Website&lt;/h2&gt;
 &lt;p&gt;Upon visiting the website, we notice the current version &lt;em&gt;Version: 5.0.0&lt;/em&gt; and the versions page.&lt;/p&gt;
 &lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;image.png&#34; alt=&#34;Alt text&#34;  /&gt;
