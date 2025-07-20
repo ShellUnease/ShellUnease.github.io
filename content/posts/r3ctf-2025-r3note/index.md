@@ -147,7 +147,7 @@ The go middleware sets a CSP that allows us to include scripts served from the s
 c.Writer.Header().Set("Content-Security-Policy", "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';")
 ```
 
-We can upload arbitrary javascript file via the image upload and include it in our malicious html file. Even though
+We can upload arbitrary javascript file via the image upload and include it in our malicious html file.
 
 ---
 
