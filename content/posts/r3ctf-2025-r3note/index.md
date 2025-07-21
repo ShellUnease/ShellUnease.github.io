@@ -6,14 +6,14 @@ categories = ['R3CTF 2025', 'Web']
 
 ## Overview
 
-> In the dawning age of the ARPANET's gleam
-> A simple idea, a persistent dream
-> From a humble note, in '69 it came
-> Steve Crocker wrote it, and whispered its name
-> A "Request for Comments," a title so grand
-> To build the foundation across the land
-> From a simple memo, a legacy grew
-> To connect the world, for me and for you.
+> In the dawning age of the ARPANET's gleam  
+> A simple idea, a persistent dream  
+> From a humble note, in '69 it came  
+> Steve Crocker wrote it, and whispered its name  
+> A "Request for Comments," a title so grand  
+> To build the foundation across the land  
+> From a simple memo, a legacy grew  
+> To connect the world, for me and for you.  
 
 Solves: 10
 
@@ -60,14 +60,14 @@ app.post("/api/share/report", (req, res) => {
 
 ```js
 // bot/bot.mjs:72
-    await page.goto("http://127.0.0.1:8080/", { timeout: 5000 });
-    await page.evaluate((flag) => {
-      localStorage.setItem("flag", flag);
-    }, FLAG);
+await page.goto("http://127.0.0.1:8080/", { timeout: 5000 });
+await page.evaluate((flag) => {
+  localStorage.setItem("flag", flag);
+}, FLAG);
 
-    console.log(`Checking report for token: ${token}`);
+console.log(`Checking report for token: ${token}`);
 
-    await page.goto(`http://127.0.0.1:8080/share/${token}`, { timeout: 5000 });
+await page.goto(`http://127.0.0.1:8080/share/${token}`, { timeout: 5000 });
 ```
 
 The bot, in `bot/bot.mjs`, navigates to `/share/{token}`, This allows an attacker to craft a malicious token containing path traversal sequences (`../`) to make the bot visit arbitrary endpoints hosted by the server.
@@ -119,7 +119,6 @@ This prevents us from uploading a malicious html as an image and sending the bot
 The Nginx configuration plays a crucial role in this exploit. Here's the relevant part of the configuration:
 
 ```nginx
-// nginx/default.conf
 location /files/upload/ {
     deny all;
 }
@@ -132,7 +131,7 @@ location ~ \.(css|js)$ {
 }
 ```
 
-Nginx processes location blocks in a specific order of priority. A regular expression match (like `~ \.(css|js)$`) has a higher priority than a prefix match (like `/files/upload/`). This means that even though there's a rule to deny access to the `/files/upload/` directory, a request for a file ending in `.js` within that directory will be handled by the regex location block, bypassing the `deny all` directive. **We'll combine this fact along with the upload bypass trick to send the bot to a malicious html file uploaded by us**. Furthermore, `proxy_cache_key` doesn't include the fragment part, so after we access and therefore cache a file with filename ending with `#whatever` we can access it omitting `#whatever` ending.
+Nginx processes location blocks in a specific order of priority. A regular expression match (like `~ \.(css|js)$`) has a higher priority than a prefix match (like `/files/upload/`). This means that even though there's a rule to deny access to the `/files/upload/` directory, a request for a file ending in `.js` within that directory will be handled by the regex location block, bypassing the `deny all` directive. **We'll combine this fact along with the upload bypass trick to send the bot to a malicious html file uploaded by us**. Furthermore, `proxy_cache_key` doesn't include the fragment part, so after we initially access it and therefore cache a file with filename ending with `#whatever` we can later access it omitting the `#whatever` ending.
 
 ### 5 Lack of `X-Content-Type-Options: nosniff` response header
 
@@ -160,7 +159,7 @@ The exploit consists of the following steps:
 2.  **Login**
 
 3.  **Get userId via /api/user/me**  
-    We need the userId to access our uploaded files via `/files/upload`.
+    We need the userId to access our uploaded files via `/files/upload`.  
 
 4.  **Upload a malicious JavaScript file that exfiltrates the flag from localStorage**  
     We upload a JavaScript file that will steal the flag from the bot's local storage and send it to a server we control. We can use any extension that's not blacklisted.
@@ -174,7 +173,9 @@ The exploit consists of the following steps:
 7.  **Trigger the path traversal.**  
     We send a request to the bot's reporting endpoint with a specially crafted token `../files/upload/{user_id}/{html_id}.js`. This token will use path traversal to make the bot navigate to the HTML file we uploaded and cached.
 
-Here's a solver script:
+---
+
+## Solver Script
 
 ```python
 import requests
@@ -289,11 +290,14 @@ if __name__ == "__main__":
     main()
 ```
 
+---
+
 ## Final Notes
 
 - Remember to include `X-Content-Type-Options: nosniff` in server response headers,
 - Pay special attention to nginx configuration.
 
 
-XOXO,  
+XOXO,
+
 VXXDXX
