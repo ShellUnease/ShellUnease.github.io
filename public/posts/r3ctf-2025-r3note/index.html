@@ -161,6 +161,8 @@ This write-up describes a series of vulnerabilities in the r3note application th
                 <li>
                     <a href="#exploitation" aria-label="Exploitation">Exploitation</a></li>
                 <li>
+                    <a href="#solver-script" aria-label="Solver Script">Solver Script</a></li>
+                <li>
                     <a href="#final-notes" aria-label="Final Notes">Final Notes</a>
                 </li>
             </ul>
@@ -170,13 +172,13 @@ This write-up describes a series of vulnerabilities in the r3note application th
 
   <div class="post-content"><h2 id="overview">Overview<a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
 <blockquote>
-<p>In the dawning age of the ARPANET&rsquo;s gleam
-A simple idea, a persistent dream
-From a humble note, in &lsquo;69 it came
-Steve Crocker wrote it, and whispered its name
-A &ldquo;Request for Comments,&rdquo; a title so grand
-To build the foundation across the land
-From a simple memo, a legacy grew
+<p>In the dawning age of the ARPANET&rsquo;s gleam<br>
+A simple idea, a persistent dream<br>
+From a humble note, in &lsquo;69 it came<br>
+Steve Crocker wrote it, and whispered its name<br>
+A &ldquo;Request for Comments,&rdquo; a title so grand<br>
+To build the foundation across the land<br>
+From a simple memo, a legacy grew<br>
 To connect the world, for me and for you.</p></blockquote>
 <p>Solves: 10</p>
 <p>This write-up describes a series of vulnerabilities in the r3note application that, when chained together, lead to XSS. The vulnerabilities include a file upload bypass, a path traversal, nginx misconfiguration and an XSS vulnerability.</p>
@@ -207,14 +209,14 @@ To connect the world, for me and for you.</p></blockquote>
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// bot/bot.mjs:72
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#66d9ef">goto</span>(<span style="color:#e6db74">&#34;http://127.0.0.1:8080/&#34;</span>, { <span style="color:#a6e22e">timeout</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5000</span> });
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">evaluate</span>((<span style="color:#a6e22e">flag</span>) =&gt; {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">setItem</span>(<span style="color:#e6db74">&#34;flag&#34;</span>, <span style="color:#a6e22e">flag</span>);
-</span></span><span style="display:flex;"><span>    }, <span style="color:#a6e22e">FLAG</span>);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#66d9ef">goto</span>(<span style="color:#e6db74">&#34;http://127.0.0.1:8080/&#34;</span>, { <span style="color:#a6e22e">timeout</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5000</span> });
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">evaluate</span>((<span style="color:#a6e22e">flag</span>) =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">localStorage</span>.<span style="color:#a6e22e">setItem</span>(<span style="color:#e6db74">&#34;flag&#34;</span>, <span style="color:#a6e22e">flag</span>);
+</span></span><span style="display:flex;"><span>}, <span style="color:#a6e22e">FLAG</span>);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Checking report for token: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">token</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Checking report for token: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">token</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#66d9ef">goto</span>(<span style="color:#e6db74">`http://127.0.0.1:8080/share/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">token</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>, { <span style="color:#a6e22e">timeout</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5000</span> });
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#66d9ef">goto</span>(<span style="color:#e6db74">`http://127.0.0.1:8080/share/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">token</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>, { <span style="color:#a6e22e">timeout</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5000</span> });
 </span></span></code></pre></div><p>The bot, in <code>bot/bot.mjs</code>, navigates to <code>/share/{token}</code>, This allows an attacker to craft a malicious token containing path traversal sequences (<code>../</code>) to make the bot visit arbitrary endpoints hosted by the server.</p>
 <h3 id="3-referer-check-in-getimage">3. Referer check in GetImage<a hidden class="anchor" aria-hidden="true" href="#3-referer-check-in-getimage">#</a></h3>
 <p>The <code>GetImage</code> which is called by <code>/api/image/:id</code> checks for a <code>Referer</code> header and returns 403 if it&rsquo;s empty.</p>
@@ -254,8 +256,7 @@ To connect the world, for me and for you.</p></blockquote>
 </span></span></code></pre></div><p>This prevents us from uploading a malicious html as an image and sending the bot to visit it directly.</p>
 <h3 id="4-nginx-configuration">4. Nginx Configuration<a hidden class="anchor" aria-hidden="true" href="#4-nginx-configuration">#</a></h3>
 <p>The Nginx configuration plays a crucial role in this exploit. Here&rsquo;s the relevant part of the configuration:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#66d9ef">//</span> <span style="color:#e6db74">nginx/default.conf</span>
-</span></span><span style="display:flex;"><span><span style="color:#e6db74">location</span> <span style="color:#e6db74">/files/upload/</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#66d9ef">location</span> <span style="color:#e6db74">/files/upload/</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">deny</span> <span style="color:#e6db74">all</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
@@ -265,14 +266,14 @@ To connect the world, for me and for you.</p></blockquote>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">proxy_cache_key</span>      $uri$is_args$args;
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
-</span></span></code></pre></div><p>Nginx processes location blocks in a specific order of priority. A regular expression match (like <code>~ \.(css|js)$</code>) has a higher priority than a prefix match (like <code>/files/upload/</code>). This means that even though there&rsquo;s a rule to deny access to the <code>/files/upload/</code> directory, a request for a file ending in <code>.js</code> within that directory will be handled by the regex location block, bypassing the <code>deny all</code> directive. <strong>We&rsquo;ll combine this fact along with the upload bypass trick to send the bot to a malicious html file uploaded by us</strong>. Furthermore, <code>proxy_cache_key</code> doesn&rsquo;t include the fragment part, so after we access and therefore cache a file with filename ending with <code>#whatever</code> we can access it omitting <code>#whatever</code> ending.</p>
+</span></span></code></pre></div><p>Nginx processes location blocks in a specific order of priority. A regular expression match (like <code>~ \.(css|js)$</code>) has a higher priority than a prefix match (like <code>/files/upload/</code>). This means that even though there&rsquo;s a rule to deny access to the <code>/files/upload/</code> directory, a request for a file ending in <code>.js</code> within that directory will be handled by the regex location block, bypassing the <code>deny all</code> directive. <strong>We&rsquo;ll combine this fact along with the upload bypass trick to send the bot to a malicious html file uploaded by us</strong>. Furthermore, <code>proxy_cache_key</code> doesn&rsquo;t include the fragment part, so after we initially access it and therefore cache a file with filename ending with <code>#whatever</code> we can later access it omitting the <code>#whatever</code> ending.</p>
 <h3 id="5-lack-of-x-content-type-options-nosniff-response-header">5 Lack of <code>X-Content-Type-Options: nosniff</code> response header<a hidden class="anchor" aria-hidden="true" href="#5-lack-of-x-content-type-options-nosniff-response-header">#</a></h3>
 <p>Due to the lack of <code>X-Content-Type-Options: nosniff</code> in response headers, the browser will guess the MIME type of the file based on its contents.</p>
 <h3 id="6-cross-site-scripting-xss">6 Cross-Site Scripting (XSS)<a hidden class="anchor" aria-hidden="true" href="#6-cross-site-scripting-xss">#</a></h3>
 <p>The go middleware sets a CSP that allows us to include scripts served from the same origin.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// app/middleware/jwt.go:66</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Writer</span>.<span style="color:#a6e22e">Header</span>().<span style="color:#a6e22e">Set</span>(<span style="color:#e6db74">&#34;Content-Security-Policy&#34;</span>, <span style="color:#e6db74">&#34;default-src &#39;self&#39;; script-src &#39;self&#39;; style-src &#39;self&#39; &#39;unsafe-inline&#39;;&#34;</span>)
-</span></span></code></pre></div><p>We can upload arbitrary javascript file via the image upload and include it in our malicious html file. Even though</p>
+</span></span></code></pre></div><p>We can upload arbitrary javascript file via the image upload and include it in our malicious html file.</p>
 <hr>
 <h2 id="exploitation">Exploitation<a hidden class="anchor" aria-hidden="true" href="#exploitation">#</a></h2>
 <p>The exploit consists of the following steps:</p>
@@ -304,7 +305,8 @@ Caching the file will allow accessing it omitting the fragment (with just <code>
 We send a request to the bot&rsquo;s reporting endpoint with a specially crafted token <code>../files/upload/{user_id}/{html_id}.js</code>. This token will use path traversal to make the bot navigate to the HTML file we uploaded and cached.</p>
 </li>
 </ol>
-<p>Here&rsquo;s a solver script:</p>
+<hr>
+<h2 id="solver-script">Solver Script<a hidden class="anchor" aria-hidden="true" href="#solver-script">#</a></h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> random
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> string
@@ -415,13 +417,14 @@ We send a request to the bot&rsquo;s reporting endpoint with a specially crafted
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
 </span></span><span style="display:flex;"><span>    main()
-</span></span></code></pre></div><h2 id="final-notes">Final Notes<a hidden class="anchor" aria-hidden="true" href="#final-notes">#</a></h2>
+</span></span></code></pre></div><hr>
+<h2 id="final-notes">Final Notes<a hidden class="anchor" aria-hidden="true" href="#final-notes">#</a></h2>
 <ul>
 <li>Remember to include <code>X-Content-Type-Options: nosniff</code> in server response headers,</li>
 <li>Pay special attention to nginx configuration.</li>
 </ul>
-<p>XOXO,<br>
-VXXDXX</p>
+<p>XOXO,</p>
+<p>VXXDXX</p>
 
 
   </div>

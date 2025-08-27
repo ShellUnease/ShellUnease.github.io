@@ -4,7 +4,7 @@
     <title>R3CTF 2025 on ShellUnease</title>
     <link>http://localhost:1313/categories/r3ctf-2025/</link>
     <description>Recent content in R3CTF 2025 on ShellUnease</description>
-    <generator>Hugo -- 0.147.8</generator>
+    <generator>Hugo -- 0.148.2</generator>
     <language>en</language>
     <copyright>ShellUnease (CC BY 4.0)</copyright>
     <lastBuildDate>Sun, 20 Jul 2025 20:11:39 +0200</lastBuildDate>
@@ -16,13 +16,13 @@
       <guid>http://localhost:1313/posts/r3ctf-2025-r3note/</guid>
       <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;In the dawning age of the ARPANET&amp;rsquo;s gleam
-A simple idea, a persistent dream
-From a humble note, in &amp;lsquo;69 it came
-Steve Crocker wrote it, and whispered its name
-A &amp;ldquo;Request for Comments,&amp;rdquo; a title so grand
-To build the foundation across the land
-From a simple memo, a legacy grew
+&lt;p&gt;In the dawning age of the ARPANET&amp;rsquo;s gleam&lt;br&gt;
+A simple idea, a persistent dream&lt;br&gt;
+From a humble note, in &amp;lsquo;69 it came&lt;br&gt;
+Steve Crocker wrote it, and whispered its name&lt;br&gt;
+A &amp;ldquo;Request for Comments,&amp;rdquo; a title so grand&lt;br&gt;
+To build the foundation across the land&lt;br&gt;
+From a simple memo, a legacy grew&lt;br&gt;
 To connect the world, for me and for you.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Solves: 10&lt;/p&gt;
 &lt;p&gt;This write-up describes a series of vulnerabilities in the r3note application that, when chained together, lead to XSS. The vulnerabilities include a file upload bypass, a path traversal, nginx misconfiguration and an XSS vulnerability.&lt;/p&gt;</description>

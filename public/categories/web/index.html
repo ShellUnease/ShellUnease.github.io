@@ -121,11 +121,36 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">SekaiCTF 2025 hqli-me
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Overview Please note that this challenge has no outgoing network access.
+Challenge author: irogir
+Solves: 3
+Fun challenge focused mostly on RCE via HQL.
+1. General Analysis The challenge deployment consists of 3 containers:
+order_service, authn_service containing the flag, mysql We can reach any container from within another, but only order_service is exposed externally. Both order_service and authn_service are Java applications that use HQL to query the underlying databases; however, order_service uses mysql from another container, while authn_service opted for an in-memory H2 db.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-08-27 20:11:39 +0200 CEST'>August 27, 2025</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;ShellUnease</footer>
+  <a class="entry-link" aria-label="post link to SekaiCTF 2025 hqli-me" href="http://localhost:1313/posts/sekaictf-2025-hqli-me/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">R3CTF 2025 R3note
     </h2>
   </header>
   <div class="entry-content">
-    <p>Overview In the dawning age of the ARPANET’s gleam A simple idea, a persistent dream From a humble note, in ‘69 it came Steve Crocker wrote it, and whispered its name A “Request for Comments,” a title so grand To build the foundation across the land From a simple memo, a legacy grew To connect the world, for me and for you.
+    <p>Overview In the dawning age of the ARPANET’s gleam
+A simple idea, a persistent dream
+From a humble note, in ‘69 it came
+Steve Crocker wrote it, and whispered its name
+A “Request for Comments,” a title so grand
+To build the foundation across the land
+From a simple memo, a legacy grew
+To connect the world, for me and for you.
 Solves: 10
 This write-up describes a series of vulnerabilities in the r3note application that, when chained together, lead to XSS. The vulnerabilities include a file upload bypass, a path traversal, nginx misconfiguration and an XSS vulnerability.
 ...</p>
@@ -260,21 +285,6 @@ Bun.spawnSync function appears to be overwritten with a WAF message, WAF blocks 
   </div>
   <footer class="entry-footer"><span title='2024-07-29 13:00:00 +0200 CEST'>July 29, 2024</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to DeadSec CTF 2024 Buntime" href="http://localhost:1313/posts/deadsecctf-2024-buntime/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">UIUCTF 2024 Log Action
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Initial Code Analysis Upon inspecting the code, we discovered that the frontend application is running Next.js 14.1.0. This version is vulnerable to SSRF https://nvd.nist.gov/vuln/detail/CVE-2024-34351.
-We also notice the flag.txt file is copied to /usr/share/nginx/html/flag.txt in the backend app, meaning it’s exposed via backend/flag.txt inside the docker network.
-We’ll perform an SSRF to make the frontend application send a request to the backend application /flag.txt and send it back to us.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-07-01 12:24:09 +0200 CEST'>July 1, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
-  <a class="entry-link" aria-label="post link to UIUCTF 2024 Log Action" href="http://localhost:1313/posts/uiuctf-2024-log-action/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

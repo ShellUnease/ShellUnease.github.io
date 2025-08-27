@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SekaiCTF 2025 on ShellUnease</title>
+    <link>http://localhost:1313/categories/sekaictf-2025/</link>
+    <description>Recent content in SekaiCTF 2025 on ShellUnease</description>
+    <generator>Hugo -- 0.148.2</generator>
+    <language>en</language>
+    <copyright>ShellUnease (CC BY 4.0)</copyright>
+    <lastBuildDate>Wed, 27 Aug 2025 20:11:39 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/sekaictf-2025/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SekaiCTF 2025 hqli-me</title>
+      <link>http://localhost:1313/posts/sekaictf-2025-hqli-me/</link>
+      <pubDate>Wed, 27 Aug 2025 20:11:39 +0200</pubDate>
+      <guid>http://localhost:1313/posts/sekaictf-2025-hqli-me/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Please note that this challenge has no outgoing network access.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Challenge author: irogir&lt;br&gt;
+Solves: 3&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;2025-sekai-web-hqli-me/hqli-solves.png&#34; alt=&#34;Solves&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Fun challenge focused mostly on RCE via HQL.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-general-analysis&#34;&gt;1. General Analysis&lt;/h2&gt;
+&lt;p&gt;The challenge deployment consists of 3 containers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;order_service&lt;/code&gt;,&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;authn_service&lt;/code&gt; containing the flag,&lt;/li&gt;
+&lt;li&gt;mysql&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We can reach any container from within another, but only &lt;code&gt;order_service&lt;/code&gt; is exposed externally. Both &lt;code&gt;order_service&lt;/code&gt; and &lt;code&gt;authn_service&lt;/code&gt; are Java applications that use HQL to query the underlying databases; however, &lt;code&gt;order_service&lt;/code&gt; uses mysql from another container, while &lt;code&gt;authn_service&lt;/code&gt; opted for an in-memory H2 db.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
