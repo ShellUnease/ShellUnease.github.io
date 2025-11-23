@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>PwnSecCTF 2025 on ShellUnease</title>
+    <link>http://localhost:1313/categories/pwnsecctf-2025/</link>
+    <description>Recent content in PwnSecCTF 2025 on ShellUnease</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>en</language>
+    <copyright>ShellUnease (CC BY 4.0)</copyright>
+    <lastBuildDate>Sun, 23 Nov 2025 12:11:39 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/pwnsecctf-2025/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PwnSecCTF 2025 PSPD</title>
+      <link>http://localhost:1313/posts/pwnsecctf-2025-pspd/</link>
+      <pubDate>Sun, 23 Nov 2025 12:11:39 +0200</pubDate>
+      <guid>http://localhost:1313/posts/pwnsecctf-2025-pspd/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;They begged me not to do it, but I had to. Can you bring PwnSec&amp;rsquo;s Police Department to a clojure?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Challenge author: aelmo&lt;br&gt;
+Solves: 2&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;solves.png&#34; alt=&#34;Solves&#34;  /&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-general-analysis&#34;&gt;1. General Analysis&lt;/h2&gt;
+&lt;p&gt;The application is written in Clojure, however the challenge doesn&amp;rsquo;t involve anything specific to it. The flag is located in the admin bot&amp;rsquo;s journal. It&amp;rsquo;s not protected by any auth check - all we have to do is learn the admin&amp;rsquo;s user id.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

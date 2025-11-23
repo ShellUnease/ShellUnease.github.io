@@ -10,7 +10,7 @@
 <meta name="description" content="ShellUnease Write-ups">
 <meta name="author" content="ShellUnease">
 <link rel="canonical" href="http://localhost:1313/categories/web/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.a8501b4e1544bf104a4e2647be64df3637f95b6ac25a4298047d87fe0eacffa1.css" integrity="sha256-qFAbThVEvxBKTiZHvmTfNjf5W2rCWkKYBH2H/g6s/6E=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -118,6 +118,22 @@
     Web
   </h1>
 </header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">PwnSecCTF 2025 PSPD
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Overview They begged me not to do it, but I had to. Can you bring PwnSec’s Police Department to a clojure?
+Challenge author: aelmo
+Solves: 2
+1. General Analysis The application is written in Clojure, however the challenge doesn’t involve anything specific to it. The flag is located in the admin bot’s journal. It’s not protected by any auth check - all we have to do is learn the admin’s user id.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-11-23 12:11:39 +0200 +0200'>November 23, 2025</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;ShellUnease</footer>
+  <a class="entry-link" aria-label="post link to PwnSecCTF 2025 PSPD" href="http://localhost:1313/posts/pwnsecctf-2025-pspd/"></a>
+</article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
@@ -269,22 +285,6 @@ Afterwards, the execution is passed to handle_cmd which can execute one of 6 com
   </div>
   <footer class="entry-footer"><span title='2024-07-29 13:00:00 +0200 CEST'>July 29, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CrewCTF 2024 Malkonkordo" href="http://localhost:1313/posts/crewctf-2024-malkonkordo/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">DeadSec CTF 2024 Buntime
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Initial Inspection There’s no souce code provided for the challenge. The only thing we’re given to work with is a website that executes our input code presumably using Bun.
-After playing around with it for a bit we know that it’s Bun, since the Bun variable is available and allows us to call different methods.
-More Recon There are quite a few limitations to our code:
-Bun.spawnSync function appears to be overwritten with a WAF message, WAF blocks our input from the POST body if it’s too long (I didn’t count it, but it’s about ~30 chars give or take), We can’t call await directly, Even though we can call Bun.spawn, we seemingly can’t write anywhere (tried /tmp and /dev/shm), There’s no outside network connectivity. However, we’re able to confirm that the flag is in /flag.txt by running Bun.file(&#39;/flag.txt&#39;).size.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-07-29 13:00:00 +0200 CEST'>July 29, 2024</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;ShellUnease</footer>
-  <a class="entry-link" aria-label="post link to DeadSec CTF 2024 Buntime" href="http://localhost:1313/posts/deadsecctf-2024-buntime/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
