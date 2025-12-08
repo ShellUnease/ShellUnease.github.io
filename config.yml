@@ -1,6 +1,6 @@
 baseURL: https://shellunease.github.io
 languageCode: en-us
-title: ShellUnease
+title: ShellUnease (VXXDXX)
 theme: PaperMod
 copyright: ShellUnease (CC BY 4.0)
 module:
@@ -35,12 +35,14 @@ params:
   ShowCodeCopyButtons: true
   homeInfoParams:
     Title: Hi 👋
-    Content: Welcome to my collection of write-ups
-  socialIcons: # optional
-    # - name: "<platform>"
-    #   url: "<link>"
-    # - name: "<platform 2>"
-    #   url: "<link2>"
+    Content: Welcome to my collection of write-ups. You can also read them and more at [valgrind CTF team website](https://valgrindc.tf).
+  socialIcons:
+    - name: "twitter"
+      url: "https://x.com/VXXDXX4XLL"
+    - name: "GitHub"
+      url: "https://github.com/ShellUnease"
+    - name: "HTB"
+      url: "https://app.hackthebox.com/users/1689134"
   description: ShellUnease Write-ups
   fuseOpts:
     isCaseSensitive: false
