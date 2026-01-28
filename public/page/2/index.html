@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.152.2"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.154.5"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
@@ -115,6 +115,20 @@
     </nav>
 </header>
 <main class="main"> 
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CyberSpace CTF 2024 Notekeeper
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Source Code Analysis The goal is to access the GET /flag endpoint which calls an executable that prints out the flag. It’s guarded by 2 checks:
+if session[:user] == &#34;admin&#34; if req.ip == &#34;127.0.0.1&#34; There’s also an interesting POST /download endpoint. It accepts any session but is also guarded by the if req.ip == &#34;127.0.0.1&#34; check. It serves a file based on filename from our request, which leads to LFI.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-09-03 17:21:15 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
+  <a class="entry-link" aria-label="post link to CyberSpace CTF 2024 Notekeeper" href="http://localhost:1313/posts/cyberspacectf-2024-notekeeper/"></a>
+</article>
 
 <article class="post-entry"> 
   <header class="entry-header">

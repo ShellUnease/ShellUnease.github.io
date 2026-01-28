@@ -4,11 +4,34 @@
     <title>ShellUnease (VXXDXX)</title>
     <link>http://localhost:1313/</link>
     <description>Recent content on ShellUnease (VXXDXX)</description>
-    <generator>Hugo -- 0.152.2</generator>
-    <language>en</language>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>en-us</language>
     <copyright>ShellUnease (CC BY 4.0)</copyright>
-    <lastBuildDate>Sun, 23 Nov 2025 12:11:39 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 28 Dec 2025 20:22:53 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ASIS CTF Finals 2025 One shoot game!</title>
+      <link>http://localhost:1313/posts/asisctffinals-2025-oneshootgame/</link>
+      <pubDate>Sun, 28 Dec 2025 20:22:53 +0100</pubDate>
+      <guid>http://localhost:1313/posts/asisctffinals-2025-oneshootgame/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Can you one shoot me?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Solves: 10&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;solves.png&#34; alt=&#34;Solves&#34;  /&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-general-analysis&#34;&gt;1. General Analysis&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;The application is written in Python and uses Flask.&lt;/li&gt;
+&lt;li&gt;Each time the bot is called, it will create an account with random credentials, log in, create a new note with the target flag in its content, and then visit our note.&lt;/li&gt;
+&lt;li&gt;The endpoint to display a note &lt;code&gt;/display/&amp;lt;string:doc_id&amp;gt;&lt;/code&gt; only requires that we&amp;rsquo;re logged in, but as long as we know its id we can view any note.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2-broken-dompurify-sanitization&#34;&gt;2. Broken DOMPurify Sanitization&lt;/h2&gt;
+&lt;p&gt;The file &lt;code&gt;src/app/templates/workspace/display.html&lt;/code&gt; contains the following script.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>PwnSecCTF 2025 PSPD</title>
       <link>http://localhost:1313/posts/pwnsecctf-2025-pspd/</link>

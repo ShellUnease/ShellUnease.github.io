@@ -121,6 +121,21 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">ASIS CTF Finals 2025 One shoot game!
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Overview Can you one shoot me?
+Solves: 10
+1. General Analysis The application is written in Python and uses Flask. Each time the bot is called, it will create an account with random credentials, log in, create a new note with the target flag in its content, and then visit our note. The endpoint to display a note /display/&lt;string:doc_id&gt; only requires that we’re logged in, but as long as we know its id we can view any note. 2. Broken DOMPurify Sanitization The file src/app/templates/workspace/display.html contains the following script.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-28 20:22:53 +0100 CET'>December 28, 2025</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;ShellUnease</footer>
+  <a class="entry-link" aria-label="post link to ASIS CTF Finals 2025 One shoot game!" href="http://localhost:1313/posts/asisctffinals-2025-oneshootgame/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">PwnSecCTF 2025 PSPD
     </h2>
   </header>
@@ -270,21 +285,6 @@ The if (intval($answer) === $next_correct) {...} is the essential part of the ch
   </div>
   <footer class="entry-footer"><span title='2024-09-03 17:20:41 +0200 CEST'>September 3, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
   <a class="entry-link" aria-label="post link to CyberSpace CTF 2024 Quiz" href="http://localhost:1313/posts/cyberspacectf-2024-quiz/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">CrewCTF 2024 Malkonkordo
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Source Code Analysis Upon inspecting the code, we find that there’s /ai/run path that sounds like it could let us execute something.
-It’s “guarded” by middleware that inspects whether host in the uri or the request header ‘host’ starts with 127.0.01.
-Afterwards, the execution is passed to handle_cmd which can execute one of 6 commands. For us, the intereting ones are displaying env vars
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-07-29 13:00:00 +0200 CEST'>July 29, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ShellUnease</footer>
-  <a class="entry-link" aria-label="post link to CrewCTF 2024 Malkonkordo" href="http://localhost:1313/posts/crewctf-2024-malkonkordo/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

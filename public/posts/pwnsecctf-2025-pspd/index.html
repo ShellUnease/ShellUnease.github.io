@@ -186,14 +186,14 @@ Solves: 2</p>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> { <span style="color:#a6e22e">uid</span> } <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">currentScript</span>.<span style="color:#a6e22e">dataset</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// load the fallback uid
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">uid</span>) {
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">uid</span>) {
 </span></span><span style="display:flex;"><span>    window.<span style="color:#a6e22e">uid</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">uid</span>;
 </span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">uid</span> <span style="color:#f92672">=</span> window.<span style="color:#a6e22e">uid</span>;
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// uid must be available
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">uid</span>);
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">uid</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userData</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> (<span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">`/users/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">uid</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>)).<span style="color:#a6e22e">json</span>();
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">userData</span>);
@@ -213,9 +213,9 @@ Solves: 2</p>
 <p>The page also loads <code>clientsideUIDFallback.js</code> which assigns <code>window.uid</code> from a query parameter.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>(<span style="color:#66d9ef">async</span> () =&gt; {
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// our devs said the clojure templater is not reliable
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// this hack should ensure our 99.99999999% agent page
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// availability
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">uid</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">URLSearchParams</span>(<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">search</span>).<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;user-id&#34;</span>);
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// this hack should ensure our 99.99999999% agent page
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// availability
+</span></span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">uid</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">URLSearchParams</span>(<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">search</span>).<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;user-id&#34;</span>);
 </span></span><span style="display:flex;"><span>  window.<span style="color:#a6e22e">dispatchEvent</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">CustomEvent</span>(<span style="color:#e6db74">&#34;clj-uid-loaded&#34;</span>, { <span style="color:#a6e22e">uid</span><span style="color:#f92672">:</span> window.<span style="color:#a6e22e">uid</span> }));
 </span></span><span style="display:flex;"><span>})();
 </span></span></code></pre></div><p>The comment might make us wrongly assume the issue has something to do with the clojure templater, but the bug is in the way the scripts are loaded.</p>
@@ -230,14 +230,14 @@ Solves: 2</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">DOMPurifyConfig</span> <span style="color:#f92672">=</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// just enough for our basic journals
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">ALLOWED_TAGS</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;i&#34;</span>, <span style="color:#e6db74">&#34;ul&#34;</span>, <span style="color:#e6db74">&#34;ol&#34;</span>, <span style="color:#e6db74">&#34;li&#34;</span>],
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ALLOWED_TAGS</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;i&#34;</span>, <span style="color:#e6db74">&#34;ul&#34;</span>, <span style="color:#e6db74">&#34;ol&#34;</span>, <span style="color:#e6db74">&#34;li&#34;</span>],
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">FORBID_ATTR</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;name&#34;</span>],
 </span></span><span style="display:flex;"><span>  };
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">userDataElement</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#34;#userContainer&#34;</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">// polling user data because my scripts are not preserving order
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// is it because of the async? 🤷‍♂️
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">polls</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span></span><span style="display:flex;"><span>  <span style="color:#75715e">// is it because of the async? 🤷‍♂️
+</span></span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">polls</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">pollUserData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">setInterval</span>(<span style="color:#66d9ef">async</span> () =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">polls</span><span style="color:#f92672">++</span>;
 </span></span><span style="display:flex;"><span>
@@ -253,7 +253,7 @@ Solves: 2</p>
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">userJournal</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// they told me its good for security 🤷
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">userJournal</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">userJournal</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/textarea/gi</span>, <span style="color:#e6db74">&#34;&#34;</span>);
+</span></span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">userJournal</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">userJournal</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/textarea/gi</span>, <span style="color:#e6db74">&#34;&#34;</span>);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">userDataElement</span>.<span style="color:#a6e22e">insertAdjacentHTML</span>(
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;afterbegin&#34;</span>,
@@ -291,7 +291,7 @@ Solves: 2</p>
 </span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;is-admin&#34;</span>,
 </span></span><span style="display:flex;"><span>        ];
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// gracefully populate userData dependent UI
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">preEl</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#34;pre&#34;</span>);
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">preEl</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#34;pre&#34;</span>);
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">preEl</span>.<span style="color:#a6e22e">innerText</span> <span style="color:#f92672">=</span>
 </span></span><span style="display:flex;"><span>          <span style="color:#e6db74">`// userData - debug_id: </span><span style="color:#e6db74">${</span>(<span style="color:#a6e22e">crypto</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">randomUUID</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">crypto</span>.<span style="color:#a6e22e">randomUUID</span>()) <span style="color:#f92672">||</span> <span style="color:#66d9ef">NaN</span>
 </span></span><span style="display:flex;"><span>          <span style="color:#e6db74">}</span><span style="color:#e6db74">\n`</span> <span style="color:#f92672">+</span>
