@@ -7,8 +7,23 @@
     <generator>Hugo -- 0.154.5</generator>
     <language>en-us</language>
     <copyright>ShellUnease (CC BY 4.0)</copyright>
-    <lastBuildDate>Sun, 28 Dec 2025 20:22:53 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 28 Jan 2026 20:29:03 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Migrating My Notes With cherrytree2trilium</title>
+      <link>http://localhost:1313/posts/cherrytree2trilium/</link>
+      <pubDate>Wed, 28 Jan 2026 20:29:03 +0100</pubDate>
+      <guid>http://localhost:1313/posts/cherrytree2trilium/</guid>
+      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;I had a quite large (~363MB) CherryTree database that I wanted to convert to Trilium. I stumbled upon the &lt;a href=&#34;https://gitlab.com/kibley/cherrytreetomarkdown&#34;&gt;cherrytreetomarkdown&lt;/a&gt; project, modified it a bit and used it alongside &lt;a href=&#34;https://github.com/Nriver/trilium-py&#34;&gt;trilium-py&lt;/a&gt; to suit my needs. This project may or may not lack some migration features, but it allowed me to successfully migrate my CherryTree database to Trilium and I figured out it might help others too. The project is available &lt;a href=&#34;https://github.com/ShellUnease/cherrytree2trilium&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Install Trilium,&lt;/li&gt;
+&lt;li&gt;Get the ETAPI token from &lt;code&gt;Hidden Notes / Options / ETAPI&lt;/code&gt;,&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;etapi.png&#34; alt=&#34;alt text&#34;  /&gt;
+&lt;/p&gt;</description>
+    </item>
     <item>
       <title>ASIS CTF Finals 2025 One shoot game!</title>
       <link>http://localhost:1313/posts/asisctffinals-2025-oneshootgame/</link>
@@ -19,7 +34,7 @@
 &lt;p&gt;Can you one shoot me?&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Solves: 10&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;solves.webp&#34; alt=&#34;Solves&#34;  /&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;solves.png&#34; alt=&#34;Solves&#34;  /&gt;
 &lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;1-general-analysis&#34;&gt;1. General Analysis&lt;/h2&gt;

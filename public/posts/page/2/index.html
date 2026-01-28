@@ -121,6 +121,22 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">CSAW CTF Qualification Round 2024 Lost Pyramid
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Initial Code Analysis First thing that catches our eye is the old version 2.3.0 of PyJWT used in the application.
+In order to access the flag, we need to view kings_lair.html which requires sending a JWT with specific CURRENT_DATE and ROLE.
+The scarab room seems vulnerable to SSTI via name POST param.
+app.route(&#39;/scarab_room&#39;, methods=[&#39;GET&#39;, &#39;POST&#39;]) def scarab_room(): try: if request.method == &#39;POST&#39;: name = request.form.get(&#39;name&#39;) if name: kings_safelist = [&#39;{&#39;,&#39;}&#39;, &#39;𓁹&#39;, &#39;𓆣&#39;,&#39;𓀀&#39;, &#39;𓀁&#39;, &#39;𓀂&#39;, &#39;𓀃&#39;, &#39;𓀄&#39;, &#39;𓀅&#39;, &#39;𓀆&#39;, &#39;𓀇&#39;, &#39;𓀈&#39;, &#39;𓀉&#39;, &#39;𓀊&#39;, &#39;𓀐&#39;, &#39;𓀑&#39;, &#39;𓀒&#39;, &#39;𓀓&#39;, &#39;𓀔&#39;, &#39;𓀕&#39;, &#39;𓀖&#39;, &#39;𓀗&#39;, &#39;𓀘&#39;, &#39;𓀙&#39;, &#39;𓀚&#39;, &#39;𓀛&#39;, &#39;𓀜&#39;, &#39;𓀝&#39;, &#39;𓀞&#39;, &#39;𓀟&#39;, &#39;𓀠&#39;, &#39;𓀡&#39;, &#39;𓀢&#39;, &#39;𓀣&#39;, &#39;𓀤&#39;, &#39;𓀥&#39;, &#39;𓀦&#39;, &#39;𓀧&#39;, &#39;𓀨&#39;, &#39;𓀩&#39;, &#39;𓀪&#39;, &#39;𓀫&#39;, &#39;𓀬&#39;, &#39;𓀭&#39;, &#39;𓀮&#39;, &#39;𓀯&#39;, &#39;𓀰&#39;, &#39;𓀱&#39;, &#39;𓀲&#39;, &#39;𓀳&#39;, &#39;𓀴&#39;, &#39;𓀵&#39;, &#39;𓀶&#39;, &#39;𓀷&#39;, &#39;𓀸&#39;, &#39;𓀹&#39;, &#39;𓀺&#39;, &#39;𓀻&#39;] name = &#39;&#39;.join([char for char in name if char.isalnum() or char in kings_safelist]) return render_template_string(&#39;&#39;&#39; &lt;!DOCTYPE html&gt; &lt;html lang=&#34;en&#34;&gt; &lt;head&gt; OMITTED &lt;/head&gt; &lt;body&gt; &lt;a href=&#34;{{ url_for(&#39;hallway&#39;) }}&#34; class=&#34;return-link&#34;&gt;RETURN&lt;/a&gt; {% if name %} &lt;h1&gt;𓁹𓁹𓁹 Welcome to the Scarab Room, &#39;&#39;&#39;&#43; name &#43; &#39;&#39;&#39; 𓁹𓁹𓁹&lt;/h1&gt; {% endif %} &lt;/body&gt; &lt;/html&gt; &#39;&#39;&#39;, name=name, **globals()) except Exception as e: pass return render_template(&#39;scarab_room.html&#39;) Leaking Information via Scarab Room Since both { and } are in kings_safelist, we can send a Jinja2 expression in name to scarab_room. This allows us to leak any alphanumerical global variables by sending {{VARIABLE}}, since **globals() are included. Looking at the code, we can leak KINGSDAY and PUBLICKEY this way, but not PRIVATE_KEY, since it contains an underscore which isn’t permitted.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-09-07 12:17:23 +0200 CEST'>September 7, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;ShellUnease</footer>
+  <a class="entry-link" aria-label="post link to CSAW CTF Qualification Round 2024 Lost Pyramid" href="http://localhost:1313/posts/csawctf-2024-lost-pyramid/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">CyberSpace CTF 2024 Notekeeper
     </h2>
   </header>

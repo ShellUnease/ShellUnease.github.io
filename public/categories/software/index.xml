@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Software on ShellUnease (VXXDXX)</title>
+    <link>http://localhost:1313/categories/software/</link>
+    <description>Recent content in Software on ShellUnease (VXXDXX)</description>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>en-us</language>
+    <copyright>ShellUnease (CC BY 4.0)</copyright>
+    <lastBuildDate>Wed, 28 Jan 2026 20:29:03 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/software/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Migrating My Notes With cherrytree2trilium</title>
+      <link>http://localhost:1313/posts/cherrytree2trilium/</link>
+      <pubDate>Wed, 28 Jan 2026 20:29:03 +0100</pubDate>
+      <guid>http://localhost:1313/posts/cherrytree2trilium/</guid>
+      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;I had a quite large (~363MB) CherryTree database that I wanted to convert to Trilium. I stumbled upon the &lt;a href=&#34;https://gitlab.com/kibley/cherrytreetomarkdown&#34;&gt;cherrytreetomarkdown&lt;/a&gt; project, modified it a bit and used it alongside &lt;a href=&#34;https://github.com/Nriver/trilium-py&#34;&gt;trilium-py&lt;/a&gt; to suit my needs. This project may or may not lack some migration features, but it allowed me to successfully migrate my CherryTree database to Trilium and I figured out it might help others too. The project is available &lt;a href=&#34;https://github.com/ShellUnease/cherrytree2trilium&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Install Trilium,&lt;/li&gt;
+&lt;li&gt;Get the ETAPI token from &lt;code&gt;Hidden Notes / Options / ETAPI&lt;/code&gt;,&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;etapi.png&#34; alt=&#34;alt text&#34;  /&gt;
+&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

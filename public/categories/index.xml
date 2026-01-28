@@ -7,8 +7,15 @@
     <generator>Hugo -- 0.154.5</generator>
     <language>en-us</language>
     <copyright>ShellUnease (CC BY 4.0)</copyright>
-    <lastBuildDate>Sun, 28 Dec 2025 20:22:53 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 28 Jan 2026 20:29:03 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Software</title>
+      <link>http://localhost:1313/categories/software/</link>
+      <pubDate>Wed, 28 Jan 2026 20:29:03 +0100</pubDate>
+      <guid>http://localhost:1313/categories/software/</guid>
+      <description></description>
+    </item>
     <item>
       <title>ASIS CTF Finals 2025</title>
       <link>http://localhost:1313/categories/asis-ctf-finals-2025/</link>
